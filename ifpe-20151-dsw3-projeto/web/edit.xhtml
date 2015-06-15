@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link href="#{request.contextPath}/register.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <h:form id="registerForm" styleClass="smart-green">
+            <h3>Alterar dados <span>Modificar os dados do funcionário</span></h3>
+
+            <h:messages id="userMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+
+            <h:panelGrid columns="2" styleClass="formPanel">
+                <h:outputLabel for="name">
+                    <h:outputText value="Nome:"/>
+                </h:outputLabel>
+                <h:inputText id="name" value="#{userHandler.user.name}" required="true" 
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="30"/>
+                </h:inputText>
+
+                <h:outputLabel for="birthDate">
+                    <h:outputText value="Data de Nascimento: "/>
+                </h:outputLabel>
+                <h:inputText id="birthDate" required="true"
+                             value="#{userHandler.user.birthDate}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/> 
+                </h:inputText>
+
+                <h:outputLabel for="salary">
+                    <h:outputText value="Salário: "/>
+                </h:outputLabel>
+                <h:inputText id="salary" required="true" value="#{userHandler.user.salary}">
+                    <f:validateDoubleRange minimum="722"/>
+                </h:inputText>	             
+
+                <h:outputText value=""/>
+
+                <h:commandButton id="register" styleClass="button" 
+                                 action="#{userHandler.editUser}" 
+                                 value="Alterar"
+                                 />
+                <h:commandLink /> 
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

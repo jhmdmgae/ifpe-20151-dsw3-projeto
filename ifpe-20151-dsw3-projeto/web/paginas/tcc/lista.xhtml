@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Cadastro de TCC</title>
+        <link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <h1><h:outputText value="Menu" /></h1>
+            <br/>
+            <h:commandLink action="#{userHandler.userList}" value="Listar Usários"/>
+
+            <br/>
+            <h:commandLink action="#{TccControle.listarTCC}" value="Listar TCC"/>
+
+            <br/>
+            <h:commandLink action="#{AlunoControle.listarAluno}" value="Listar Aluno"/>
+
+        </h:form>
+
+        <h3>Listagem de TCCs:</h3>
+
+        <h:form>
+            <h:messages id="tccMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{TccControle.TCCList}" var="tccReturn">
+                <h:column>
+                    <f:facet name="header">
+                        <h:commandButton action="tcc_novo" value="Novo"/>
+                    </f:facet>
+                    <h:panelGroup>
+                        <h:commandButton action="edit_tcc" value="Editar">
+                            <f:setPropertyActionListener target="#{TccControle.TCC}"
+                                                         value="#{tccReturn}" />
+                        </h:commandButton>
+                        <h:commandButton action="#{TccControle.deleteTCC(tccReturn)}" value="-">                            
+                        </h:commandButton>
+                    </h:panelGroup>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Título"/>
+                    </f:facet>
+                    <h:outputText value="#{tccReturn.titulo}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Data da Defesa"/>
+                    </f:facet>
+                    <h:outputText value="#{tccReturn.dataDefesa}">
+                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Data da Início"/>
+                    </f:facet>
+                    <h:outputText value="#{tccReturn.dataInicio}">
+                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Aluno"/>
+                    </f:facet>
+                    <h:outputText value="#{tccReturn.aluno.nome}">
+                    </h:outputText>
+                </h:column>
+                
+<!--                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Professor"/>
+                    </f:facet>
+                    <h:outputText value="">
+                    </h:outputText>
+                </h:column>-->
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Imprenta"/>
+                    </f:facet>
+                    <h:outputText value="#{tccReturn.imprenta}"/>
+                </h:column>
+
+            </h:dataTable>
+            <h:commandLink value="Index" action="index" immediate="true" />
+        </h:form>
+    </h:body>
+</html>

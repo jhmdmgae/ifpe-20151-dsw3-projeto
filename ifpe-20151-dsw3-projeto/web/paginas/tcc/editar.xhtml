@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link href="#{request.contextPath}/register.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <h:form id="registerForm" styleClass="smart-green">
+            <h3>Alterar dados <span>Modificar os dados do TCC</span></h3>
+
+            <h:messages id="tccMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+
+            <h:panelGrid columns="2" styleClass="formPanel">
+                <h:outputLabel for="titulo">
+                    <h:outputText value="Título:"/>
+                </h:outputLabel>
+                <h:inputText id="name" value="#{TccControle.TCC.titulo}" required="true" 
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+
+                <h:outputLabel for="dataDefesa">
+                    <h:outputText value="Data da Defesa "/>
+                </h:outputLabel>
+                <h:inputText id="dataDefesa" required="true"
+                             value="#{TccControle.TCC.dataDefesa}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/> 
+                </h:inputText>
+                
+                <h:outputLabel for="dataInicio">
+                    <h:outputText value="Data de Inicio"/>
+                </h:outputLabel>
+                <h:inputText id="dataInicio" required="true"
+                             value="#{TccControle.TCC.dataInicio}" >
+                    <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
+                </h:inputText>
+                
+                <h:outputLabel for="aluno">
+                    <h:outputText value="Aluno"/>
+                </h:outputLabel>
+                <h:inputText id="aluno" required="true"
+                             value="#{TccControle.TCC.aluno.nome}" >
+                </h:inputText>
+                
+<!--                <h:outputLabel for="orientador">
+                    <h:outputText value="Orientador"/>
+                </h:outputLabel>
+                <h:inputText id="orientador" required="true"
+                             value="" >
+                </h:inputText>-->
+                
+                <h:outputLabel for="imprenta">
+                    <h:outputText value="Imprenta:"/>
+                </h:outputLabel>
+                <h:inputText id="imprenta" value="#{TccControle.TCC.imprenta}" required="true" 
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+
+                <h:commandButton id="register" styleClass="button" 
+                                 action="#{TccControle.editTCC}" 
+                                 value="Alterar"
+                                 />
+                <h:commandLink /> 
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Aluno Cadastro</title>
+        <link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+
+        <h:form id="registerForm" styleClass="smart-green">
+
+            <h3>Cadastrar Aluno <span>Informar dados do Aluno</span></h3>
+
+            <h:messages id="tccMessages" showDetail="true" layout="list" styleClass="errorMessages"/>
+
+            <h:panelGrid columns="2" styleClass="formPanel">
+
+                <h:outputLabel for="nome">
+                    <h:outputText value="Nome:"/>
+                </h:outputLabel>
+                <h:inputText id="titulo" value="#{aluno.nome}" required="true" 
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+
+                <h:outputLabel for="email">
+                    <h:outputText value="E-mail"/>
+                </h:outputLabel>
+                <h:inputText id="dataDefesa" required="true"
+                             value="#{aluno.email}" >
+                </h:inputText>            
+                
+                <h:commandButton id="register" styleClass="button" 
+                                 action="#{AlunoControle.addAluno(aluno)}" 
+                                 value="Adicionar"
+                                 />
+                <h:commandLink /> 
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

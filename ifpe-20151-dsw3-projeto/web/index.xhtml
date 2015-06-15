@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Cadastro de Usuário</title>
+        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <h1><h:outputText value="Menu" /></h1>
+            <br/>
+            <h:commandLink action="#{userHandler.userList}" value="Listar Usários"/>
+
+            <br/>
+            <h:commandLink action="#{TccControle.listarTCC}" value="Listar TCC"/>
+            
+            <br/>
+            <h:commandLink action="#{AlunoControle.listarAluno}" value="Listar Aluno"/>
+
+        </h:form>
+
+        <h3>Listagem de TCCs:</h3>
+
+        <h:form>
+            <h:messages id="userMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{userHandler.userList}" var="userReturn">
+                <h:column>
+                    <f:facet name="header">
+                        <h:commandButton action="register" value="+"/>
+                    </f:facet>
+                    <h:panelGroup>
+                        <h:commandButton action="edit" value="#">
+                            <f:setPropertyActionListener target="#{userHandler.user}"
+                                                         value="#{userReturn}" />
+                        </h:commandButton>
+                        <h:commandButton action="#{userHandler.deleteUser(userReturn)}" value="-">                            
+                        </h:commandButton>
+                    </h:panelGroup>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nome"/>
+                    </f:facet>
+                    <h:outputText value="#{userReturn.name}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Data de Nascimento"/>
+                    </f:facet>
+                    <h:outputText value="#{userReturn.birthDate}">
+                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Salário"/>
+                    </f:facet>
+                    <h:outputText value="#{userReturn.salary}">
+                        <f:convertNumber 
+                            groupingUsed="true"
+                            currencySymbol="R$"
+                            type="currency"/>
+                    </h:outputText>
+                </h:column>
+            </h:dataTable>
+
+        </h:form>
+
+    </h:body>
+</html>
+

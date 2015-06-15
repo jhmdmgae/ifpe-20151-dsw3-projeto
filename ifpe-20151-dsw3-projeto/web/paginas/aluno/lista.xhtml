@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Cadastro de Aluno</title>
+        <link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        
+        <h:form>
+            <h1><h:outputText value="Menu" /></h1>
+            <br/>
+            <h:commandLink action="#{userHandler.userList}" value="Listar Usários"/>
+
+            <br/>
+            <h:commandLink action="#{TccControle.listarTCC}" value="Listar TCC"/>
+            
+            <br/>
+            <h:commandLink action="#{AlunoControle.listarAluno}" value="Listar Aluno"/>
+
+        </h:form>
+
+        <h3>Listagem de Alunos:</h3>
+
+        <h:form>
+            <h:messages id="alunoMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{AlunoControle.alunoList}" var="alunoReturn">
+                <h:column>
+                    <f:facet name="header">
+                        <h:commandButton action="aluno_novo" value="Novo"/>
+                    </f:facet>
+                    <h:panelGroup>
+                        <h:commandButton action="edit_aluno" value="Editar">
+                            <f:setPropertyActionListener target="#{AlunoControle.aluno}"
+                                                         value="#{alunoReturn}" />
+                        </h:commandButton>
+                        <h:commandButton action="#{AlunoControle.deleteAluno(alunoReturn)}" value="-">                            
+                        </h:commandButton>
+                    </h:panelGroup>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nome"/>
+                    </f:facet>
+                    <h:outputText value="#{alunoReturn.nome}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="E-mail"/>
+                    </f:facet>
+                    <h:outputText value="#{alunoReturn.email}">
+                    </h:outputText>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Senha"/>
+                    </f:facet>
+                    <h:outputText value="#{alunoReturn.senha}">
+                    </h:outputText>
+                </h:column>
+                
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>

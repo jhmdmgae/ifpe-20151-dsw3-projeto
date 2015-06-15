@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link href="#{request.contextPath}/register.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <h:form id="registerForm" styleClass="smart-green">
+            <h3>Alterar dados <span>Modificar os dados do TCC</span></h3>
+
+            <h:messages id="tccMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+
+            <h:panelGrid columns="2" styleClass="formPanel">
+                <h:outputLabel for="name">
+                    <h:outputText value="Título:"/>
+                </h:outputLabel>
+                <h:inputText id="name" value="#{TccControle.TCC.titulo}" required="true" 
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+
+                <h:outputLabel for="birthDate">
+                    <h:outputText value="Data da Defesa "/>
+                </h:outputLabel>
+                <h:inputText id="birthDate" required="true"
+                             value="#{TccControle.TCC.dataDefesa}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/> 
+                </h:inputText>
+
+                <h:commandButton id="register" styleClass="button" 
+                                 action="#{TccControle.editTCC}" 
+                                 value="Alterar"
+                                 />
+                <h:commandLink /> 
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
