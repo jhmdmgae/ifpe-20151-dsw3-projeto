@@ -12,7 +12,7 @@ import javax.faces.bean.ManagedBean;
  *
  * @author João Henrique 2
  */
-@ManagedBean(name="tcc")
+@ManagedBean(name="tcc2")
 @RequestScoped
 public class TCC implements Serializable{
     

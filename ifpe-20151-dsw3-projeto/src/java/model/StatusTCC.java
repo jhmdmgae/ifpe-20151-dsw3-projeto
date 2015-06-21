@@ -6,6 +6,6 @@ package model;
  */
 public enum StatusTCC {
     
-    ATIVO, INATIVO, PUBLICADO;
+    ATIVO, INATIVO, PENDENTE, PUBLICADO ;
     
 }

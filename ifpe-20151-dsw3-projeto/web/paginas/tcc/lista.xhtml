@@ -27,17 +27,17 @@
 
         <h:form>
             <h:messages id="tccMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
-            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{TccControle.TCCList}" var="tccReturn">
+            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{TCCMB.TCCList}" var="tccReturn">
                 <h:column>
                     <f:facet name="header">
                         <h:commandButton action="tcc_novo" value="Novo"/>
                     </f:facet>
                     <h:panelGroup>
                         <h:commandButton action="edit_tcc" value="Editar">
-                            <f:setPropertyActionListener target="#{TccControle.TCC}"
+                            <f:setPropertyActionListener target="#{TCCMB.TCC}"
                                                          value="#{tccReturn}" />
                         </h:commandButton>
-                        <h:commandButton action="#{TccControle.deleteTCC(tccReturn)}" value="-">                            
+                        <h:commandButton action="#{TCCMB.remove(tccReturn)}" value="-">
                         </h:commandButton>
                     </h:panelGroup>
                 </h:column>

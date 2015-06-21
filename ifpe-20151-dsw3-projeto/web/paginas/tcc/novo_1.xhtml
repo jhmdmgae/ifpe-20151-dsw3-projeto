@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>TCC Cadastro</title>
+        <!--<link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />-->
+    </h:head>
+    <h:body>
+
+        <h:form id="registerForm" styleClass="smart-green">
+
+            <h3>Cadastrar TCC <span>Informar dados do TCC</span></h3>
+
+            <h:messages id="tccMessages" showDetail="true" layout="list" styleClass="errorMessages"/>
+
+            <h:panelGrid columns="2" styleClass="formPanel">
+
+                <h:outputLabel for="titulo">
+                    <h:outputText value="Título:"/>
+                </h:outputLabel>
+                <h:inputText id="titulo" value="#{TCCMB.TCC.titulo}" required="true" 
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+
+                <h:outputLabel for="dataDefesa">
+                    <h:outputText value="Data da Defesa"/>
+                </h:outputLabel>
+                <h:inputText id="dataDefesa" required="true"
+                             value="#{TCCMB.TCC.dataDefesa}" >
+                    <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
+                </h:inputText>
+
+                <h:outputLabel for="dataInicio">
+                    <h:outputText value="Data de Inicio"/>
+                </h:outputLabel>
+                <h:inputText id="dataInicio" required="true"
+                             value="#{TCCMB.TCC.dataInicio}" >
+                    <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
+                </h:inputText>
+                
+                <h:outputLabel for="resumo">
+                    <h:outputText value="Resumo"/>
+                </h:outputLabel>
+                <h:inputTextarea value="#{TCCMB.TCC.resumo}" cols="30" rows="10" />
+                
+                <h:outputLabel for="imprenta">
+                    <h:outputText value="Imprenta:"/>
+                </h:outputLabel>
+                <h:inputText id="imprenta" value="#{TCCMB.TCC.imprenta}" required="true" 
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+
+                <h:commandButton id="register" styleClass="button" 
+                                 action="#{TCCMB.salva()}"
+                                 value="Adicionar"
+                                 />
+                <h:commandLink /> 
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

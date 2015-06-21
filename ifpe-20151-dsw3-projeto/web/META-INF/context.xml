@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/ifpe-20151-dsw3-projeto"/>
+<Context antiJARLocking="true" path="/ifpe-20151-dsw3-projeto">
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="opa" password="" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/projeto_dsw3" username="root"/>
+</Context>

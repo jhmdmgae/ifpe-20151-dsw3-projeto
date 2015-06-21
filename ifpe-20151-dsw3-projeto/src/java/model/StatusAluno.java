@@ -11,6 +11,6 @@ package model;
  */
 public enum StatusAluno {
     
-    MATRICULADO, DESISTENTE, GRADUADO;
+    MATRICULADO, DESISTENTE, CONCLUIDO;
     
 }

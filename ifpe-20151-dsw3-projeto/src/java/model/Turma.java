@@ -6,6 +6,8 @@ package model;
  */
 public class Turma {
     
-    
+//    campus
+//            ano
+//            código
     
 }

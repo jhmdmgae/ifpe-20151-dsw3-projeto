@@ -17,7 +17,7 @@
                 <h:outputLabel for="titulo">
                     <h:outputText value="Título:"/>
                 </h:outputLabel>
-                <h:inputText id="name" value="#{TccControle.TCC.titulo}" required="true" 
+                <h:inputText id="name" value="#{TCCMB.TCC.titulo}" required="true" 
                              validatorMessage="Valor inválido.">
                     <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>
@@ -26,7 +26,7 @@
                     <h:outputText value="Data da Defesa "/>
                 </h:outputLabel>
                 <h:inputText id="dataDefesa" required="true"
-                             value="#{TccControle.TCC.dataDefesa}">
+                             value="#{TCCMB.TCC.dataDefesa}">
                     <f:convertDateTime pattern="dd/MM/yyyy"/> 
                 </h:inputText>
                 
@@ -34,16 +34,11 @@
                     <h:outputText value="Data de Inicio"/>
                 </h:outputLabel>
                 <h:inputText id="dataInicio" required="true"
-                             value="#{TccControle.TCC.dataInicio}" >
+                             value="#{TCCMB.TCC.dataInicio}" >
                     <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
                 </h:inputText>
                 
-                <h:outputLabel for="aluno">
-                    <h:outputText value="Aluno"/>
-                </h:outputLabel>
-                <h:inputText id="aluno" required="true"
-                             value="#{TccControle.TCC.aluno.nome}" >
-                </h:inputText>
+                
                 
 <!--                <h:outputLabel for="orientador">
                     <h:outputText value="Orientador"/>
@@ -55,7 +50,7 @@
                 <h:outputLabel for="imprenta">
                     <h:outputText value="Imprenta:"/>
                 </h:outputLabel>
-                <h:inputText id="imprenta" value="#{TccControle.TCC.imprenta}" required="true" 
+                <h:inputText id="imprenta" value="#{TCCMB.TCC.imprenta}" required="true" 
                              validatorMessage="Valor inválido.">
                     <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>
