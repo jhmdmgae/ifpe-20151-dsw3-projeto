@@ -13,10 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import jsf.util.SampleEntity;
 
 @Entity
 @Table(name = "TURMA")
-public class Turma implements Serializable {
+public class Turma implements Serializable, SampleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

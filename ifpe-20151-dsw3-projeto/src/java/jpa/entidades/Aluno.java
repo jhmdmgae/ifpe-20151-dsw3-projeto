@@ -26,9 +26,9 @@ public class Aluno extends Usuario implements Serializable, SampleEntity {
     @Column(name = "MATRICULA", length = 20, nullable = false, unique = true)
     private String matricula;
 
-    @Enumerated(EnumType.ORDINAL)
+//    @Enumerated(EnumType.ORDINAL)
     @Column(name = "STATUS_ALUNO", nullable = false)
-    private StatusAluno status;
+    private int status;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "ID_TURMA", referencedColumnName = "ID")
@@ -54,11 +54,11 @@ public class Aluno extends Usuario implements Serializable, SampleEntity {
         this.matricula = matricula;
     }
 
-    public StatusAluno getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(StatusAluno status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

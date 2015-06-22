@@ -14,13 +14,14 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import jsf.util.SampleEntity;
 
 @Entity
 @Table(name = "PROFESSOR")
 @Access(AccessType.FIELD)
 @DiscriminatorValue(value = "P")
 @PrimaryKeyJoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
-public class Professor extends Usuario implements Serializable {
+public class Professor extends Usuario implements Serializable, SampleEntity {
 
     @Column(name = "SIAPE", length = 10, nullable = false, unique = true)
     private String siape;

@@ -57,10 +57,28 @@
                 <h:outputLabel for="turma">
                     <h:outputText value="Turma"/>
                 </h:outputLabel>
-                <h:selectOneMenu value="#{AlunoMB.aluno.turma}">
+                <h:selectOneMenu value="#{AlunoMB.aluno.turma}" converter="generic">  
                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                     <f:selectItems value="#{TurmaMB.turmaList}" var="turma"
                                    itemLabel="#{turma.codigo}" itemValue="#{turma}" />
+                </h:selectOneMenu>
+                
+                <h:outputLabel for="orientador">
+                    <h:outputText value="Orientador"/>
+                </h:outputLabel>
+                <h:selectOneMenu value="#{AlunoMB.aluno.orientador}" converter="generic">  
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItems value="#{ProfessorMB.professorList}" var="orientador" 
+                                   itemLabel="#{orientador.nome}" itemValue="#{orientador}"  />
+                </h:selectOneMenu>
+
+                <h:outputLabel for="status">
+                    <h:outputText value="Status:"/>
+                </h:outputLabel>
+                <h:selectOneMenu value="#{AlunoMB.aluno.status}" >
+                    <f:selectItem itemLabel="MATRICULADO" itemValue="1"/>  
+                    <f:selectItem itemLabel="DESISTENTE" itemValue="2"/>
+                    <f:selectItem itemLabel="GRADUADO" itemValue="3"/>  
                 </h:selectOneMenu>
 
                 <h:commandButton id="register" styleClass="button" 
