@@ -3,6 +3,7 @@ package jpa.entidades;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -80,4 +81,40 @@ public class Turma implements Serializable, SampleEntity {
 
         this.alunos.add(aluno);
     }
+
+//    @Override
+//    public int hashCode() {
+//        int hash = 7;
+//        hash = 31 * hash + Objects.hashCode(this.id);
+//        hash = 31 * hash + Objects.hashCode(this.ano);
+//        hash = 31 * hash + this.semestre;
+//        hash = 31 * hash + Objects.hashCode(this.codigo);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (obj == null) {
+//            return false;
+//        }
+//        if (getClass() != obj.getClass()) {
+//            return false;
+//        }
+//        final Turma other = (Turma) obj;
+//        if (!Objects.equals(this.id, other.id)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.ano, other.ano)) {
+//            return false;
+//        }
+//        if (this.semestre != other.semestre) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.codigo, other.codigo)) {
+//            return false;
+//        }
+//        return true;
+//    }
+    
+    
 }

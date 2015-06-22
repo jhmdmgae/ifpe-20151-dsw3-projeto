@@ -73,7 +73,7 @@
                 <h:selectOneMenu value="#{AlunoMB.aluno.orientador}" converter="generic">  
                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                     <f:selectItems value="#{ProfessorMB.professorList}" var="orientador" 
-                                   itemLabel="#{orientador.nome}" itemValue="#{orientador}"  />
+                                   itemLabel="#{orientador.nome}" itemValue="#{orientador}"/>
                 </h:selectOneMenu>
 
                 <h:outputLabel for="status">

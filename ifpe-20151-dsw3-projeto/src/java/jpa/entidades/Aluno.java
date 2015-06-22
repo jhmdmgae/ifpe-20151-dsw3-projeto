@@ -1,6 +1,7 @@
 package jpa.entidades;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
@@ -91,4 +92,44 @@ public class Aluno extends Usuario implements Serializable, SampleEntity {
        return "aluno:[id: " + id + ",matricula: " + matricula + ",orientador: " + orientador.getNome() + "]";
     }
 
+//    @Override
+//    public int hashCode() {
+//        int hash = 3;
+//        hash = 97 * hash + Objects.hashCode(this.matricula);
+//        hash = 97 * hash + this.status;
+//        hash = 97 * hash + Objects.hashCode(this.turma);
+//        hash = 97 * hash + Objects.hashCode(this.tcc);
+//        hash = 97 * hash + Objects.hashCode(this.orientador);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (obj == null) {
+//            return false;
+//        }
+//        if (getClass() != obj.getClass()) {
+//            return false;
+//        }
+//        final Aluno other = (Aluno) obj;
+//        if (!Objects.equals(this.matricula, other.matricula)) {
+//            return false;
+//        }
+//        if (this.status != other.status) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.turma, other.turma)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.tcc, other.tcc)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.orientador, other.orientador)) {
+//            return false;
+//        }
+//        return true;
+//    }
+
+    
+    
 }

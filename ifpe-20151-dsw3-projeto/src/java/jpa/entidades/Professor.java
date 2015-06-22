@@ -2,6 +2,7 @@ package jpa.entidades;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
@@ -71,5 +72,37 @@ public class Professor extends Usuario implements Serializable, SampleEntity {
     public void addOrientando(Aluno aluno) {
         orientandos.add(aluno);
     }
+
+//    @Override
+//    public int hashCode() {
+//        int hash = 7;
+//        hash = 37 * hash + Objects.hashCode(this.siape);
+//        hash = 37 * hash + Objects.hashCode(this.lattes);
+//        hash = 37 * hash + Objects.hashCode(this.site);
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (obj == null) {
+//            return false;
+//        }
+//        if (getClass() != obj.getClass()) {
+//            return false;
+//        }
+//        final Professor other = (Professor) obj;
+//        if (!Objects.equals(this.siape, other.siape)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.lattes, other.lattes)) {
+//            return false;
+//        }
+//        if (!Objects.equals(this.site, other.site)) {
+//            return false;
+//        }
+//        return true;
+//    }
+    
+    
 
 }

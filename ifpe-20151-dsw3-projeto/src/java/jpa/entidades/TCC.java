@@ -45,7 +45,7 @@ public class TCC implements Serializable {
     @JoinColumn(name = "ID_ALUNO", referencedColumnName = "ID_USUARIO")
     private Aluno aluno;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "TCC_AREA", joinColumns = {
         @JoinColumn(name = "ID_TCC")},
             inverseJoinColumns = {
