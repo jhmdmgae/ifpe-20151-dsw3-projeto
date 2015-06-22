@@ -12,35 +12,35 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
-import jpa.entidades.TCC;
+import jpa.entidades.Turma;
 
-public class TCCDao implements Serializable{
+public class TurmaDao implements Serializable{
 
     private EntityManagerFactory factory = Persistence.createEntityManagerFactory("ifpe-20151-dsw3-projetoPU2");
     private EntityManager em = factory.createEntityManager();
     private EntityTransaction et = null;
     
-    private final List<TCC> TCCList = new ArrayList<TCC>();
+    private final List<Turma> TurmaList = new ArrayList<Turma>();
 
-    public TCC getTCC(long idTCC) {
+    public Turma getTurma(long idTurma) {
 
         try {
-            TCC tcc = (TCC) em.createQuery("SELECT t from TCC t where t.id = :id ").setParameter("id", idTCC).getSingleResult();
+            Turma turma = (Turma) em.createQuery("SELECT t from Turma t where t.id = :id ").setParameter("id", idTurma).getSingleResult();
 
-            return tcc;
+            return turma;
         } catch (NoResultException e) {
             return null;
         }
     }
 
-    public boolean inserirTCC(TCC tcc) {
+    public boolean inserirTurma(Turma turma) {
         
         System.out.println("opa");
         try {
             
             et = em.getTransaction();
             et.begin();
-            em.persist(tcc);
+            em.persist(turma);
             et.commit();
             
             System.out.println("persistiu");
@@ -52,24 +52,24 @@ public class TCCDao implements Serializable{
         }
     }
     
-    public List<TCC> getTCCList() {
+    public List<Turma> getTurmaList() {
         
         try {
-            List<TCC> tccs = em.createQuery("SELECT t from TCC t").getResultList();
+            List<Turma> turmas = em.createQuery("SELECT t from Turma t").getResultList();
             
-            return tccs;
+            return turmas;
         } catch (NoResultException e) {
             return null;
         }
         
     }
 
-    public boolean deletarTCC(TCC tcc) {
+    public boolean deletarTurma(Turma turma) {
         try {
             
             et = em.getTransaction();
             et.begin();
-            em.remove(tcc);
+            em.remove(turma);
             et.commit();
             
             return true;
@@ -79,12 +79,12 @@ public class TCCDao implements Serializable{
         }
     }
     
-    public boolean alterarTCC(TCC tcc) {
+    public boolean alterarTurma(Turma turma) {
         try {
             
             et = em.getTransaction();
             et.begin();
-            em.merge(tcc);
+            em.merge(turma);
             et.commit();
             
             return true;

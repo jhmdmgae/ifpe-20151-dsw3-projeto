@@ -16,7 +16,7 @@
             <h:commandLink action="#{userHandler.userList}" value="Listar Usários"/>
 
             <br/>
-            <h:commandLink action="#{TccControle.listarTCC}" value="Listar TCC"/>
+            <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Listar Professor"/>
 
             <br/>
             <h:commandLink action="#{AlunoControle.listarAluno}" value="Listar Aluno"/>
@@ -30,7 +30,8 @@
             <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{TCCMB.TCCList}" var="tccReturn">
                 <h:column>
                     <f:facet name="header">
-                        <h:commandButton action="tcc_novo" value="Novo"/>
+                        <h:commandLink action="#{TCCMB.novoTCC}" value="Novo"/>
+                        <!--<h:commandButton action="tcc_novo" value="Novo"/>-->
                     </f:facet>
                     <h:panelGroup>
                         <h:commandButton action="edit_tcc" value="Editar">

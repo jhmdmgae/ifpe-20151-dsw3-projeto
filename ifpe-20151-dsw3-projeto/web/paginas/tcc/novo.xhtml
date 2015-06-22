@@ -21,7 +21,7 @@
                 <h:outputLabel for="titulo">
                     <h:outputText value="Título:"/>
                 </h:outputLabel>
-                <h:inputText id="titulo" value="#{tcc.titulo}" required="true" 
+                <h:inputText id="titulo" value="#{TCCMB.TCC.titulo}" required="true" 
                              validatorMessage="Valor inválido.">
                     <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>
@@ -30,7 +30,7 @@
                     <h:outputText value="Data da Defesa"/>
                 </h:outputLabel>
                 <h:inputText id="dataDefesa" required="true"
-                             value="#{tcc.dataDefesa}" >
+                             value="#{TCCMB.TCC.dataDefesa}" >
                     <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
                 </h:inputText>
 
@@ -38,43 +38,25 @@
                     <h:outputText value="Data de Inicio"/>
                 </h:outputLabel>
                 <h:inputText id="dataInicio" required="true"
-                             value="#{tcc.dataInicio}" >
+                             value="#{TCCMB.TCC.dataInicio}" >
                     <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
                 </h:inputText>
-
-                <h:outputLabel for="aluno">
-                    <h:outputText value="Aluno"/>
-                </h:outputLabel>
-                <h:selectOneMenu value="Aluno">  
-                    <f:selectItem itemLabel="Selecione" itemValue=""/>
-                    <f:selectItems value="#{AlunoControle.alunoList}" var="aluno"
-                                   itemLabel="#{aluno.nome}" itemValue="#{aluno}" />
-                </h:selectOneMenu>
-                
-<!--                <h:outputLabel for="orientador">
-                    <h:outputText value="Orientador:"/>
-                </h:outputLabel>
-                <h:selectOneMenu value="Orientador">  
-                    <f:selectItem itemLabel="Selecione" itemValue=""/>
-                    <f:selectItems value="" var="professor"
-                                   itemLabel="" itemValue="" />
-                </h:selectOneMenu>-->
                 
                 <h:outputLabel for="resumo">
                     <h:outputText value="Resumo"/>
                 </h:outputLabel>
-                <h:inputTextarea value="#{tcc.resumo}" cols="30" rows="10" />
+                <h:inputTextarea value="#{TCCMB.TCC.resumo}" cols="30" rows="10" />
                 
                 <h:outputLabel for="imprenta">
                     <h:outputText value="Imprenta:"/>
                 </h:outputLabel>
-                <h:inputText id="imprenta" value="#{tcc.imprenta}" required="true" 
+                <h:inputText id="imprenta" value="#{TCCMB.TCC.imprenta}" required="true" 
                              validatorMessage="Valor inválido.">
                     <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>
 
                 <h:commandButton id="register" styleClass="button" 
-                                 action="#{TccControle.addTCC(tcc)}" 
+                                 action="#{TCCMB.salva()}"
                                  value="Adicionar"
                                  />
                 <h:commandLink /> 

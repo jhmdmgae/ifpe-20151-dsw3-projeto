@@ -10,7 +10,6 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import jpa.entidades.TCC;
@@ -23,11 +22,24 @@ public class TCCMB implements Serializable{
     private TCCDao tccDAO = new TCCDao();
     private TCC tcc = new TCC();
     
-    private final List<model.TCC> TCCList = new ArrayList<model.TCC>();
+    private List<TCC> TCCList = null;
+    
+    public TCCMB(){
+        
+        TCCList = new ArrayList<TCC>();
+        
+    }
     
     public String salva() {
         
         tccDAO.inserirTCC(getTCC());
+        
+        return "main";
+    }
+    
+    public String editar() {
+        
+        tccDAO.alterarTCC(tcc);
         
         return "main";
     }
@@ -44,12 +56,6 @@ public class TCCMB implements Serializable{
         
         return "main";
     }
-    
-    public TCC editar(long id) {
-        
-        return tccDAO.getTCC(id);
-        
-    }
 
     public TCC getTCC() {
         return tcc;
@@ -57,5 +63,14 @@ public class TCCMB implements Serializable{
 
     public void setTCC(TCC tcc) {
         this.tcc = tcc;
+    }
+    
+    public String listarTCC() {
+        return "tcc_list";
+    }
+    
+    public String novoTCC() {
+        this.tcc = new TCC();
+        return "tcc_novo";
     }
 }

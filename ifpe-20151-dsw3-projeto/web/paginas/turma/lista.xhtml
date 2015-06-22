@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Cadastro de Turma</title>
+        <link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <h1><h:outputText value="Menu" /></h1>
+            <br/>
+            <h:commandLink action="#{userHandler.userList}" value="Listar Usários"/>
+
+            <br/>
+            <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Listar Professor"/>
+
+            <br/>
+            <h:commandLink action="#{AlunoControle.listarAluno}" value="Listar Aluno"/>
+
+        </h:form>
+
+        <h3>Listagem de Turmas:</h3>
+
+        <h:form>
+            <h:messages id="turmaMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{TurmaMB.turmaList}" var="turmaReturn">
+                <h:column>
+                    <f:facet name="header">
+                        <h:commandLink action="#{TurmaMB.novoTurma}" value="Novo"/>
+                        <!--<h:commandButton action="turma_novo" value="Novo"/>-->
+                    </f:facet>
+                    <h:panelGroup>
+                        <h:commandButton action="edit_turma" value="Editar">
+                            <f:setPropertyActionListener target="#{TurmaMB.turma}"
+                                                         value="#{turmaReturn}" />
+                        </h:commandButton>
+                        <h:commandButton action="#{TurmaMB.remove(turmaReturn)}" value="-">
+                        </h:commandButton>
+                    </h:panelGroup>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Ano"/>
+                    </f:facet>
+                    <h:outputText value="#{turmaReturn.ano}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Codigo"/>
+                    </f:facet>
+                    <h:outputText value="#{turmaReturn.codigo}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Semestre"/>
+                    </f:facet>
+                    <h:outputText value="#{turmaReturn.semestre}"/>
+                </h:column>
+
+            </h:dataTable>
+            <h:commandLink value="Index" action="index" immediate="true" />
+        </h:form>
+    </h:body>
+</html>

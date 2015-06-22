@@ -4,26 +4,41 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Cadastro de TCC</title>
+        <title>Cadastro de Professor</title>
         <link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
 
-        <h3>Listagem de TCCs:</h3>
+        <h:form>
+            <h1><h:outputText value="Menu" /></h1>
+            <br/>
+            <h:commandLink action="#{userHandler.userList}" value="Listar Usários"/>
+
+            <br/>
+            <h:commandLink action="#{TCCMB.listarTCC}" value="Listar TCC"/>
+
+            <br/>
+            <h:commandLink action="#{AlunoControle.listarAluno}" value="Listar Aluno"/>
+
+        </h:form>
+
+        <h3>Listagem de Professores</h3>
 
         <h:form>
-            <h:messages id="tccMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
-            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{TccControle.TCCList}" var="tccReturn">
+            <h:messages id="professorMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{ProfessorMB.professorList}" var="professorReturn">
                 <h:column>
                     <f:facet name="header">
-                        <h:commandButton action="tcc_novo" value="Novo"/>
+                        <h:commandLink action="#{ProfessorMB.novoProfessor}" value="Novo"/>
+                        <!--<h:commandButton action="tcc_novo" value="Novo"/>-->
                     </f:facet>
                     <h:panelGroup>
-                        <h:commandButton action="edit_tcc" value="Editar">
-                            <f:setPropertyActionListener target="#{TccControle.TCC}"
-                                                         value="#{tccReturn}" />
+                        <h:commandButton action="edit_professor" value="Editar">
+                            <f:setPropertyActionListener target="#{ProfessorMB.professor}"
+                                                         value="#{professorReturn}" />
                         </h:commandButton>
-                        <h:commandButton action="#{TccControle.deleteTCC(tccReturn)}" value="-">                            
+                        <h:commandButton action="#{ProfessorMB.remove(professorReturn)}" value="-">
                         </h:commandButton>
                     </h:panelGroup>
                 </h:column>
@@ -32,18 +47,42 @@
                     <f:facet name="header">
                         <h:outputText value="Título"/>
                     </f:facet>
-                    <h:outputText value="#{tccReturn.titulo}"/>
+                    <h:outputText value="#{professorReturn.nome}"/>
                 </h:column>
 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Data da Defesa"/>
+                        <h:outputText value="Data da Nascimento"/>
                     </f:facet>
-                    <h:outputText value="#{tccReturn.dataDefesa}">
+                    <h:outputText value="#{professorReturn.dataNascimento}">
                         <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
                     </h:outputText>
                 </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="E-mail"/>
+                    </f:facet>
+                    <h:outputText value="#{professorReturn.email}">
+                    </h:outputText>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Siape"/>
+                    </f:facet>
+                    <h:outputText value="#{professorReturn.siape}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Lattes"/>
+                    </f:facet>
+                    <h:outputText value="#{professorReturn.lattes}"/>
+                </h:column>
+
             </h:dataTable>
+            <h:commandLink value="Index" action="index" immediate="true" />
         </h:form>
     </h:body>
 </html>

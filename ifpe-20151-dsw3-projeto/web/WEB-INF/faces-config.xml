@@ -64,7 +64,7 @@
     <navigation-rule>
         <navigation-case>
             <from-outcome>tcc_novo</from-outcome>
-            <to-view-id>/paginas/tcc/novo_1.xhtml</to-view-id>
+            <to-view-id>/paginas/tcc/novo.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -81,16 +81,106 @@
         </navigation-case>
     </navigation-rule>
     
+    <!--Turma-->
+    
     <navigation-rule>
-        <from-view-id>/paginas/tcc/novo_1.xhtml</from-view-id>
+        <from-view-id>/paginas/turma/novo.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>main</from-outcome>
-            <to-view-id>/paginas/tcc/lista.xhtml</to-view-id>
+            <to-view-id>/paginas/turma/lista.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
             <from-outcome>error</from-outcome>
-            <to-view-id>/paginas/tcc/lista.xhtml</to-view-id>
+            <to-view-id>/paginas/turma/lista.xhtml</to-view-id>
         </navigation-case>        
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/paginas/turma/lista.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/paginas/turma/lista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/paginas/turma/editar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/paginas/turma/lista.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/paginas/turma/lista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>turma_novo</from-outcome>
+            <to-view-id>/paginas/turma/novo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>turma_list</from-outcome>
+            <to-view-id>/paginas/turma/lista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/paginas/turma/lista.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>edit_turma</from-outcome>
+            <to-view-id>/paginas/turma/editar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--Professor-->
+    
+    <navigation-rule>
+        <from-view-id>/paginas/professor/novo.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/paginas/professor/lista.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/paginas/professor/lista.xhtml</to-view-id>
+        </navigation-case>        
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/paginas/professor/lista.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/paginas/professor/lista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/paginas/professor/editar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/paginas/professor/lista.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/paginas/professor/lista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>professor_novo</from-outcome>
+            <to-view-id>/paginas/professor/novo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>professor_list</from-outcome>
+            <to-view-id>/paginas/professor/lista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/paginas/professor/lista.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>edit_professor</from-outcome>
+            <to-view-id>/paginas/professor/editar.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     
     

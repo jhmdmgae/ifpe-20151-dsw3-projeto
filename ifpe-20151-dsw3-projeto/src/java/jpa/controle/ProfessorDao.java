@@ -12,35 +12,35 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
-import jpa.entidades.TCC;
+import jpa.entidades.Professor;
 
-public class TCCDao implements Serializable{
+public class ProfessorDao  implements Serializable{
 
     private EntityManagerFactory factory = Persistence.createEntityManagerFactory("ifpe-20151-dsw3-projetoPU2");
     private EntityManager em = factory.createEntityManager();
     private EntityTransaction et = null;
     
-    private final List<TCC> TCCList = new ArrayList<TCC>();
+    private final List<Professor> ProfessorList = new ArrayList<Professor>();
 
-    public TCC getTCC(long idTCC) {
+    public Professor getProfessor(long idProfessor) {
 
         try {
-            TCC tcc = (TCC) em.createQuery("SELECT t from TCC t where t.id = :id ").setParameter("id", idTCC).getSingleResult();
+            Professor professor = (Professor) em.createQuery("SELECT p from Professor p where p.id = :id ").setParameter("id", idProfessor).getSingleResult();
 
-            return tcc;
+            return professor;
         } catch (NoResultException e) {
             return null;
         }
     }
 
-    public boolean inserirTCC(TCC tcc) {
+    public boolean inserirProfessor(Professor professor) {
         
         System.out.println("opa");
         try {
             
             et = em.getTransaction();
             et.begin();
-            em.persist(tcc);
+            em.persist(professor);
             et.commit();
             
             System.out.println("persistiu");
@@ -52,24 +52,24 @@ public class TCCDao implements Serializable{
         }
     }
     
-    public List<TCC> getTCCList() {
+    public List<Professor> getProfessorList() {
         
         try {
-            List<TCC> tccs = em.createQuery("SELECT t from TCC t").getResultList();
+            List<Professor> professors = em.createQuery("SELECT p from Professor p").getResultList();
             
-            return tccs;
+            return professors;
         } catch (NoResultException e) {
             return null;
         }
         
     }
 
-    public boolean deletarTCC(TCC tcc) {
+    public boolean deletarProfessor(Professor professor) {
         try {
             
             et = em.getTransaction();
             et.begin();
-            em.remove(tcc);
+            em.remove(professor);
             et.commit();
             
             return true;
@@ -79,12 +79,12 @@ public class TCCDao implements Serializable{
         }
     }
     
-    public boolean alterarTCC(TCC tcc) {
+    public boolean alterarProfessor(Professor professor) {
         try {
             
             et = em.getTransaction();
             et.begin();
-            em.merge(tcc);
+            em.merge(professor);
             et.commit();
             
             return true;

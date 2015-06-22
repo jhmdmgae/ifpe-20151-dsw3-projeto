@@ -2,6 +2,13 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="ifpe-20151-dsw3-projetoPU2" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>jpa.entidades.Aluno</class>
+    <class>jpa.entidades.AreaConhecimento</class>
+    <class>jpa.entidades.Professor</class>
+    <class>jpa.entidades.TCC</class>
+    <class>jpa.entidades.Turma</class>
+    <class>jpa.entidades.User</class>
+    <class>jpa.entidades.Usuario</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/projeto_dsw3"/>

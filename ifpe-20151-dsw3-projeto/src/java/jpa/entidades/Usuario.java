@@ -46,7 +46,7 @@ public abstract class Usuario implements Serializable {
 
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
     @Column(name = "NOME", length = 50, nullable = false)
