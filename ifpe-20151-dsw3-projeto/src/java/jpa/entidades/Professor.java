@@ -34,6 +34,11 @@ public class Professor extends Usuario implements Serializable {
     @OneToMany(mappedBy = "orientador", fetch = FetchType.LAZY)
     private List<Aluno> orientandos;
 
+    @Override
+    public Long getId() {
+        return id;
+    }
+    
     public String getSiape() {
         return siape;
     }

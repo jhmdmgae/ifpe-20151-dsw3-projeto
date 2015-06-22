@@ -21,6 +21,15 @@
                              validatorMessage="Valor inválido.">
                     <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>
+                
+                <h:outputLabel for="aluno">
+                    <h:outputText value="Aluno"/>
+                </h:outputLabel>
+                <h:selectOneMenu value="Aluno">  
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItems value="#{AlunoMB.alunoList}" var="aluno"
+                                   itemLabel="#{aluno.nome}" itemValue="#{aluno}" />
+                </h:selectOneMenu>
 
                 <h:outputLabel for="dataDefesa">
                     <h:outputText value="Data da Defesa "/>

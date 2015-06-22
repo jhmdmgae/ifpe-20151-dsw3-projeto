@@ -12,14 +12,18 @@
 
         <h:form>
             <h1><h:outputText value="Menu" /></h1>
+            
             <br/>
-            <h:commandLink action="#{userHandler.userList}" value="Listar Usários"/>
-
+            <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/>
+            
             <br/>
-            <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Listar Professor"/>
-
+            <h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/>
+            
             <br/>
-            <h:commandLink action="#{AlunoControle.listarAluno}" value="Listar Aluno"/>
+            <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Professor"/>
+            
+            <br/>
+            <h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/>
 
         </h:form>
 
@@ -48,6 +52,13 @@
                         <h:outputText value="Título"/>
                     </f:facet>
                     <h:outputText value="#{tccReturn.titulo}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Aluno"/>
+                    </f:facet>
+                    <h:outputText value="#{tccReturn.aluno}"/>
                 </h:column>
 
                 <h:column>

@@ -14,13 +14,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import jsf.util.SampleEntity;
 
 @Entity
 @Table(name = "ALUNO")
 @Access(AccessType.FIELD)
 @DiscriminatorValue(value = "A")
 @PrimaryKeyJoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
-public class Aluno extends Usuario implements Serializable {
+public class Aluno extends Usuario implements Serializable, SampleEntity {
 
     @Column(name = "MATRICULA", length = 20, nullable = false, unique = true)
     private String matricula;
@@ -40,6 +41,11 @@ public class Aluno extends Usuario implements Serializable {
     @JoinColumn(name = "ID_PROFESSOR", referencedColumnName = "ID_USUARIO")
     private Professor orientador;
 
+    @Override
+    public Long getId() {
+        return id;
+    }
+    
     public String getMatricula() {
         return matricula;
     }

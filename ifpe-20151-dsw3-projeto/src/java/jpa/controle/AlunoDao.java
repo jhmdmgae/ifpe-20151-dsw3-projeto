@@ -12,36 +12,40 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
-import jpa.entidades.TCC;
+import jpa.entidades.Aluno;
+import jpa.entidades.Professor;
 
-public class TCCDao implements Serializable{
+public class AlunoDao  implements Serializable{
 
     private EntityManagerFactory factory = Persistence.createEntityManagerFactory("ifpe-20151-dsw3-projetoPU2");
     private EntityManager em = factory.createEntityManager();
     private EntityTransaction et = null;
     
-    private final List<TCC> TCCList = new ArrayList<TCC>();
+    private final List<Aluno> AlunoList = new ArrayList<Aluno>();
 
-    public TCC getTCC(long idTCC) {
+    public Aluno getAluno(long idAluno) {
 
         try {
-            TCC tcc = (TCC) em.createQuery("SELECT t from TCC t where t.id = :id ").setParameter("id", idTCC).getSingleResult();
+            Aluno aluno = (Aluno) em.createQuery("SELECT p from Aluno p where p.id = :id ").setParameter("id", idAluno).getSingleResult();
 
-            return tcc;
+            return aluno;
         } catch (NoResultException e) {
             return null;
         }
     }
 
-    public boolean inserirTCC(TCC tcc) {
+    public boolean inserirAluno(Aluno aluno) {
         
         System.out.println("opa");
         try {
             
-            System.out.println("aluno = "+tcc.getAluno());
             et = em.getTransaction();
             et.begin();
-            em.persist(tcc);
+            System.out.println("orientador = "+aluno.getOrientador());
+            Professor professor = new Professor();
+            professor = aluno.getOrientador();
+            aluno.setOrientador(professor);
+            em.persist(aluno);
             et.commit();
             
             System.out.println("persistiu");
@@ -53,24 +57,24 @@ public class TCCDao implements Serializable{
         }
     }
     
-    public List<TCC> getTCCList() {
+    public List<Aluno> getAlunoList() {
         
         try {
-            List<TCC> tccs = em.createQuery("SELECT t from TCC t").getResultList();
+            List<Aluno> alunos = em.createQuery("SELECT a from Aluno a").getResultList();
             
-            return tccs;
+            return alunos;
         } catch (NoResultException e) {
             return null;
         }
         
     }
 
-    public boolean deletarTCC(TCC tcc) {
+    public boolean deletarAluno(Aluno aluno) {
         try {
             
             et = em.getTransaction();
             et.begin();
-            em.remove(tcc);
+            em.remove(aluno);
             et.commit();
             
             return true;
@@ -80,12 +84,12 @@ public class TCCDao implements Serializable{
         }
     }
     
-    public boolean alterarTCC(TCC tcc) {
+    public boolean alterarAluno(Aluno aluno) {
         try {
             
             et = em.getTransaction();
             et.begin();
-            em.merge(tcc);
+            em.merge(aluno);
             et.commit();
             
             return true;

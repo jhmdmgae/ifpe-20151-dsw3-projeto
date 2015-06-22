@@ -5,8 +5,8 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Aluno Cadastro</title>
-        <link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
+        <!--<link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />-->
     </h:head>
     <h:body>
 
@@ -14,27 +14,79 @@
 
             <h3>Cadastrar Aluno <span>Informar dados do Aluno</span></h3>
 
-            <h:messages id="tccMessages" showDetail="true" layout="list" styleClass="errorMessages"/>
+            <h:messages id="alunoMessages" showDetail="true" layout="list" styleClass="errorMessages"/>
 
             <h:panelGrid columns="2" styleClass="formPanel">
 
                 <h:outputLabel for="nome">
                     <h:outputText value="Nome:"/>
                 </h:outputLabel>
-                <h:inputText id="titulo" value="#{aluno.nome}" required="true" 
+                <h:inputText id="titulo" value="#{AlunoMB.aluno.nome}" required="true" 
                              validatorMessage="Valor inválido.">
                     <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>
 
-                <h:outputLabel for="email">
-                    <h:outputText value="E-mail"/>
+                <h:outputLabel for="dataNascimento">
+                    <h:outputText value="Data de Nascimento"/>
                 </h:outputLabel>
-                <h:inputText id="dataDefesa" required="true"
-                             value="#{aluno.email}" >
-                </h:inputText>            
+                <h:inputText id="dataNascimento" required="true"
+                             value="#{AlunoMB.aluno.dataNascimento}" >
+                    <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
+                </h:inputText>
+
+                <h:outputLabel for="email">
+                    <h:outputText value="E-mail:"/>
+                </h:outputLabel>
+                <h:inputText id="email" value="#{AlunoMB.aluno.email}" required="true" 
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+
+                <h:outputLabel for="senha">
+                    <h:outputText value="Senha:"/>
+                </h:outputLabel>
+                <h:inputText id="senha" value="#{AlunoMB.aluno.senha}" required="true"
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+
+                <h:outputLabel for="matricula">
+                    <h:outputText value="Matricula:"/>
+                </h:outputLabel>
+                <h:inputText id="matricula" value="#{AlunoMB.aluno.matricula}" required="true"
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+
+                <h:outputLabel for="turma">
+                    <h:outputText value="Turma"/>
+                </h:outputLabel>
+                <h:selectOneMenu value="Turma">  
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItems value="#{TurmaMB.turmaList}" var="turma"
+                                   itemLabel="#{turma.codigo}" itemValue="#{turma}" />
+                </h:selectOneMenu>
                 
+                <h:outputLabel for="professor">
+                    <h:outputText value="Professor"/>
+                </h:outputLabel>
+                <h:selectOneMenu value="Professor">  
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItems value="#{ProfessorMB.professorList}" var="professor"
+                                   itemLabel="#{professor.nome}" itemValue="#{professor}" />
+                </h:selectOneMenu>
+
+                <h:outputLabel for="status">
+                    <h:outputText value="Status:"/>
+                </h:outputLabel>
+                <h:selectOneMenu>  
+                    <f:selectItem itemLabel="MATRICULADO" itemValue="1"/>  
+                    <f:selectItem itemLabel="DESISTENTE" itemValue="2"/>
+                    <f:selectItem itemLabel="GRADUADO" itemValue="3"/>  
+                </h:selectOneMenu>  
+
                 <h:commandButton id="register" styleClass="button" 
-                                 action="#{AlunoControle.addAluno(aluno)}" 
+                                 action="#{AlunoMB.salva()}"
                                  value="Adicionar"
                                  />
                 <h:commandLink /> 

@@ -9,35 +9,40 @@
         <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
-        
+
         <h:form>
             <h1><h:outputText value="Menu" /></h1>
-            <br/>
-            <h:commandLink action="#{userHandler.userList}" value="Listar Usários"/>
-
-            <br/>
-            <h:commandLink action="#{TccControle.listarTCC}" value="Listar TCC"/>
             
             <br/>
-            <h:commandLink action="#{AlunoControle.listarAluno}" value="Listar Aluno"/>
+            <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/>
+            
+            <br/>
+            <h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/>
+            
+            <br/>
+            <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Professor"/>
+            
+            <br/>
+            <h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/>
 
         </h:form>
 
-        <h3>Listagem de Alunos:</h3>
+        <h3>Listagem de Alunoes</h3>
 
         <h:form>
             <h:messages id="alunoMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
-            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{AlunoControle.alunoList}" var="alunoReturn">
+            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{AlunoMB.alunoList}" var="alunoReturn">
                 <h:column>
                     <f:facet name="header">
-                        <h:commandButton action="aluno_novo" value="Novo"/>
+                        <h:commandLink action="#{AlunoMB.novoAluno}" value="Novo"/>
+                        <!--<h:commandButton action="tcc_novo" value="Novo"/>-->
                     </f:facet>
                     <h:panelGroup>
                         <h:commandButton action="edit_aluno" value="Editar">
-                            <f:setPropertyActionListener target="#{AlunoControle.aluno}"
+                            <f:setPropertyActionListener target="#{AlunoMB.aluno}"
                                                          value="#{alunoReturn}" />
                         </h:commandButton>
-                        <h:commandButton action="#{AlunoControle.deleteAluno(alunoReturn)}" value="-">                            
+                        <h:commandButton action="#{AlunoMB.remove(alunoReturn)}" value="-">
                         </h:commandButton>
                     </h:panelGroup>
                 </h:column>
@@ -51,6 +56,15 @@
 
                 <h:column>
                     <f:facet name="header">
+                        <h:outputText value="Data da Nascimento"/>
+                    </f:facet>
+                    <h:outputText value="#{alunoReturn.dataNascimento}">
+                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
                         <h:outputText value="E-mail"/>
                     </f:facet>
                     <h:outputText value="#{alunoReturn.email}">
@@ -59,13 +73,20 @@
                 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Senha"/>
+                        <h:outputText value="Matricula"/>
                     </f:facet>
-                    <h:outputText value="#{alunoReturn.senha}">
-                    </h:outputText>
+                    <h:outputText value="#{alunoReturn.matricula}"/>
                 </h:column>
                 
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Status"/>
+                    </f:facet>
+                    <h:outputText value="#{alunoReturn.status}"/>
+                </h:column>
+
             </h:dataTable>
+            
         </h:form>
     </h:body>
 </html>

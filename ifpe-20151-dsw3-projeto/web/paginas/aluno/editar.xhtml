@@ -11,33 +11,60 @@
         <h:form id="registerForm" styleClass="smart-green">
             <h3>Alterar dados <span>Modificar os dados do Aluno</span></h3>
 
-            <h:messages id="alunoMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+            <h:messages id="tccMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
 
             <h:panelGrid columns="2" styleClass="formPanel">
-                <h:outputLabel for="name">
+                <h:outputLabel for="nome">
                     <h:outputText value="Nome:"/>
                 </h:outputLabel>
-                <h:inputText id="name" value="#{AlunoControle.aluno.nome}" required="true" 
+                <h:inputText id="nome" value="#{AlunoMB.aluno.nome}" required="true" 
                              validatorMessage="Valor inválido.">
                     <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>
 
-                <h:outputLabel for="email">
-                    <h:outputText value="E-mail"/>
+                <h:outputLabel for="dataNascimento">
+                    <h:outputText value="Data de Nascimento:"/>
                 </h:outputLabel>
-                <h:inputText id="email" required="true"
-                             value="#{AlunoControle.aluno.email}">
+                <h:inputText id="dataNascimento" required="true"
+                             value="#{AlunoMB.aluno.dataNascimento}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/> 
+                </h:inputText>
+                
+                <h:outputLabel for="email">
+                    <h:outputText value="E-mail:"/>
+                </h:outputLabel>
+                <h:inputText id="email" value="#{AlunoMB.aluno.email}" required="true" 
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>
                 
                 <h:outputLabel for="senha">
-                    <h:outputText value="Senha"/>
+                    <h:outputText value="Senha:"/>
                 </h:outputLabel>
-                <h:inputText id="senha" required="true"
-                             value="#{AlunoControle.aluno.email}">
+                <h:inputText id="senha" value="#{AlunoMB.aluno.senha}" required="true" 
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>
+                
+                <h:outputLabel for="matricula">
+                    <h:outputText value="Matricula:"/>
+                </h:outputLabel>
+                <h:inputText id="matricula" value="#{AlunoMB.aluno.matricula}" required="true"
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+                
+                <h:outputLabel for="turma">
+                    <h:outputText value="Turma"/>
+                </h:outputLabel>
+                <h:selectOneMenu value="#{AlunoMB.aluno.turma}">
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItems value="#{TurmaMB.turmaList}" var="turma"
+                                   itemLabel="#{turma.codigo}" itemValue="#{turma}" />
+                </h:selectOneMenu>
 
                 <h:commandButton id="register" styleClass="button" 
-                                 action="#{AlunoControle.editAluno}" 
+                                 action="#{AlunoMB.editar()}"
                                  value="Alterar"
                                  />
                 <h:commandLink /> 
