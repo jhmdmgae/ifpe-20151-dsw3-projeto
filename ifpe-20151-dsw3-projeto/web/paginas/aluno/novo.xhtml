@@ -21,7 +21,7 @@
                 <h:outputLabel for="nome">
                     <h:outputText value="Nome:"/>
                 </h:outputLabel>
-                <h:inputText id="titulo" value="#{AlunoMB.aluno.nome}" required="true" 
+                <h:inputText id="nome" value="#{AlunoMB.aluno.nome}" required="true" 
                              validatorMessage="Valor inválido.">
                     <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>
@@ -61,7 +61,7 @@
                 <h:outputLabel for="turma">
                     <h:outputText value="Turma"/>
                 </h:outputLabel>
-                <h:selectOneMenu value="#{AlunoMB.aluno.turma}" converter="generic">  
+                <h:selectOneMenu id="turma" value="#{AlunoMB.aluno.turma}" converter="generic">  
                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                     <f:selectItems value="#{TurmaMB.turmaList}" var="turma"
                                    itemLabel="#{turma.codigo}" itemValue="#{turma}" />
@@ -70,16 +70,16 @@
                 <h:outputLabel for="orientador">
                     <h:outputText value="Orientador"/>
                 </h:outputLabel>
-                <h:selectOneMenu value="#{AlunoMB.aluno.orientador}" converter="generic">  
+                <h:selectOneMenu id="orientador" value="#{AlunoMB.aluno.orientador}" converter="generic">  
                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                     <f:selectItems value="#{ProfessorMB.professorList}" var="orientador" 
-                                   itemLabel="#{orientador.nome}" itemValue="#{orientador}"/>
+                                   itemLabel="#{orientador.nome}" itemValue="#{orientador}"  />
                 </h:selectOneMenu>
 
                 <h:outputLabel for="status">
                     <h:outputText value="Status:"/>
                 </h:outputLabel>
-                <h:selectOneMenu value="#{AlunoMB.aluno.status}" >
+                <h:selectOneMenu id="status" value="#{AlunoMB.aluno.status}" >
                     <f:selectItem itemLabel="MATRICULADO" itemValue="1"/>  
                     <f:selectItem itemLabel="DESISTENTE" itemValue="2"/>
                     <f:selectItem itemLabel="GRADUADO" itemValue="3"/>  

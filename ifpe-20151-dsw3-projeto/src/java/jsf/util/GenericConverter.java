@@ -15,7 +15,7 @@ import javax.faces.convert.FacesConverter;
 
 
 @FacesConverter("generic")
-public class GenericConverter implements Converter,Serializable{
+public class GenericConverter implements Converter, Serializable{
     public Object getAsObject(FacesContext ctx, UIComponent component, String value) {
         if (value != null) {
             return this.getAttributesFrom(component).get(value);

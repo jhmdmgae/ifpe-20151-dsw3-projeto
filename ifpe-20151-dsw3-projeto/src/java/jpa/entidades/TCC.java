@@ -27,12 +27,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Future;
+import jsf.util.SampleEntity;
 
 @Entity
 @Table(name = "TCC")
 @SecondaryTable(name = "ARQUIVO_TCC", pkJoinColumns = {
     @PrimaryKeyJoinColumn(name = "ID_TCC")})
-public class TCC implements Serializable {
+public class TCC implements Serializable, SampleEntity  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -70,13 +71,11 @@ public class TCC implements Serializable {
     @Column(name = "ARQUIVO", table = "ARQUIVO_TCC", nullable = true)
     private byte[] arquivo;
 
-    @Enumerated(EnumType.ORDINAL)
     @Column(name = "STATUS_TCC", nullable = true)
-    private StatusTCC status;
+    private String status;
 
-    @Enumerated(EnumType.ORDINAL)
     @Column(name = "SITUACAO_DEFESA", nullable = true)
-    private SituacaoDefesa situacaoDefesa;
+    private String situacaoDefesa;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATA_INICIO", nullable = false)
@@ -150,19 +149,19 @@ public class TCC implements Serializable {
         this.arquivo = arquivo;
     }
 
-    public StatusTCC getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(StatusTCC status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public SituacaoDefesa getSituacaoDefesa() {
+    public String getSituacaoDefesa() {
         return situacaoDefesa;
     }
 
-    public void setSituacaoDefesa(SituacaoDefesa situacaoDefesa) {
+    public void setSituacaoDefesa(String situacaoDefesa) {
         this.situacaoDefesa = situacaoDefesa;
     }
 

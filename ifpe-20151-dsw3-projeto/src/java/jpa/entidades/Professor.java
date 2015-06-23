@@ -22,7 +22,7 @@ import jsf.util.SampleEntity;
 @Access(AccessType.FIELD)
 @DiscriminatorValue(value = "P")
 @PrimaryKeyJoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
-public class Professor extends Usuario implements Serializable, SampleEntity {
+public class Professor extends Usuario implements Serializable, SampleEntity  {
 
     @Column(name = "SIAPE", length = 10, nullable = false, unique = true)
     private String siape;

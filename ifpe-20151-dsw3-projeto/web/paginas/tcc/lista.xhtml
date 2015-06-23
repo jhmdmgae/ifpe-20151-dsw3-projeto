@@ -58,8 +58,14 @@
                     <f:facet name="header">
                         <h:outputText value="Aluno"/>
                     </f:facet>
-                    <h:outputText value="#{tccReturn.aluno.nome}">
-                    </h:outputText>
+                    <h:outputText value="#{tccReturn.aluno.nome}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Orientador"/>
+                    </f:facet>
+                    <h:outputText value="#{tccReturn.aluno.orientador.nome}"/>
                 </h:column>
 
                 <h:column>
@@ -82,19 +88,13 @@
                 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Resumo"/>
-                    </f:facet>
-                    <h:inputTextarea value="#{tccReturn.resumo}" cols="30" rows="2" />
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
                         <h:outputText value="Imprenta"/>
                     </f:facet>
                     <h:outputText value="#{tccReturn.imprenta}"/>
                 </h:column>
 
-            </h:dataTable>  
+            </h:dataTable>
+            <h:commandLink value="Index" action="index" immediate="true" />
         </h:form>
     </h:body>
 </html>
