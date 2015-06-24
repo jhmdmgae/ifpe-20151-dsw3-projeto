@@ -27,7 +27,6 @@ public class Aluno extends Usuario implements Serializable, SampleEntity {
     @Column(name = "MATRICULA", length = 20, nullable = false, unique = true)
     private String matricula;
 
-//    @Enumerated(EnumType.ORDINAL)
     @Column(name = "STATUS_ALUNO", nullable = false)
     private String status;
 

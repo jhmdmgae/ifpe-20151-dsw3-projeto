@@ -9,6 +9,7 @@
     <class>jpa.entidades.Turma</class>
     <class>jpa.entidades.User</class>
     <class>jpa.entidades.Usuario</class>
+    <class>jpa.entidades.AcompanhamentoTCC</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/projeto_dsw3"/>

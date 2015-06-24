@@ -22,55 +22,86 @@ public class AreaConhecimento implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
-
-    @Column(name = "DESCRICAO", nullable = false, unique = true)
-    private String descricao;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "AREA_PAI", referencedColumnName = "ID")
-    private AreaConhecimento pai;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pai")
-    private List<AreaConhecimento> filhas;
+    
+    @Column(name = "CODIGO", nullable = false, unique = true)
+    private String codigo;
+    
+    @Column(name = "GRANDE_AREA", nullable = false)
+    private String grandeArea;
+    
+    @Column(name = "AREA", nullable = false)
+    private int area;
+    
+    @Column(name = "SUB_AREA", nullable = false)
+    private int subArea;
+    
+    @Column(name = "AREA_ESPECIFICA", nullable = false)
+    private int areaEspecifica;
+    
+    @Column(name = "DIGITO", nullable = false)
+    private int digito;
+    
+    @Column(name = "TITULO", nullable = false)
+    private int titulo;
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public String getGrandeArea() {
+        return grandeArea;
     }
 
-    public AreaConhecimento getPai() {
-        return pai;
+    public void setGrandeArea(String grandeArea) {
+        this.grandeArea = grandeArea;
     }
 
-    public void setPai(AreaConhecimento pai) {
-        this.pai = pai;
+    public int getArea() {
+        return area;
     }
 
-    public List<AreaConhecimento> getFilhas() {
-        return filhas;
+    public void setArea(int area) {
+        this.area = area;
     }
 
-    public boolean addFilha(AreaConhecimento filha) {
-        if (filhas == null) {
-            filhas = new ArrayList<>();
-        }
-        return filhas.add(filha);
+    public int getSubArea() {
+        return subArea;
     }
 
-    @Override
-    public String toString() {
-        return "area:[id: " + id + ",descricao: " + descricao + ",pai: " + (pai == null ? "nulo" : pai.getDescricao()) + "]";
+    public void setSubArea(int subArea) {
+        this.subArea = subArea;
+    }
+
+    public int getAreaEspecifica() {
+        return areaEspecifica;
+    }
+
+    public void setAreaEspecifica(int areaEspecifica) {
+        this.areaEspecifica = areaEspecifica;
+    }
+
+    public int getDigito() {
+        return digito;
+    }
+
+    public void setDigito(int digito) {
+        this.digito = digito;
+    }
+
+    public int getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(int titulo) {
+        this.titulo = titulo;
     }
 
 }

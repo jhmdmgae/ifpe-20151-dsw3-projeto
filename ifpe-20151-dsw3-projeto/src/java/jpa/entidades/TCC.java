@@ -80,6 +80,15 @@ public class TCC implements Serializable, SampleEntity  {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATA_INICIO", nullable = false)
     private Date dataInicio;
+    
+    @Column(name = "NOTA", nullable = true)
+    private double nota;
+    
+    @Column(name = "AVALIADOR_INTERNO", nullable = true)
+    private String avaliadorInterno;
+    
+    @Column(name = "AVALIADOR_EXTERNO", nullable = true)
+    private String avaliadorExterno;
 
     public Long getId() {
         return id;

@@ -38,14 +38,6 @@
                     <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>
                 
-                <h:outputLabel for="senha">
-                    <h:outputText value="Senha:"/>
-                </h:outputLabel>
-                <h:inputText id="senha" value="#{AlunoMB.aluno.senha}" required="true" 
-                             validatorMessage="Valor inválido.">
-                    <f:validateLength minimum="3" maximum="50"/>
-                </h:inputText>
-                
                 <h:outputLabel for="matricula">
                     <h:outputText value="Matricula:"/>
                 </h:outputLabel>
@@ -61,6 +53,15 @@
                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                     <f:selectItems value="#{TurmaMB.turmaList}" var="turma"
                                    itemLabel="#{turma.codigo}" itemValue="#{turma}" />
+                </h:selectOneMenu>
+                
+                <h:outputLabel for="orientador">
+                    <h:outputText value="Orientador"/>
+                </h:outputLabel>
+                <h:selectOneMenu id="orientador" value="#{AlunoMB.aluno.orientador}" converter="generic">  
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItems value="#{ProfessorMB.professorList}" var="orientador" 
+                                   itemLabel="#{orientador.nome}" itemValue="#{orientador}"  />
                 </h:selectOneMenu>
 
                 <h:commandButton id="register" styleClass="button" 

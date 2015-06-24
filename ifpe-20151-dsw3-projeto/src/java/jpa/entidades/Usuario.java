@@ -55,10 +55,6 @@ public abstract class Usuario implements Serializable {
     @Column(name = "EMAIL", length = 50, nullable = false)
     protected String email;
 
-    @Size(min = 6, max = 16)
-    @Column(name = "SENHA", length = 20, nullable = false)
-    protected String senha;
-
     @Past
     @Temporal(TemporalType.DATE)
     @Column(name = "DATA_NASCIMENTO", nullable = false)
@@ -97,14 +93,6 @@ public abstract class Usuario implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public Date getDataNascimento() {
