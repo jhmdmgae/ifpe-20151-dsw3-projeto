@@ -19,13 +19,14 @@ import jpa.controle.TCCDao;
 @SessionScoped
 public class TCCMB implements Serializable{
 
-    private TCCDao tccDAO = new TCCDao();
-    private TCC tcc = new TCC();
-    
-    private List<TCC> TCCList = null;
+    private TCCDao tccDAO;
+    private TCC tcc;
+    private List<TCC> TCCList;
     
     public TCCMB(){
         
+        tccDAO = new TCCDao();
+        tcc = new TCC();
         TCCList = new ArrayList<TCC>();
         
     }

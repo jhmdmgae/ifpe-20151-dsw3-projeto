@@ -13,13 +13,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import jsf.util.SampleEntity;
 /**
  *
  * @author João Henrique 2
  */    
 @Entity
 @Table(name = "ACOMPANHAMENTO")
-public class AcompanhamentoTCC implements Serializable {
+public class Acompanhamento implements Serializable, SampleEntity  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,11 +36,11 @@ public class AcompanhamentoTCC implements Serializable {
     protected Date data;
     
     @Temporal(TemporalType.TIME)
-    @Column(name = "HOARIO_INICIO", nullable = false)
+    @Column(name = "HORARIO_INICIO", nullable = false)
     protected Date horarioInicio;
     
     @Temporal(TemporalType.TIME)
-    @Column(name = "HOARIO_TERMINO", nullable = false)
+    @Column(name = "HORARIO_TERMINO", nullable = false)
     protected Date horarioTermino;
 
     public Long getId() {

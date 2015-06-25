@@ -12,16 +12,19 @@
             <h1><h:outputText value="Menu" /></h1>
             
             <br/>
-            <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/>
+            <h:commandLink action="#{AcompanhamentoMB.listarAcompanhamento}" value="Acompanhamanto"/>
             
             <br/>
-            <h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/>
+            <h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/>
             
             <br/>
             <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Professor"/>
             
             <br/>
-            <h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/>
+            <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/>
+            
+            <br/>
+            <h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/>
 
         </h:form>
 

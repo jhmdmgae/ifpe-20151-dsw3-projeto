@@ -4,7 +4,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Cadastro de TCC</title>
+        <title>Cadastro de Acompanhamento</title>
         <link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
     </h:head>
@@ -30,73 +30,61 @@
 
         </h:form>
 
-        <h3>Listagem de TCCs:</h3>
+        <h3>Listagem de Acompanhamentos</h3>
 
         <h:form>
-            <h:messages id="tccMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
-            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{TCCMB.TCCList}" var="tccReturn">
+            <h:messages id="acompanhamentoMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{AcompanhamentoMB.acompanhamentoList}" var="acompanhamentoReturn">
                 <h:column>
                     <f:facet name="header">
-                        <h:commandLink action="#{TCCMB.novoTCC}" value="Novo"/>
-                        <!--<h:commandButton action="tcc_novo" value="Novo"/>-->
+                        <h:commandLink action="#{AcompanhamentoMB.novoAcompanhamento}" value="Novo"/>
                     </f:facet>
                     <h:panelGroup>
-                        <h:commandButton action="edit_tcc" value="Editar">
-                            <f:setPropertyActionListener target="#{TCCMB.TCC}"
-                                                         value="#{tccReturn}" />
+                        <h:commandButton action="edit_acompanhamento" value="Editar">
+                            <f:setPropertyActionListener target="#{AcompanhamentoMB.acompanhamento}"
+                                                         value="#{acompanhamentoReturn}" />
                         </h:commandButton>
-                        <h:commandButton action="#{TCCMB.remove(tccReturn)}" value="-">
+                        <h:commandButton action="#{AcompanhamentoMB.remove(acompanhamentoReturn)}" value="-">
                         </h:commandButton>
                     </h:panelGroup>
                 </h:column>
 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Título"/>
+                        <h:outputText value="Nome"/>
                     </f:facet>
-                    <h:outputText value="#{tccReturn.titulo}"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Aluno"/>
-                    </f:facet>
-                    <h:outputText value="#{tccReturn.aluno.nome}"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Orientador"/>
-                    </f:facet>
-                    <h:outputText value="#{tccReturn.aluno.orientador.nome}"/>
+                    <h:outputText value="#{acompanhamentoReturn.tcc.titulo}"/>
                 </h:column>
 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Data da Defesa"/>
+                        <h:outputText value="Data"/>
                     </f:facet>
-                    <h:outputText value="#{tccReturn.dataDefesa}">
-                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
-                    </h:outputText>
-                </h:column>
-
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Data da Início"/>
-                    </f:facet>
-                    <h:outputText value="#{tccReturn.dataInicio}">
+                    <h:outputText value="#{acompanhamentoReturn.data}">
                         <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
                     </h:outputText>
                 </h:column>
                 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Imprenta"/>
+                        <h:outputText value="Horário Início"/>
                     </f:facet>
-                    <h:outputText value="#{tccReturn.imprenta}"/>
+                    <h:outputText value="#{acompanhamentoReturn.horarioInicio}">
+                        <f:convertDateTime type="time" dateStyle="short" pattern="HH:mm" />
+                    </h:outputText>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Horário Término"/>
+                    </f:facet>
+                    <h:outputText value="#{acompanhamentoReturn.horarioTermino}">
+                        <f:convertDateTime type="time" dateStyle="short" pattern="HH:mm" />
+                    </h:outputText>
                 </h:column>
 
             </h:dataTable>
+            
         </h:form>
     </h:body>
 </html>

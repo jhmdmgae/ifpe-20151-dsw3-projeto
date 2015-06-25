@@ -13,10 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import jsf.util.SampleEntity;
 
 @Entity
 @Table(name = "AREA")
-public class AreaConhecimento implements Serializable {
+public class AreaConhecimento implements Serializable, SampleEntity  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +28,7 @@ public class AreaConhecimento implements Serializable {
     private String codigo;
     
     @Column(name = "GRANDE_AREA", nullable = false)
-    private String grandeArea;
+    private int grandeArea;
     
     @Column(name = "AREA", nullable = false)
     private int area;
@@ -42,7 +43,7 @@ public class AreaConhecimento implements Serializable {
     private int digito;
     
     @Column(name = "TITULO", nullable = false)
-    private int titulo;
+    private String titulo;
 
     public Long getId() {
         return id;
@@ -56,11 +57,11 @@ public class AreaConhecimento implements Serializable {
         this.codigo = codigo;
     }
 
-    public String getGrandeArea() {
+    public int getGrandeArea() {
         return grandeArea;
     }
 
-    public void setGrandeArea(String grandeArea) {
+    public void setGrandeArea(int grandeArea) {
         this.grandeArea = grandeArea;
     }
 
@@ -96,11 +97,11 @@ public class AreaConhecimento implements Serializable {
         this.digito = digito;
     }
 
-    public int getTitulo() {
+    public String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(int titulo) {
+    public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 

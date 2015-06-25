@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Acompanhamento Cadastro</title>
+        <!--<link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />-->
+<!--        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />-->
+    </h:head>
+    <h:body>
+
+        <h:form id="registerForm" styleClass="smart-green">
+
+            <h3>Cadastrar Acompanhamento <span>Informar dados do Acompanhamento</span></h3>
+
+            <h:messages id="alunoMessages" showDetail="true" layout="list" styleClass="errorMessages"/>
+
+            <h:panelGrid columns="2" styleClass="formPanel">
+                
+                <h:outputLabel for="tcc">
+                    <h:outputText value="TCC"/>
+                </h:outputLabel>
+                <h:selectOneMenu id="tcc" value="#{AcompanhamentoMB.acompanhamento.tcc}" converter="generic">  
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItems value="#{TCCMB.TCCList}" var="tcc"
+                                   itemLabel="#{tcc.titulo}" itemValue="#{tcc}" />
+                </h:selectOneMenu>
+
+                <h:outputLabel for="data">
+                    <h:outputText value="Data"/>
+                </h:outputLabel>
+                <h:inputText id="data" required="true"
+                             value="#{AcompanhamentoMB.acompanhamento.data}" >
+                    <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/>
+                </h:inputText>
+
+                <h:outputLabel for="horarioinicio">
+                    <h:outputText value="Hotario Início:"/>
+                </h:outputLabel>
+                <h:selectOneMenu id="horarioinicio" value="#{AcompanhamentoMB.acompanhamento.horarioInicio}" >
+                    <f:selectItem itemLabel="07:00" itemValue="07:00"/>
+                    <f:selectItem itemLabel="08:00" itemValue="08:00"/>
+                    <f:selectItem itemLabel="09:00" itemValue="09:00"/>
+                    <f:selectItem itemLabel="10:00" itemValue="10:00"/>
+                    <f:selectItem itemLabel="11:00" itemValue="11:00"/>
+                    <f:selectItem itemLabel="12:00" itemValue="12:00"/>
+                    <f:selectItem itemLabel="13:00" itemValue="13:00"/>
+                    <f:selectItem itemLabel="14:00" itemValue="14:00"/>
+                    <f:selectItem itemLabel="15:00" itemValue="15:00"/>
+                    <f:selectItem itemLabel="16:00" itemValue="16:00"/>
+                    <f:selectItem itemLabel="17:00" itemValue="17:00"/>
+                    <f:selectItem itemLabel="18:00" itemValue="18:00"/>
+                    <f:selectItem itemLabel="19:00" itemValue="19:00"/>
+                    <f:selectItem itemLabel="20:00" itemValue="20:00"/>
+                    <f:selectItem itemLabel="21:00" itemValue="21:00"/>
+                    <f:selectItem itemLabel="22:00" itemValue="22:00"/>
+                    <f:convertDateTime type="time" dateStyle="short" pattern="HH:mm" />
+                </h:selectOneMenu>
+                
+                <h:outputLabel for="horariotermino">
+                    <h:outputText value="Hotario Termino:"/>
+                </h:outputLabel>
+                <h:selectOneMenu id="horariotermino" value="#{AcompanhamentoMB.acompanhamento.horarioTermino}" >
+                    <f:selectItem itemLabel="07:00" itemValue="07:00"/>
+                    <f:selectItem itemLabel="08:00" itemValue="08:00"/>
+                    <f:selectItem itemLabel="09:00" itemValue="09:00"/>
+                    <f:selectItem itemLabel="10:00" itemValue="10:00"/>
+                    <f:selectItem itemLabel="11:00" itemValue="11:00"/>
+                    <f:selectItem itemLabel="12:00" itemValue="12:00"/>
+                    <f:selectItem itemLabel="13:00" itemValue="13:00"/>
+                    <f:selectItem itemLabel="14:00" itemValue="14:00"/>
+                    <f:selectItem itemLabel="15:00" itemValue="15:00"/>
+                    <f:selectItem itemLabel="16:00" itemValue="16:00"/>
+                    <f:selectItem itemLabel="17:00" itemValue="17:00"/>
+                    <f:selectItem itemLabel="18:00" itemValue="18:00"/>
+                    <f:selectItem itemLabel="19:00" itemValue="19:00"/>
+                    <f:selectItem itemLabel="20:00" itemValue="20:00"/>
+                    <f:selectItem itemLabel="21:00" itemValue="21:00"/>
+                    <f:selectItem itemLabel="22:00" itemValue="22:00"/>
+                    <f:convertDateTime type="time" dateStyle="short" pattern="HH:mm" />
+                </h:selectOneMenu>
+
+                <h:commandButton id="register" styleClass="button" 
+                                 action="#{AcompanhamentoMB.salva()}"
+                                 value="Adicionar"
+                                 />
+                <h:commandLink /> 
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

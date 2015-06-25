@@ -81,6 +81,57 @@
         </navigation-case>
     </navigation-rule>
     
+    <!--Acompanhamento-->
+    
+    <navigation-rule>
+        <from-view-id>/paginas/acompanhamento/novo.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/paginas/acompanhamento/lista.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/paginas/acompanhamento/lista.xhtml</to-view-id>
+        </navigation-case>        
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/paginas/acompanhamento/lista.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/paginas/acompanhamento/lista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/paginas/acompanhamento/editar.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/paginas/acompanhamento/lista.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/paginas/acompanhamento/lista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>acompanhamento_novo</from-outcome>
+            <to-view-id>/paginas/acompanhamento/novo.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>acompanhamento_list</from-outcome>
+            <to-view-id>/paginas/acompanhamento/lista.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/paginas/acompanhamento/lista.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>edit_acompanhamento</from-outcome>
+            <to-view-id>/paginas/acompanhamento/editar.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
     <!--Turma-->
     
     <navigation-rule>
