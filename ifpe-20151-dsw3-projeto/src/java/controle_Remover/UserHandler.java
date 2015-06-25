@@ -1,6 +1,6 @@
-package controle;
+package controle_Remover;
 
-import model.User;
+import model_Remover.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;

@@ -1,7 +1,7 @@
-package model;
+package model_Remover;
 
 import java.io.Serializable;
-import model.Aluno;
+import model_Remover.Aluno;
 import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;

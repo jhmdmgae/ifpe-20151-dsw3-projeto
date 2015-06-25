@@ -1,4 +1,4 @@
-package model;
+package model_Remover;
 
 import javax.inject.Named;
 

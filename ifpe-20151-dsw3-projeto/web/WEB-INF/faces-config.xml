@@ -5,28 +5,32 @@
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <application>
         <resource-bundle>
-            <base-name>model.messages</base-name>
-            <var>msg</var>
+            <message-bundle>mensagens.minhasMensagens</message-bundle>
         </resource-bundle>
     </application>
+    
     <managed-bean>
         <managed-bean-name>userHandler</managed-bean-name>
-        <managed-bean-class>controle.UserHandler</managed-bean-class>
+        <managed-bean-class>controle_Remover.UserHandler</managed-bean-class>
+    
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>TccControle</managed-bean-name>
-        <managed-bean-class>controle.TccControle</managed-bean-class>
+        <managed-bean-class>controle_Remover.TccControle</managed-bean-class>
+    
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>AlunoControle</managed-bean-name>
-        <managed-bean-class>controle.AlunoControle</managed-bean-class>
+        <managed-bean-class>controle_Remover.AlunoControle</managed-bean-class>
+    
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>ProfessorControle</managed-bean-name>
-        <managed-bean-class>controle.ProfessorControle</managed-bean-class>
+        <managed-bean-class>controle_Remover.ProfessorControle</managed-bean-class>
+    
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     

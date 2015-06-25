@@ -29,7 +29,7 @@
                 <h:outputLabel for="aluno">
                     <h:outputText value="Aluno"/>
                 </h:outputLabel>
-                <h:selectOneMenu value="#{TCCMB.TCC.aluno}" converter="generic">  
+                <h:selectOneMenu value="#{TCCMB.TCC.aluno}" converter="generic" required="true" required="true">  
                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                     <f:selectItems value="#{AlunoMB.alunoList}" var="aluno" 
                                    itemLabel="#{aluno.nome}" itemValue="#{aluno}"  />
@@ -38,7 +38,7 @@
                 <h:outputLabel for="dataDefesa">
                     <h:outputText value="Data da Defesa"/>
                 </h:outputLabel>
-                <h:inputText id="dataDefesa" required="true"
+                <h:inputText id="dataDefesa"
                              value="#{TCCMB.TCC.dataDefesa}" >
                     <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
                 </h:inputText>
@@ -59,7 +59,7 @@
                 <h:outputLabel for="imprenta">
                     <h:outputText value="Imprenta:"/>
                 </h:outputLabel>
-                <h:inputText id="imprenta" value="#{TCCMB.TCC.imprenta}" required="true" 
+                <h:inputText id="imprenta" value="#{TCCMB.TCC.imprenta}"
                              validatorMessage="Valor inválido.">
                     <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>

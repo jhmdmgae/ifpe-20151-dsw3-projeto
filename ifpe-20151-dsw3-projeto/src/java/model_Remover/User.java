@@ -1,4 +1,4 @@
-package model;
+package model_Remover;
 
 import java.util.Date;
 import javax.enterprise.context.RequestScoped;

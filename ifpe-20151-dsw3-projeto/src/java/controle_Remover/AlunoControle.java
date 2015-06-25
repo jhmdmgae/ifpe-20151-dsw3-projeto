@@ -1,10 +1,10 @@
-package controle;
+package controle_Remover;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import model.Aluno;
+import model_Remover.Aluno;
 
 public class AlunoControle {
 

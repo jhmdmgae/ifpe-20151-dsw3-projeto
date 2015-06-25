@@ -39,7 +39,7 @@
                 </h:outputLabel>
                 <h:inputText id="email" value="#{ProfessorMB.professor.email}" required="true" 
                              validatorMessage="Valor inválido.">
-                    <f:validateLength minimum="3" maximum="50"/>
+                    <f:validator validatorId="validadorEmail" />
                 </h:inputText>
                 
                 <h:outputLabel for="siape">
@@ -47,7 +47,7 @@
                 </h:outputLabel>
                 <h:inputText id="siape" value="#{ProfessorMB.professor.siape}" required="true" 
                              validatorMessage="Valor inválido.">
-                    <f:validateLength minimum="3" maximum="50"/>
+                    <f:validateRegex pattern="(\d{7})" />
                 </h:inputText>
                 
                 <h:outputLabel for="lattes">
@@ -55,7 +55,7 @@
                 </h:outputLabel>
                 <h:inputText id="lattes" value="#{ProfessorMB.professor.lattes}" required="true" 
                              validatorMessage="Valor inválido.">
-                    <f:validateLength minimum="3" maximum="50"/>
+                    <f:validateRegex pattern="^((http)|(https)|(ftp)):\/\/([\- \w]+\.)+\w{2,3}(\/ [%\-\w]+(\.\w{2,})?)*$" />
                 </h:inputText>
 
                 <h:commandButton id="register" styleClass="button" 
