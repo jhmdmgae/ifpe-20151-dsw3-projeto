@@ -19,7 +19,7 @@
                     <h:outputText value="TCC"/>
                 </h:outputLabel>
                 <h:selectOneMenu id="tcc" value="#{AcompanhamentoMB.acompanhamento.tcc}" converter="generic">  
-                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    
                     <f:selectItems value="#{TCCMB.TCCList}" var="tcc"
                                    itemLabel="#{tcc.titulo}" itemValue="#{tcc}" />
                 </h:selectOneMenu>
