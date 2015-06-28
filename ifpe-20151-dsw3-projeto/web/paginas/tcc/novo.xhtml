@@ -29,7 +29,7 @@
                 <h:outputLabel for="aluno">
                     <h:outputText value="Aluno"/>
                 </h:outputLabel>
-                <h:selectOneMenu value="#{TCCMB.TCC.aluno}" converter="generic" required="true" required="true">  
+                <h:selectOneMenu value="#{TCCMB.TCC.aluno}" converter="generic" required="true">  
                     <f:selectItem itemLabel="Selecione" itemValue=""/>
                     <f:selectItems value="#{AlunoMB.alunoList}" var="aluno" 
                                    itemLabel="#{aluno.nome}" itemValue="#{aluno}"  />
@@ -63,6 +63,47 @@
                              validatorMessage="Valor inválido.">
                     <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>
+                
+                <h:outputLabel for="grande_area">
+                    <h:outputText value="Grande Area"/>
+                </h:outputLabel>
+                <h:selectOneMenu value="#{TCCMB.area}" converter="generic" required="true" >  
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItems value="#{TCCMB.grandeAreaList}" var="grande_area" 
+                                   itemLabel="#{grande_area.titulo}" itemValue="#{grande_area}" />
+                    <f:ajax render="area" event="change" listener="#{TCCMB.getAreaList(TCCMB.area.grandeArea)}"/>
+                </h:selectOneMenu>
+                
+                <h:outputLabel for="area">
+                    <h:outputText value="Area"/>
+                </h:outputLabel>
+                <h:selectOneMenu id="area" value="#{TCCMB.area}" converter="generic" required="true" >
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItems value="#{TCCMB.areaConhecimentoList}" 
+                                   var="area" 
+                                   itemLabel="#{area.titulo}" 
+                                   itemValue="#{area}" />
+                    <f:ajax render="subarea" event="change" listener="#{TCCMB.getSubAreaList(TCCMB.area.grandeArea,TCCMB.area.area)}"/>
+                </h:selectOneMenu>
+                
+                <h:outputLabel for="subarea">
+                    <h:outputText value="Sub Area"/>
+                </h:outputLabel>
+                <h:selectOneMenu id="subarea" value="#{TCCMB.area}" converter="generic" required="true" >
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItems value="#{TCCMB.areaConhecimentoList}" var="subarea" 
+                                   itemLabel="#{subarea.titulo}" itemValue="#{subarea}" />
+                    <f:ajax render="areaesp" event="change" listener="#{TCCMB.getAreaEspList(TCCMB.area.grandeArea, TCCMB.area.area, TCCMB.area.subArea)}"/>
+                </h:selectOneMenu>
+                
+                <h:outputLabel for="areaesp">
+                    <h:outputText value="Area Específica"/>
+                </h:outputLabel>
+                <h:selectOneMenu id="areaesp" value="#{TCCMB.TCC.areas}" converter="generic" required="true" >
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItems value="#{TCCMB.areaConhecimentoList}" var="areaesp" 
+                                   itemLabel="#{areaesp.titulo}" itemValue="#{areaesp}" />
+                </h:selectOneMenu>
 
                 <h:commandButton id="register" styleClass="button" 
                                  action="#{TCCMB.salva()}"
