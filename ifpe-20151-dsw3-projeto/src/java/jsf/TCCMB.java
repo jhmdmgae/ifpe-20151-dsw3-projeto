@@ -24,7 +24,10 @@ public class TCCMB implements Serializable{
     private TCC tcc;
     private List<TCC> TCCList;
     private List<AreaConhecimento> areaList;
+    private AreaConhecimento grandearea;
     private AreaConhecimento area;
+    private AreaConhecimento subarea;
+    private AreaConhecimento areaesp;
     
     public TCCMB(){
         tccDAO = new TCCDao();
@@ -33,6 +36,7 @@ public class TCCMB implements Serializable{
     }
     
     public String salva() {
+        tcc.addArea(subarea);
         tccDAO.inserirTCC(getTCC());
         return "main";
     }
@@ -48,7 +52,6 @@ public class TCCMB implements Serializable{
     
     public List<AreaConhecimento> getGrandeAreaList() {
         areaList = tccDAO.getGrandeAreaList();
-        System.out.println("------------------- opa "+areaList.get(0).getId());
         return areaList;
     }
     
@@ -70,11 +73,6 @@ public class TCCMB implements Serializable{
     public List<AreaConhecimento> getAreaConhecimentoList(){
         return areaList;
     }
-    
-//    public AreaConhecimento getSingleAreaConhecimento(){
-//        System.out.println("------ area = "+area.getCodigo());
-//        return areaList.get(0);
-//    }
 
     public AreaConhecimento getArea() {
         return area;
@@ -82,7 +80,31 @@ public class TCCMB implements Serializable{
 
     public void setArea(AreaConhecimento area) {
         this.area = area;
-    }    
+    }
+
+    public AreaConhecimento getGrandearea() {
+        return grandearea;
+    }
+
+    public void setGrandearea(AreaConhecimento grandearea) {
+        this.grandearea = grandearea;
+    }
+
+    public AreaConhecimento getSubarea() {
+        return subarea;
+    }
+
+    public void setSubarea(AreaConhecimento subarea) {
+        this.subarea = subarea;
+    }
+
+    public AreaConhecimento getAreaesp() {
+        return areaesp;
+    }
+
+    public void setAreaesp(AreaConhecimento areaesp) {
+        this.areaesp = areaesp;
+    }
     
     public String remove(TCC tcc) {
         tccDAO.deletarTCC(tcc);

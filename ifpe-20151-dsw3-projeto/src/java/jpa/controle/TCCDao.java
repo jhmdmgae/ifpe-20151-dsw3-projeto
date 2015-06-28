@@ -35,16 +35,11 @@ public class TCCDao implements Serializable{
     }
 
     public boolean inserirTCC(TCC tcc) {
-        
-        System.out.println("opa");
         try {
-            
-            System.out.println("aluno = "+tcc.getAluno());
             et = em.getTransaction();
             et.begin();
             em.persist(tcc);
             et.commit();
-            
             System.out.println("persistiu");
             return true;
         } catch (Exception e) {
@@ -55,10 +50,8 @@ public class TCCDao implements Serializable{
     }
     
     public List<TCC> getTCCList() {
-        
         try {
             List<TCC> tccs = em.createQuery("SELECT t from TCC t").getResultList();
-            
             return tccs;
         } catch (NoResultException e) {
             return null;
@@ -68,7 +61,9 @@ public class TCCDao implements Serializable{
     
     public List<AreaConhecimento> getGrandeAreaList() {
         try {
-            List<AreaConhecimento> areas = em.createQuery("SELECT a from AreaConhecimento a where a.area = 0").getResultList();
+            List<AreaConhecimento> areas = em
+                    .createQuery("SELECT a from AreaConhecimento a where a.area = 0")
+                    .getResultList();
             return areas;
         } catch (NoResultException e) {
             return null;
@@ -77,8 +72,10 @@ public class TCCDao implements Serializable{
     
     public List<AreaConhecimento> getAreaList(int grandeArea) {
         try {
-            List<AreaConhecimento> areas = em.createQuery("SELECT a from AreaConhecimento a where a.grandeArea = :grandeArea and a.area != 0 and a.subArea = 0")
-                    .setParameter("grandeArea", grandeArea).getResultList();
+            List<AreaConhecimento> areas = em
+                    .createQuery("SELECT a from AreaConhecimento a where a.grandeArea = :grandeArea and a.area != 0 and a.subArea = 0")
+                    .setParameter("grandeArea", grandeArea)
+                    .getResultList();
             return areas;
         } catch (NoResultException e) {
             return null;
@@ -87,7 +84,8 @@ public class TCCDao implements Serializable{
     
     public List<AreaConhecimento> getSubAreaList(int grandeArea, int area) {
         try {
-            List<AreaConhecimento> areas = em.createQuery("SELECT a from AreaConhecimento a where a.grandeArea = :grandeArea and a.area = :area and a.subArea != 0 and a.areaEspecifica = 0")
+            List<AreaConhecimento> areas = em
+                    .createQuery("SELECT a from AreaConhecimento a where a.grandeArea = :grandeArea and a.area = :area and a.subArea != 0 and a.areaEspecifica = 0")
                     .setParameter("grandeArea", grandeArea)
                     .setParameter("area", area)
                     .getResultList();
@@ -99,7 +97,8 @@ public class TCCDao implements Serializable{
     
     public List<AreaConhecimento> getAreaEspList(int grandeArea, int area, int subarea) {
         try {
-            List<AreaConhecimento> areas = em.createQuery("SELECT a from AreaConhecimento a where a.grandeArea = :grandeArea and a.area = :area and a.subArea = :subArea and a.areaEspecifica != 0")
+            List<AreaConhecimento> areas = em
+                    .createQuery("SELECT a from AreaConhecimento a where a.grandeArea = :grandeArea and a.area = :area and a.subArea = :subArea and a.areaEspecifica != 0")
                     .setParameter("grandeArea", grandeArea)
                     .setParameter("area", area)
                     .setParameter("subArea", subarea)
@@ -117,7 +116,6 @@ public class TCCDao implements Serializable{
             et.begin();
             em.remove(tcc);
             et.commit();
-            
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -127,12 +125,10 @@ public class TCCDao implements Serializable{
     
     public boolean alterarTCC(TCC tcc) {
         try {
-            
             et = em.getTransaction();
             et.begin();
             em.merge(tcc);
             et.commit();
-            
             return true;
         } catch (Exception e) {
             e.printStackTrace();

@@ -67,19 +67,21 @@
                 <h:outputLabel for="grande_area">
                     <h:outputText value="Grande Area"/>
                 </h:outputLabel>
-                <h:selectOneMenu value="#{TCCMB.area}" converter="generic" required="true" >  
-                    <f:selectItem itemLabel="Selecione" itemValue=""/>
-                    <f:selectItems value="#{TCCMB.grandeAreaList}" var="grande_area" 
-                                   itemLabel="#{grande_area.titulo}" itemValue="#{grande_area}" />
-                    <f:ajax render="area" event="change" listener="#{TCCMB.getAreaList(TCCMB.area.grandeArea)}"/>
+                <h:selectOneMenu value="#{TCCMB.grandearea}" converter="generic" >  
+                    <f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+                    <f:selectItems value="#{TCCMB.grandeAreaList}" 
+                                   var="grande_area" 
+                                   itemLabel="#{grande_area.titulo}" 
+                                   itemValue="#{grande_area}" />
+                    <f:ajax render="area" event="change" listener="#{TCCMB.getAreaList(TCCMB.grandearea.grandeArea)}"/>
                 </h:selectOneMenu>
                 
                 <h:outputLabel for="area">
                     <h:outputText value="Area"/>
                 </h:outputLabel>
-                <h:selectOneMenu id="area" value="#{TCCMB.area}" converter="generic" required="true" >
-                    <f:selectItem itemLabel="Selecione" itemValue=""/>
-                    <f:selectItems value="#{TCCMB.areaConhecimentoList}" 
+                <h:selectOneMenu id="area" value="#{TCCMB.area}" converter="generic" >
+                    <f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+                    <f:selectItems value="#{TCCMB.getAreaList(TCCMB.grandearea.grandeArea)}" 
                                    var="area" 
                                    itemLabel="#{area.titulo}" 
                                    itemValue="#{area}" />
@@ -89,20 +91,24 @@
                 <h:outputLabel for="subarea">
                     <h:outputText value="Sub Area"/>
                 </h:outputLabel>
-                <h:selectOneMenu id="subarea" value="#{TCCMB.area}" converter="generic" required="true" >
-                    <f:selectItem itemLabel="Selecione" itemValue=""/>
-                    <f:selectItems value="#{TCCMB.areaConhecimentoList}" var="subarea" 
-                                   itemLabel="#{subarea.titulo}" itemValue="#{subarea}" />
-                    <f:ajax render="areaesp" event="change" listener="#{TCCMB.getAreaEspList(TCCMB.area.grandeArea, TCCMB.area.area, TCCMB.area.subArea)}"/>
+                <h:selectOneMenu id="subarea" value="#{TCCMB.subarea}" converter="generic" >
+                    <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{TCCMB.getSubAreaList(TCCMB.area.grandeArea,TCCMB.area.area)}" 
+                                   var="subarea" 
+                                   itemLabel="#{subarea.titulo}" 
+                                   itemValue="#{subarea}" />
+                    <f:ajax render="areaesp" event="change" listener="#{TCCMB.getAreaEspList(TCCMB.subarea.grandeArea, TCCMB.subarea.area, TCCMB.subarea.subArea)}"/>
                 </h:selectOneMenu>
                 
                 <h:outputLabel for="areaesp">
                     <h:outputText value="Area Específica"/>
                 </h:outputLabel>
-                <h:selectOneMenu id="areaesp" value="#{TCCMB.TCC.areas}" converter="generic" required="true" >
+                <h:selectOneMenu id="areaesp" value="#{TCCMB.areaesp}" converter="generic" required="true" >
                     <f:selectItem itemLabel="Selecione" itemValue=""/>
-                    <f:selectItems value="#{TCCMB.areaConhecimentoList}" var="areaesp" 
-                                   itemLabel="#{areaesp.titulo}" itemValue="#{areaesp}" />
+                    <f:selectItems value="#{TCCMB.getAreaEspList(TCCMB.subarea.grandeArea, TCCMB.subarea.area, TCCMB.subarea.subArea)}" 
+                                   var="areaesp" 
+                                   itemLabel="#{areaesp.titulo}" 
+                                   itemValue="#{areaesp}" />
                 </h:selectOneMenu>
 
                 <h:commandButton id="register" styleClass="button" 
