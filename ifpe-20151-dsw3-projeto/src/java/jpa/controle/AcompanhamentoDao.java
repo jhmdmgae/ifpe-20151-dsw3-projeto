@@ -25,10 +25,10 @@ public class AcompanhamentoDao  implements Serializable{
     private final List<Acompanhamento> AcompanhamentoList = new ArrayList<Acompanhamento>();
 
     public Acompanhamento getAcompanhamento(long idAcompanhamento) {
-
         try {
-            Acompanhamento acompanhamento = (Acompanhamento) em.createQuery("SELECT a from Acompanhamento a where p.id = :id ").setParameter("id", idAcompanhamento).getSingleResult();
-
+            Acompanhamento acompanhamento = (Acompanhamento) em.createQuery("SELECT a from Acompanhamento a where a.id = :id ")
+                    .setParameter("id", idAcompanhamento)
+                    .getSingleResult();
             return acompanhamento;
         } catch (NoResultException e) {
             return null;
@@ -36,19 +36,14 @@ public class AcompanhamentoDao  implements Serializable{
     }
 
     public boolean inserirAcompanhamento(Acompanhamento acompanhamento) {
-        
-        System.out.println("opa");
         try {
-            
             et = em.getTransaction();
             et.begin();
-            System.out.println("tcc = "+acompanhamento.getTcc());
             TCC tcc = new TCC();
             tcc = acompanhamento.getTcc();
             acompanhamento.setTcc(tcc);
             em.persist(acompanhamento);
             et.commit();
-            
             System.out.println("persistiu");
             return true;
         } catch (Exception e) {
@@ -59,25 +54,33 @@ public class AcompanhamentoDao  implements Serializable{
     }
     
     public List<Acompanhamento> getAcompanhamentoList() {
-        
         try {
             List<Acompanhamento> acompanhamentos = em.createQuery("SELECT a from Acompanhamento a").getResultList();
-            
             return acompanhamentos;
         } catch (NoResultException e) {
             return null;
         }
-        
+    }
+    
+    public List<Acompanhamento> getAcompanhamentoList(TCC tcc) {
+        try {
+            System.out.println("----OPA-----tcc id = "+tcc.getId());
+            List<Acompanhamento> acompanhamentos = em.createQuery("SELECT a from Acompanhamento a where a.tcc.id = :tcc")
+                    .setParameter("tcc", tcc.getId())
+                    .getResultList();
+            return acompanhamentos;
+        } catch (NoResultException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public boolean deletarAcompanhamento(Acompanhamento acompanhamento) {
         try {
-            
             et = em.getTransaction();
             et.begin();
             em.remove(acompanhamento);
             et.commit();
-            
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,12 +90,10 @@ public class AcompanhamentoDao  implements Serializable{
     
     public boolean alterarAcompanhamento(Acompanhamento acompanhamento) {
         try {
-            
             et = em.getTransaction();
             et.begin();
             em.merge(acompanhamento);
             et.commit();
-            
             return true;
         } catch (Exception e) {
             e.printStackTrace();

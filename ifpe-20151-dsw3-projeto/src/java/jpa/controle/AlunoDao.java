@@ -35,13 +35,9 @@ public class AlunoDao  implements Serializable{
     }
 
     public boolean inserirAluno(Aluno aluno) {
-        
-        System.out.println("opa");
         try {
-            
             et = em.getTransaction();
             et.begin();
-            System.out.println("orientador = "+aluno.getOrientador());
             Professor professor = new Professor();
             professor = aluno.getOrientador();
             aluno.setOrientador(professor);
@@ -58,25 +54,20 @@ public class AlunoDao  implements Serializable{
     }
     
     public List<Aluno> getAlunoList() {
-        
         try {
             List<Aluno> alunos = em.createQuery("SELECT a from Aluno a").getResultList();
-            
             return alunos;
         } catch (NoResultException e) {
             return null;
         }
-        
     }
 
     public boolean deletarAluno(Aluno aluno) {
         try {
-            
             et = em.getTransaction();
             et.begin();
             em.remove(aluno);
             et.commit();
-            
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,12 +77,10 @@ public class AlunoDao  implements Serializable{
     
     public boolean alterarAluno(Aluno aluno) {
         try {
-            
             et = em.getTransaction();
             et.begin();
             em.merge(aluno);
             et.commit();
-            
             return true;
         } catch (Exception e) {
             e.printStackTrace();

@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 
 import jpa.entidades.Acompanhamento;
 import jpa.controle.AcompanhamentoDao;
+import jpa.entidades.TCC;
 
 @ManagedBean(name = "AcompanhamentoMB")
 @SessionScoped
@@ -32,30 +33,26 @@ public class AcompanhamentoMB implements Serializable{
     }
     
     public String salva() {
-        
         System.out.println("tcc = "+getAcompanhamento().getTcc());
         acompanhamentoDAO.inserirAcompanhamento(getAcompanhamento());
-        
         return "main";
     }
     
     public String editar() {
-        
         acompanhamentoDAO.alterarAcompanhamento(acompanhamento);
-        
         return "main";
     }
     
     public List<Acompanhamento> getAcompanhamentoList() {
-        
         return acompanhamentoDAO.getAcompanhamentoList();
-        
+    }
+    
+    public List<Acompanhamento> getAcompanhamentoList(TCC tcc) {
+        return acompanhamentoDAO.getAcompanhamentoList(tcc);
     }
     
     public String remove(Acompanhamento acompanhamento) {
-        
         acompanhamentoDAO.deletarAcompanhamento(acompanhamento);
-        
         return "main";
     }
 

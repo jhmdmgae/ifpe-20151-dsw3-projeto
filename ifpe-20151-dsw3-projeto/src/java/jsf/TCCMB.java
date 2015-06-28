@@ -14,63 +14,64 @@ import javax.faces.context.FacesContext;
 
 import jpa.entidades.TCC;
 import jpa.controle.TCCDao;
+import jpa.entidades.Acompanhamento;
+import jsf.AcompanhamentoMB;
 import jpa.entidades.AreaConhecimento;
 
 @ManagedBean(name = "TCCMB")
 @SessionScoped
-public class TCCMB implements Serializable{
+public class TCCMB implements Serializable {
 
     private TCCDao tccDAO;
     private TCC tcc;
     private List<TCC> TCCList;
     private List<AreaConhecimento> areaList;
-    private AreaConhecimento grandearea;
     private AreaConhecimento area;
-    private AreaConhecimento subarea;
-    private AreaConhecimento areaesp;
-    
-    public TCCMB(){
+    private AcompanhamentoMB acompanhamentoMB;
+    private List<Acompanhamento> acompanhamentoList;
+
+    public TCCMB() {
         tccDAO = new TCCDao();
         tcc = new TCC();
         TCCList = new ArrayList<TCC>();
     }
-    
+
     public String salva() {
-        tcc.addArea(subarea);
+        tcc.addArea(area);
         tccDAO.inserirTCC(getTCC());
         return "main";
     }
-    
+
     public String editar() {
         tccDAO.alterarTCC(tcc);
         return "main";
     }
-    
+
     public List<TCC> getTCCList() {
         return tccDAO.getTCCList();
     }
-    
+
     public List<AreaConhecimento> getGrandeAreaList() {
         areaList = tccDAO.getGrandeAreaList();
         return areaList;
     }
-    
+
     public List<AreaConhecimento> getAreaList(int grandeArea) {
         areaList = tccDAO.getAreaList(grandeArea);
         return areaList;
     }
-    
+
     public List<AreaConhecimento> getSubAreaList(int grandeArea, int area) {
         areaList = tccDAO.getSubAreaList(grandeArea, area);
         return areaList;
     }
-    
+
     public List<AreaConhecimento> getAreaEspList(int grandeArea, int area, int subarea) {
         areaList = tccDAO.getAreaEspList(grandeArea, area, subarea);
         return areaList;
     }
-    
-    public List<AreaConhecimento> getAreaConhecimentoList(){
+
+    public List<AreaConhecimento> getAreaConhecimentoList() {
         return areaList;
     }
 
@@ -82,31 +83,15 @@ public class TCCMB implements Serializable{
         this.area = area;
     }
 
-    public AreaConhecimento getGrandearea() {
-        return grandearea;
-    }
-
-    public void setGrandearea(AreaConhecimento grandearea) {
-        this.grandearea = grandearea;
-    }
-
-    public AreaConhecimento getSubarea() {
-        return subarea;
-    }
-
-    public void setSubarea(AreaConhecimento subarea) {
-        this.subarea = subarea;
-    }
-
-    public AreaConhecimento getAreaesp() {
-        return areaesp;
-    }
-
-    public void setAreaesp(AreaConhecimento areaesp) {
-        this.areaesp = areaesp;
-    }
-    
     public String remove(TCC tcc) {
+//        List<Acompanhamento> acompanhamentoList = acompanhamentoMB.getAcompanhamentoList(tcc);
+//        if (acompanhamentos.size() != 0) {
+//            for (Acompanhamento acomp : acompanhamentos) {
+//                System.out.println("----------acomp id = " + acomp.getId());
+//                acompanhamentoMB.remove(acomp);
+//            }
+//        }
+        System.out.println("----------tcc id = " + tcc.getId());
         tccDAO.deletarTCC(tcc);
         return "main";
     }
@@ -118,11 +103,11 @@ public class TCCMB implements Serializable{
     public void setTCC(TCC tcc) {
         this.tcc = tcc;
     }
-    
+
     public String listarTCC() {
         return "tcc_list";
     }
-    
+
     public String novoTCC() {
         this.tcc = new TCC();
         return "tcc_novo";

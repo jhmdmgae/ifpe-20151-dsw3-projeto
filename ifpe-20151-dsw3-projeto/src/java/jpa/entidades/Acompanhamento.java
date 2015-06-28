@@ -2,6 +2,7 @@ package jpa.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,7 +28,7 @@ public class Acompanhamento implements Serializable, SampleEntity  {
     @Column(name = "ID")
     private Long id;
     
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_TCC", referencedColumnName = "ID")
     private TCC tcc;
     

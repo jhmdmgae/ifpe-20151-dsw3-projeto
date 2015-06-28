@@ -12,21 +12,26 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import jpa.entidades.Acompanhamento;
 import jpa.entidades.TCC;
 import jpa.entidades.AreaConhecimento;
+import jsf.AcompanhamentoMB;
 
-public class TCCDao implements Serializable{
+public class TCCDao implements Serializable {
 
     private EntityManagerFactory factory = Persistence.createEntityManagerFactory("ifpe-20151-dsw3-projetoPU2");
     private EntityManager em = factory.createEntityManager();
     private EntityTransaction et = null;
-    
+
     private final List<TCC> TCCList = new ArrayList<TCC>();
 
-    public TCC getTCC(long idTCC) {
+    private AcompanhamentoMB acompanhamentoMB;
 
+    public TCC getTCC(long idTCC) {
         try {
-            TCC tcc = (TCC) em.createQuery("SELECT t from TCC t where t.id = :id ").setParameter("id", idTCC).getSingleResult();
+            TCC tcc = (TCC) em.createQuery("SELECT t from TCC t where t.id = :id ")
+                    .setParameter("id", idTCC)
+                    .getSingleResult();
 
             return tcc;
         } catch (NoResultException e) {
@@ -48,7 +53,7 @@ public class TCCDao implements Serializable{
             return false;
         }
     }
-    
+
     public List<TCC> getTCCList() {
         try {
             List<TCC> tccs = em.createQuery("SELECT t from TCC t").getResultList();
@@ -56,9 +61,9 @@ public class TCCDao implements Serializable{
         } catch (NoResultException e) {
             return null;
         }
-        
+
     }
-    
+
     public List<AreaConhecimento> getGrandeAreaList() {
         try {
             List<AreaConhecimento> areas = em
@@ -69,7 +74,7 @@ public class TCCDao implements Serializable{
             return null;
         }
     }
-    
+
     public List<AreaConhecimento> getAreaList(int grandeArea) {
         try {
             List<AreaConhecimento> areas = em
@@ -81,7 +86,7 @@ public class TCCDao implements Serializable{
             return null;
         }
     }
-    
+
     public List<AreaConhecimento> getSubAreaList(int grandeArea, int area) {
         try {
             List<AreaConhecimento> areas = em
@@ -94,7 +99,7 @@ public class TCCDao implements Serializable{
             return null;
         }
     }
-    
+
     public List<AreaConhecimento> getAreaEspList(int grandeArea, int area, int subarea) {
         try {
             List<AreaConhecimento> areas = em
@@ -111,9 +116,13 @@ public class TCCDao implements Serializable{
 
     public boolean deletarTCC(TCC tcc) {
         try {
-            
             et = em.getTransaction();
             et.begin();
+            AcompanhamentoMB acomp = new AcompanhamentoMB();
+            List<Acompanhamento> acompanhamentoList = acomp.getAcompanhamentoList(tcc);
+            for(Acompanhamento acompanhamento : acompanhamentoList){
+                acomp.remove(acompanhamento);
+            }
             em.remove(tcc);
             et.commit();
             return true;
@@ -122,7 +131,7 @@ public class TCCDao implements Serializable{
             return false;
         }
     }
-    
+
     public boolean alterarTCC(TCC tcc) {
         try {
             et = em.getTransaction();
