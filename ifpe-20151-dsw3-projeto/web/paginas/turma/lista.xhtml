@@ -9,69 +9,72 @@
         <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
+        <h:panelGroup id="leftcol" layout="block">
+            <h:form>
+                <h2><h:outputText value="Menu" /></h2>
 
-        <h:form>
-            <h1><h:outputText value="Menu" /></h1>
+                <br/>
+                <h:commandLink action="#{AcompanhamentoMB.listarAcompanhamento}" value="Acompanhamanto"/>
+
+                <br/>
+                <h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/>
+
+                <br/>
+                <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Professor"/>
+
+                <br/>
+                <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/>
+
+                <br/>
+                <h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/>
+
+            </h:form>
+        </h:panelGroup>
+        <h:panelGroup id="rightcol" layout="block">
             
-            <br/>
-            <h:commandLink action="#{AcompanhamentoMB.listarAcompanhamento}" value="Acompanhamanto"/>
-            
-            <br/>
-            <h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/>
-            
-            <br/>
-            <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Professor"/>
-            
-            <br/>
-            <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/>
-            
-            <br/>
-            <h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/>
+            <h3>Listagem de Turmas:</h3>
+            <h:form>
+                <h:messages id="turmaMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+                <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{TurmaMB.turmaList}" var="turmaReturn">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:commandLink action="#{TurmaMB.novoTurma}" value="Novo"/>
+                            <!--<h:commandButton action="turma_novo" value="Novo"/>-->
+                        </f:facet>
+                        <h:panelGroup>
+                            <h:commandButton action="edit_turma" value="Editar">
+                                <f:setPropertyActionListener target="#{TurmaMB.turma}"
+                                                             value="#{turmaReturn}" />
+                            </h:commandButton>
+                            <h:commandButton onclick="if (!confirm('Tem certeza que deseja excluir esta turma? Todos os alunos dessa turma também serão excluídos'))
+                                        return false;" action="#{TurmaMB.remove(turmaReturn)}" value="Apagar">
+                            </h:commandButton>
+                        </h:panelGroup>
+                    </h:column>
 
-        </h:form>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ano"/>
+                        </f:facet>
+                        <h:outputText value="#{turmaReturn.ano}"/>
+                    </h:column>
 
-        <h3>Listagem de Turmas:</h3>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Codigo"/>
+                        </f:facet>
+                        <h:outputText value="#{turmaReturn.codigo}"/>
+                    </h:column>
 
-        <h:form>
-            <h:messages id="turmaMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
-            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{TurmaMB.turmaList}" var="turmaReturn">
-                <h:column>
-                    <f:facet name="header">
-                        <h:commandLink action="#{TurmaMB.novoTurma}" value="Novo"/>
-                        <!--<h:commandButton action="turma_novo" value="Novo"/>-->
-                    </f:facet>
-                    <h:panelGroup>
-                        <h:commandButton action="edit_turma" value="Editar">
-                            <f:setPropertyActionListener target="#{TurmaMB.turma}"
-                                                         value="#{turmaReturn}" />
-                        </h:commandButton>
-                        <h:commandButton onclick="if (!confirm('Tem certeza que deseja excluir esta turma? Todos os alunos dessa turma também serão excluídos')) return false;" action="#{TurmaMB.remove(turmaReturn)}" value="Apagar">
-                        </h:commandButton>
-                    </h:panelGroup>
-                </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Semestre"/>
+                        </f:facet>
+                        <h:outputText value="#{turmaReturn.semestre}"/>
+                    </h:column>
 
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Ano"/>
-                    </f:facet>
-                    <h:outputText value="#{turmaReturn.ano}"/>
-                </h:column>
-
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Codigo"/>
-                    </f:facet>
-                    <h:outputText value="#{turmaReturn.codigo}"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Semestre"/>
-                    </f:facet>
-                    <h:outputText value="#{turmaReturn.semestre}"/>
-                </h:column>
-
-            </h:dataTable>
-        </h:form>
+                </h:dataTable>
+            </h:form>
+        </h:panelGroup>
     </h:body>
 </html>

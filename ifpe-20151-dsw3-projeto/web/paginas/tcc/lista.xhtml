@@ -10,93 +10,98 @@
     </h:head>
     <h:body>
 
-        <h:form>
-            <h1><h:outputText value="Menu" /></h1>
-            
-            <br/>
-            <h:commandLink action="#{AcompanhamentoMB.listarAcompanhamento}" value="Acompanhamanto"/>
-            
-            <br/>
-            <h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/>
-            
-            <br/>
-            <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Professor"/>
-            
-            <br/>
-            <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/>
-            
-            <br/>
-            <h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/>
+        <h:panelGroup id="leftcol" layout="block">
+            <h:form>
+                <h2><h:outputText value="Menu" /></h2>
 
-        </h:form>
+                <br/>
+                <h:commandLink action="#{AcompanhamentoMB.listarAcompanhamento}" value="Acompanhamanto"/>
 
-        <h3>Listagem de TCCs:</h3>
+                <br/>
+                <h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/>
 
-        <h:form>
-            <h:messages id="tccMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
-            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{TCCMB.TCCList}" var="tccReturn">
-                <h:column>
-                    <f:facet name="header">
-                        <h:commandLink action="#{TCCMB.novoTCC}" value="Novo"/>
-                        <!--<h:commandButton action="tcc_novo" value="Novo"/>-->
-                    </f:facet>
-                    <h:panelGroup>
-                        <h:commandButton action="edit_tcc" value="Editar">
-                            <f:setPropertyActionListener target="#{TCCMB.TCC}"
-                                                         value="#{tccReturn}" />
-                        </h:commandButton>
-                        <h:commandButton onclick="if (!confirm('Tem certeza que deseja excluir o tcc #{tccReturn.titulo}? ')) return false;" action="#{TCCMB.remove(tccReturn)}" value="Apagar">
-                        </h:commandButton>
-                    </h:panelGroup>
-                </h:column>
+                <br/>
+                <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Professor"/>
 
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Título"/>
-                    </f:facet>
-                    <h:outputText value="#{tccReturn.titulo}"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Aluno"/>
-                    </f:facet>
-                    <h:outputText value="#{tccReturn.aluno.nome}"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Orientador"/>
-                    </f:facet>
-                    <h:outputText value="#{tccReturn.aluno.orientador.nome}"/>
-                </h:column>
+                <br/>
+                <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/>
 
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Data da Defesa"/>
-                    </f:facet>
-                    <h:outputText value="#{tccReturn.dataDefesa}">
-                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
-                    </h:outputText>
-                </h:column>
+                <br/>
+                <h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/>
 
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Data da Início"/>
-                    </f:facet>
-                    <h:outputText value="#{tccReturn.dataInicio}">
-                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
-                    </h:outputText>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Imprenta"/>
-                    </f:facet>
-                    <h:outputText value="#{tccReturn.imprenta}"/>
-                </h:column>
+            </h:form>
+        </h:panelGroup>
+        <h:panelGroup id="rightcol" layout="block">
 
-            </h:dataTable>
-        </h:form>
+            <h3>Listagem de TCCs:</h3>
+
+            <h:form>
+                <h:messages id="tccMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+                <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{TCCMB.TCCList}" var="tccReturn">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:commandLink action="#{TCCMB.novoTCC}" value="Novo"/>
+                            <!--<h:commandButton action="tcc_novo" value="Novo"/>-->
+                        </f:facet>
+                        <h:panelGroup>
+                            <h:commandButton action="edit_tcc" value="Editar">
+                                <f:setPropertyActionListener target="#{TCCMB.TCC}"
+                                                             value="#{tccReturn}" />
+                            </h:commandButton>
+                            <h:commandButton onclick="if (!confirm('Tem certeza que deseja excluir o tcc #{tccReturn.titulo}? '))
+                                        return false;" action="#{TCCMB.remove(tccReturn)}" value="Apagar">
+                            </h:commandButton>
+                        </h:panelGroup>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Título"/>
+                        </f:facet>
+                        <h:outputText value="#{tccReturn.titulo}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Aluno"/>
+                        </f:facet>
+                        <h:outputText value="#{tccReturn.aluno.nome}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Orientador"/>
+                        </f:facet>
+                        <h:outputText value="#{tccReturn.aluno.orientador.nome}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data da Defesa"/>
+                        </f:facet>
+                        <h:outputText value="#{tccReturn.dataDefesa}">
+                            <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data da Início"/>
+                        </f:facet>
+                        <h:outputText value="#{tccReturn.dataInicio}">
+                            <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Imprenta"/>
+                        </f:facet>
+                        <h:outputText value="#{tccReturn.imprenta}"/>
+                    </h:column>
+
+                </h:dataTable>
+            </h:form>
+        </h:panelGroup>
     </h:body>
 </html>

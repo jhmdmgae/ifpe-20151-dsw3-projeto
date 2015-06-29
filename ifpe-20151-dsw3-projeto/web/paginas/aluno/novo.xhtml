@@ -10,79 +10,89 @@
     </h:head>
     <h:body>
 
-        <h:form id="registerForm" styleClass="smart-green">
+        <h:panelGroup id="leftcol" layout="block">
+            <h:form>
+                <h3><h:outputText value="Menu" /></h3>
+                <br/>
+                <h:commandLink action="#{AlunoControle.listarAluno}" value="Voltar"/>
+            </h:form>
+        </h:panelGroup>
+        <h:panelGroup id="rightcol" layout="block">
 
-            <h3>Cadastrar Aluno <span>Informar dados do Aluno</span></h3>
+            <h3>Cadastrar Aluno</h3>
 
-            <h:messages id="alunoMessages" showDetail="false" layout="list" styleClass="errorMessages"/>
+            <h:form id="registerForm" styleClass="smart-green">            
 
-            <h:panelGrid columns="2" styleClass="formPanel">
+                <h:messages id="alunoMessages" showDetail="false" layout="list" styleClass="errorMessages"/>
 
-                <h:outputLabel for="nome">
-                    <h:outputText value="Nome:"/>
-                </h:outputLabel>
-                <h:inputText id="nome" value="#{AlunoMB.aluno.nome}" required="true" requiredMessage="Campo obrigatório!"
-                             validatorMessage="Valor inválido.">
-                    <f:validateLength minimum="3" maximum="50"/>
-                </h:inputText>
+                <h:panelGrid columns="2" styleClass="formPanel">
 
-                <h:outputLabel for="dataNascimento">
-                    <h:outputText value="Data de Nascimento"/>
-                </h:outputLabel>
-                <h:inputText id="dataNascimento" required="true" requiredMessage="Campo obrigatório!"
-                             value="#{AlunoMB.aluno.dataNascimento}" >
-                    <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
-                </h:inputText>
+                    <h:outputLabel for="nome">
+                        <h:outputText value="Nome:"/>
+                    </h:outputLabel>
+                    <h:inputText id="nome" value="#{AlunoMB.aluno.nome}" required="true" requiredMessage="Campo obrigatório!"
+                                 validatorMessage="Valor inválido.">
+                        <f:validateLength minimum="3" maximum="50"/>
+                    </h:inputText>
 
-                <h:outputLabel for="email">
-                    <h:outputText value="E-mail:"/>
-                </h:outputLabel>
-                <h:inputText id="email" value="#{AlunoMB.aluno.email}" required="true" requiredMessage="Campo obrigatório!" >
-                    <f:validator validatorId="validadorEmail" />
-                </h:inputText>
+                    <h:outputLabel for="dataNascimento">
+                        <h:outputText value="Data de Nascimento"/>
+                    </h:outputLabel>
+                    <h:inputText id="dataNascimento" required="true" requiredMessage="Campo obrigatório!"
+                                 value="#{AlunoMB.aluno.dataNascimento}" >
+                        <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
+                    </h:inputText>
 
-                <h:outputLabel for="matricula">
-                    <h:outputText value="Matricula:"/>
-                </h:outputLabel>
-                <h:inputText id="matricula" value="#{AlunoMB.aluno.matricula}" required="true" requiredMessage="Campo obrigatório!"
-                             validatorMessage="Valor inválido.">
-                    <f:validateRegex pattern="(\w{7}-\w{6})" />
-                </h:inputText>
+                    <h:outputLabel for="email">
+                        <h:outputText value="E-mail:"/>
+                    </h:outputLabel>
+                    <h:inputText id="email" value="#{AlunoMB.aluno.email}" required="true" requiredMessage="Campo obrigatório!" >
+                        <f:validator validatorId="validadorEmail" />
+                    </h:inputText>
 
-                <h:outputLabel for="turma">
-                    <h:outputText value="Turma"/>
-                </h:outputLabel>
-                <h:selectOneMenu id="turma" value="#{AlunoMB.aluno.turma}" converter="generic" required="true" requiredMessage="Campo obrigatório!">  
-                    <f:selectItem itemLabel="Selecione" itemValue=""/>
-                    <f:selectItems value="#{TurmaMB.turmaList}" var="turma"
-                                   itemLabel="#{turma.codigo}" itemValue="#{turma}" />
-                </h:selectOneMenu>
-                
-                <h:outputLabel for="orientador">
-                    <h:outputText value="Orientador"/>
-                </h:outputLabel>
-                <h:selectOneMenu id="orientador" value="#{AlunoMB.aluno.orientador}" converter="generic" required="true" requiredMessage="Campo obrigatório!">  
-                    <f:selectItem itemLabel="Selecione" itemValue=""/>
-                    <f:selectItems value="#{ProfessorMB.professorList}" var="orientador" 
-                                   itemLabel="#{orientador.nome}" itemValue="#{orientador}"  />
-                </h:selectOneMenu>
+                    <h:outputLabel for="matricula">
+                        <h:outputText value="Matricula:"/>
+                    </h:outputLabel>
+                    <h:inputText id="matricula" value="#{AlunoMB.aluno.matricula}" required="true" requiredMessage="Campo obrigatório!"
+                                 validatorMessage="Valor inválido.">
+                        <f:validateRegex pattern="(\w{7}-\w{6})" />
+                    </h:inputText>
 
-                <h:outputLabel for="status">
-                    <h:outputText value="Status:"/>
-                </h:outputLabel>
-                <h:selectOneMenu id="status" value="#{AlunoMB.aluno.status}" required="true" requiredMessage="Campo obrigatório!">
-                    <f:selectItem itemLabel="Selecione" itemValue=""/>
-                    <f:selectItem itemLabel="MATRICULADO" itemValue="1"/>  
-                    <f:selectItem itemLabel="DESISTENTE" itemValue="2"/>
-                    <f:selectItem itemLabel="GRADUADO" itemValue="3"/>  
-                </h:selectOneMenu>
+                    <h:outputLabel for="turma">
+                        <h:outputText value="Turma"/>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="turma" value="#{AlunoMB.aluno.turma}" converter="generic" required="true" requiredMessage="Campo obrigatório!">  
+                        <f:selectItem itemLabel="Selecione" itemValue=""/>
+                        <f:selectItems value="#{TurmaMB.turmaList}" var="turma"
+                                       itemLabel="#{turma.codigo}" itemValue="#{turma}" />
+                    </h:selectOneMenu>
 
-                <h:commandButton id="register" styleClass="button" 
-                                 action="#{AlunoMB.salva()}"
-                                 value="Adicionar"
-                                 />
-                <h:commandLink /> 
-            </h:panelGrid>
-        </h:form>
+                    <h:outputLabel for="orientador">
+                        <h:outputText value="Orientador"/>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="orientador" value="#{AlunoMB.aluno.orientador}" converter="generic" required="true" requiredMessage="Campo obrigatório!">  
+                        <f:selectItem itemLabel="Selecione" itemValue=""/>
+                        <f:selectItems value="#{ProfessorMB.professorList}" var="orientador" 
+                                       itemLabel="#{orientador.nome}" itemValue="#{orientador}"  />
+                    </h:selectOneMenu>
+
+                    <h:outputLabel for="status">
+                        <h:outputText value="Status:"/>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="status" value="#{AlunoMB.aluno.status}" required="true" requiredMessage="Campo obrigatório!">
+                        <f:selectItem itemLabel="Selecione" itemValue=""/>
+                        <f:selectItem itemLabel="MATRICULADO" itemValue="1"/>  
+                        <f:selectItem itemLabel="DESISTENTE" itemValue="2"/>
+                        <f:selectItem itemLabel="GRADUADO" itemValue="3"/>  
+                    </h:selectOneMenu>
+
+                    <h:commandButton id="register" styleClass="button" 
+                                     action="#{AlunoMB.salva()}"
+                                     value="Adicionar"
+                                     />
+                    <h:commandButton styleClass="button" action="#{TCCMB.listarTCC}" value="Cancelar" />
+                </h:panelGrid>
+            </h:form>
+        </h:panelGroup>
     </h:body>
 </html>

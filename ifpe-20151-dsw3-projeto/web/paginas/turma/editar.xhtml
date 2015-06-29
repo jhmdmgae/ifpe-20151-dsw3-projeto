@@ -9,42 +9,51 @@
         <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
-        <h:form id="registerForm" styleClass="smart-green">
-            <h3>Alterar dados <span>Modificar os dados do Turma</span></h3>
+        <h:panelGroup id="leftcol" layout="block">
+            <h:form>
+                <h3><h:outputText value="Menu" /></h3>
+                <br/>
+                <h:commandLink action="#{TurmaMB.listarTurma}" value="Voltar"/>
 
-            <h:messages id="turmaMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+            </h:form>
+        </h:panelGroup>
+        <h:panelGroup id="rightcol" layout="block">
+            <h:form id="registerForm" styleClass="smart-green">
+                <h3>Alterar dados</h3>
 
-            <h:panelGrid columns="2" styleClass="formPanel">
-                <h:outputLabel for="ano">
-                    <h:outputText value="Ano:"/>
-                </h:outputLabel>
-                <h:inputText id="ano" value="#{TurmaMB.turma.ano}" required="true" 
-                             validatorMessage="Valor inválido.">
-                    <f:validateLength minimum="4" maximum="4"/>
-                </h:inputText>
-                
-                <h:outputLabel for="codigo">
-                    <h:outputText value="Codigo:"/>
-                </h:outputLabel>
-                <h:inputText id="codigo" value="#{TurmaMB.turma.codigo}" required="true" 
-                             validatorMessage="Valor inválido.">
-                    <f:validateLength minimum="5" maximum="5"/>
-                </h:inputText>
-                
-                <h:outputLabel for="semestre">
-                    <h:outputText value="Semestre:"/>
-                </h:outputLabel>
-                <h:inputText id="semestre" value="#{TurmaMB.turma.semestre}" required="true" 
-                             validatorMessage="Valor inválido.">
-                    <f:validateLength minimum="1" maximum="1"/>
-                </h:inputText>
+                <h:messages id="turmaMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
 
-                <h:commandButton id="register" styleClass="button" 
-                                 action="#{TurmaMB.editar()}"
-                                 value="Alterar"
-                                 />
-                <h:commandLink /> 
-            </h:panelGrid>
-        </h:form>
+                <h:panelGrid columns="2" styleClass="formPanel">
+                    <h:outputLabel for="ano">
+                        <h:outputText value="Ano:"/>
+                    </h:outputLabel>
+                    <h:inputText id="ano" value="#{TurmaMB.turma.ano}" required="true" 
+                                 validatorMessage="Valor inválido.">
+                        <f:validateLength minimum="4" maximum="4"/>
+                    </h:inputText>
+
+                    <h:outputLabel for="codigo">
+                        <h:outputText value="Codigo:"/>
+                    </h:outputLabel>
+                    <h:inputText id="codigo" value="#{TurmaMB.turma.codigo}" required="true" 
+                                 validatorMessage="Valor inválido.">
+                        <f:validateLength minimum="5" maximum="5"/>
+                    </h:inputText>
+
+                    <h:outputLabel for="semestre">
+                        <h:outputText value="Semestre:"/>
+                    </h:outputLabel>
+                    <h:inputText id="semestre" value="#{TurmaMB.turma.semestre}" required="true" 
+                                 validatorMessage="Valor inválido.">
+                        <f:validateLength minimum="1" maximum="1"/>
+                    </h:inputText>
+
+                    <h:commandButton id="register" styleClass="button" 
+                                     action="#{TurmaMB.editar()}"
+                                     value="Alterar"
+                                     />
+                </h:panelGrid>
+            </h:form>
+        </h:panelGroup>
     </h:body>
 </html>

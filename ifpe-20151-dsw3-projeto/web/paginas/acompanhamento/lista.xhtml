@@ -10,81 +10,85 @@
     </h:head>
     <h:body>
 
-        <h:form>
-            <h1><h:outputText value="Menu" /></h1>
-            
-            <br/>
-            <h:commandLink action="#{AcompanhamentoMB.listarAcompanhamento}" value="Acompanhamanto"/>
-            
-            <br/>
-            <h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/>
-            
-            <br/>
-            <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Professor"/>
-            
-            <br/>
-            <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/>
-            
-            <br/>
-            <h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/>
+        <h:panelGroup id="leftcol" layout="block">
+            <h:form>
+                <h2><h:outputText value="Menu" /></h2>
 
-        </h:form>
+                <br/>
+                <h:commandLink action="#{AcompanhamentoMB.listarAcompanhamento}" value="Acompanhamanto"/>
 
-        <h3>Listagem de Acompanhamentos</h3>
+                <br/>
+                <h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/>
 
-        <h:form>
-            <h:messages id="acompanhamentoMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
-            <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{AcompanhamentoMB.acompanhamentoList}" var="acompanhamentoReturn">
-                <h:column>
-                    <f:facet name="header">
-                        <h:commandLink action="#{AcompanhamentoMB.novoAcompanhamento}" value="Novo"/>
-                    </f:facet>
-                    <h:panelGroup>
-                        <h:commandButton action="edit_acompanhamento" value="Editar">
-                            <f:setPropertyActionListener target="#{AcompanhamentoMB.acompanhamento}"
-                                                         value="#{acompanhamentoReturn}" />
-                        </h:commandButton>
-                        <h:commandButton onclick="if (!confirm('Tem certeza que deseja excluir o acompanhamento do #{acompanhamentoReturn.tcc.titulo}? ')) return false;" action="#{AcompanhamentoMB.remove(acompanhamentoReturn)}" value="Apagar">
-                        </h:commandButton>
-                    </h:panelGroup>
-                </h:column>
+                <br/>
+                <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Professor"/>
 
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Nome"/>
-                    </f:facet>
-                    <h:outputText value="#{acompanhamentoReturn.tcc.titulo}"/>
-                </h:column>
+                <br/>
+                <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/>
 
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Data"/>
-                    </f:facet>
-                    <h:outputText value="#{acompanhamentoReturn.data}">
-                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
-                    </h:outputText>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Horário Início"/>
-                    </f:facet>
-                    <h:outputText value="#{acompanhamentoReturn.horarioInicio}">
-                        <f:convertDateTime type="time" dateStyle="short" pattern="HH:mm" />
-                    </h:outputText>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Horário Término"/>
-                    </f:facet>
-                    <h:outputText value="#{acompanhamentoReturn.horarioTermino}">
-                        <f:convertDateTime type="time" dateStyle="short" pattern="HH:mm" />
-                    </h:outputText>
-                </h:column>
+                <br/>
+                <h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/>
 
-            </h:dataTable>
-            
-        </h:form>
+            </h:form>
+        </h:panelGroup>
+        <h:panelGroup id="rightcol" layout="block">
+
+            <h3>Listagem de Acompanhamentos</h3>
+
+            <h:form>
+                <h:messages id="acompanhamentoMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
+                <h:dataTable id="tabelaDados" styleClass="tableData" border="1" value="#{AcompanhamentoMB.acompanhamentoList}" var="acompanhamentoReturn">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:commandLink action="#{AcompanhamentoMB.novoAcompanhamento}" value="Novo"/>
+                        </f:facet>
+                        <h:panelGroup>
+                            <h:commandButton action="edit_acompanhamento" value="Editar">
+                                <f:setPropertyActionListener target="#{AcompanhamentoMB.acompanhamento}"
+                                                             value="#{acompanhamentoReturn}" />
+                            </h:commandButton>
+                            <h:commandButton onclick="if (!confirm('Tem certeza que deseja excluir o acompanhamento do #{acompanhamentoReturn.tcc.titulo}? '))
+                                        return false;" action="#{AcompanhamentoMB.remove(acompanhamentoReturn)}" value="Apagar">
+                            </h:commandButton>
+                        </h:panelGroup>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nome"/>
+                        </f:facet>
+                        <h:outputText value="#{acompanhamentoReturn.tcc.titulo}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Data"/>
+                        </f:facet>
+                        <h:outputText value="#{acompanhamentoReturn.data}">
+                            <f:convertDateTime type="date" pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Horário Início"/>
+                        </f:facet>
+                        <h:outputText value="#{acompanhamentoReturn.horarioInicio}">
+                            <f:convertDateTime type="time" dateStyle="short" pattern="HH:mm" />
+                        </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Horário Término"/>
+                        </f:facet>
+                        <h:outputText value="#{acompanhamentoReturn.horarioTermino}">
+                            <f:convertDateTime type="time" dateStyle="short" pattern="HH:mm" />
+                        </h:outputText>
+                    </h:column>
+
+                </h:dataTable>
+            </h:form>
+        </h:panelGroup>
     </h:body>
 </html>

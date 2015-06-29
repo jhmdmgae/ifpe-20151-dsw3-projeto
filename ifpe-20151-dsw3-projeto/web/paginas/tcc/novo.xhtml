@@ -10,157 +10,168 @@
     </h:head>
     <h:body>
 
-        <h:form id="registerForm" styleClass="smart-green">
+        <h:panelGroup id="leftcol" layout="block">
+            <h:form>
+                <h3><h:outputText value="Menu" /></h3>
+                <br/>
+                <h:commandLink action="#{TCCMB.listarTCC}" value="Voltar"/>
 
-            <h3>Cadastrar TCC <span>Informar dados do TCC</span></h3>
+            </h:form>
+        </h:panelGroup>
+        <h:panelGroup id="rightcol" layout="block">
 
-            <h:messages id="tccMessages" showDetail="true" layout="list" styleClass="errorMessages"/>
+            <h3>Cadastrar TCC</h3>
 
-            <h:panelGrid columns="2" styleClass="formPanel">
+            <h:form id="registerForm" styleClass="smart-green">
 
-                <h:outputLabel for="titulo">
-                    <h:outputText value="Título:"/>
-                </h:outputLabel>
-                <h:inputText id="titulo" value="#{TCCMB.TCC.titulo}" required="true" 
-                             validatorMessage="Valor inválido.">
-                    <f:validateLength minimum="3" maximum="50"/>
-                </h:inputText>
-                
-                <h:outputLabel for="status">
-                    <h:outputText value="Status:"/>
-                </h:outputLabel>
-                <h:selectOneMenu id="status" value="#{TCCMB.TCC.status}" required="true" requiredMessage="Campo obrigatório!">
-                    <f:selectItem itemLabel="Selecione" itemValue=""/>
-                    <f:selectItem itemLabel="ATIVO" itemValue="1"/>  
-                    <f:selectItem itemLabel="INATIVO" itemValue="2"/>
-                    <f:selectItem itemLabel="PUBLICADO" itemValue="3"/>  
-                </h:selectOneMenu>
-                
-                <h:outputLabel for="aluno">
-                    <h:outputText value="Aluno"/>
-                </h:outputLabel>
-                <h:selectOneMenu value="#{TCCMB.TCC.aluno}" converter="generic" required="true">  
-                    <f:selectItem itemLabel="Selecione" itemValue=""/>
-                    <f:selectItems value="#{AlunoMB.alunoList}" var="aluno" 
-                                   itemLabel="#{aluno.nome}" itemValue="#{aluno}"  />
-                </h:selectOneMenu>
+                <h:messages id="tccMessages" showDetail="true" layout="list" styleClass="errorMessages"/>
 
-                <h:outputLabel for="dataInicio">
-                    <h:outputText value="Data de Inicio"/>
-                </h:outputLabel>
-                <h:inputText id="dataInicio" required="true"
-                             value="#{TCCMB.TCC.dataInicio}" >
-                    <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
-                </h:inputText>
-                
-                <h:outputLabel for="resumo">
-                    <h:outputText value="Resumo"/>
-                </h:outputLabel>
-                <h:inputTextarea value="#{TCCMB.TCC.resumo}" cols="30" rows="10" />
-                
-                <h:outputLabel for="grande_area">
-                    <h:outputText value="Grande Area"/>
-                </h:outputLabel>
-                <h:selectOneMenu value="#{TCCMB.area}" converter="generic" >  
-                    <f:selectItem itemLabel="Selecione" noSelectionOption="true" />
-                    <f:selectItems value="#{TCCMB.grandeAreaList}" 
-                                   var="grande_area" 
-                                   itemLabel="#{grande_area.titulo}" 
-                                   itemValue="#{grande_area}" />
-                    <f:ajax render="area" event="change" listener="#{TCCMB.getAreaList(TCCMB.area.grandeArea)}"/>
-                </h:selectOneMenu>
-                
-                <h:outputLabel for="area">
-                    <h:outputText value="Area"/>
-                </h:outputLabel>
-                <h:selectOneMenu id="area" value="#{TCCMB.area}" converter="generic" >
-                    <f:selectItem itemLabel="Selecione" noSelectionOption="true" />
-                    <f:selectItems value="#{TCCMB.getAreaList(TCCMB.area.grandeArea)}" 
-                                   var="area" 
-                                   itemLabel="#{area.titulo}" 
-                                   itemValue="#{area}" />
-                    <f:ajax render="subarea" event="change" listener="#{TCCMB.getSubAreaList(TCCMB.area.grandeArea,TCCMB.area.area)}"/>
-                </h:selectOneMenu>
-                
-                <h:outputLabel for="subarea">
-                    <h:outputText value="Sub Area"/>
-                </h:outputLabel>
-                <h:selectOneMenu id="subarea" value="#{TCCMB.area}" converter="generic" >
-                    <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/>
-                    <f:selectItems value="#{TCCMB.getSubAreaList(TCCMB.area.grandeArea,TCCMB.area.area)}" 
-                                   var="subarea" 
-                                   itemLabel="#{subarea.titulo}" 
-                                   itemValue="#{subarea}" />
-                    <f:ajax render="areaesp" event="change" listener="#{TCCMB.getAreaEspList(TCCMB.area.grandeArea, TCCMB.area.area, TCCMB.area.subArea)}"/>
-                </h:selectOneMenu>
-                
-                <h:outputLabel for="areaesp">
-                    <h:outputText value="Area Específica"/>
-                </h:outputLabel>
-                <h:selectOneMenu id="areaesp" value="#{TCCMB.area}" converter="generic" required="true" >
-                    <f:selectItem itemLabel="Selecione" itemValue=""/>
-                    <f:selectItems value="#{TCCMB.getAreaEspList(TCCMB.area.grandeArea, TCCMB.area.area, TCCMB.area.subArea)}" 
-                                   var="areaesp" 
-                                   itemLabel="#{areaesp.titulo}" 
-                                   itemValue="#{areaesp}" />
-                </h:selectOneMenu>
-                
-                <h:outputLabel for="avalexter">
-                    <h:outputText value="Avaliador externo:"/>
-                </h:outputLabel>
-                <h:inputText id="avalexter" value="#{TCCMB.TCC.avaliadorExterno}"
-                             validatorMessage="Valor inválido.">
-                    <f:validateLength minimum="3" maximum="50"/>
-                </h:inputText>
-                
-                <h:outputLabel for="avalint">
-                    <h:outputText value="Avaliador interno:"/>
-                </h:outputLabel>
-                <h:inputText id="avalint" value="#{TCCMB.TCC.avaliadorInterno}" 
-                             validatorMessage="Valor inválido.">
-                    <f:validateLength minimum="3" maximum="50"/>
-                </h:inputText>
-                
-                <h:outputLabel for="dataDefesa">
-                    <h:outputText value="Data da Defesa"/>
-                </h:outputLabel>
-                <h:inputText id="dataDefesa"
-                             value="#{TCCMB.TCC.dataDefesa}" >
-                    <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
-                </h:inputText>
-                
-                <h:outputLabel for="imprenta">
-                    <h:outputText value="Imprenta:"/>
-                </h:outputLabel>
-                <h:inputText id="imprenta" value="#{TCCMB.TCC.imprenta}"
-                             validatorMessage="Valor inválido.">
-                    <f:validateLength minimum="3" maximum="50"/>
-                </h:inputText>
-                
-                <h:outputLabel for="nota">
-                    <h:outputText value="Nota:"/>
-                </h:outputLabel>
-                <h:inputText id="nota" value="#{TCCMB.TCC.nota}" 
-                             validatorMessage="Valor inválido.">
-                    <f:validateDoubleRange minimum="00.00" maximum="10.00" />
-                </h:inputText>
-                
-                <h:outputLabel for="statusdesafa">
-                    <h:outputText value="Status da defesa:"/>
-                </h:outputLabel>
-                <h:selectOneMenu id="statusdefesa" value="#{TCCMB.TCC.status}" >
-                    <f:selectItem itemLabel="Selecione" itemValue=""/>
-                    <f:selectItem itemLabel="APROVADA" itemValue="1"/>  
-                    <f:selectItem itemLabel="REPROVADA" itemValue="2"/>
-                    <f:selectItem itemLabel="ADIADA" itemValue="2"/>
-                </h:selectOneMenu>
+                <h:panelGrid columns="2" styleClass="formPanel">
 
-                <h:commandButton id="register" styleClass="button" 
-                                 action="#{TCCMB.salva()}"
-                                 value="Adicionar"
-                                 />
-                <h:commandLink /> 
-            </h:panelGrid>
-        </h:form>
+                    <h:outputLabel for="titulo">
+                        <h:outputText value="Título:"/>
+                    </h:outputLabel>
+                    <h:inputText id="titulo" value="#{TCCMB.TCC.titulo}" required="true" 
+                                 validatorMessage="Valor inválido.">
+                        <f:validateLength minimum="3" maximum="50"/>
+                    </h:inputText>
+
+                    <h:outputLabel for="status">
+                        <h:outputText value="Status:"/>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="status" value="#{TCCMB.TCC.status}" required="true" requiredMessage="Campo obrigatório!">
+                        <f:selectItem itemLabel="Selecione" itemValue=""/>
+                        <f:selectItem itemLabel="ATIVO" itemValue="1"/>  
+                        <f:selectItem itemLabel="INATIVO" itemValue="2"/>
+                        <f:selectItem itemLabel="PUBLICADO" itemValue="3"/>  
+                    </h:selectOneMenu>
+
+                    <h:outputLabel for="aluno">
+                        <h:outputText value="Aluno"/>
+                    </h:outputLabel>
+                    <h:selectOneMenu value="#{TCCMB.TCC.aluno}" converter="generic" required="true">  
+                        <f:selectItem itemLabel="Selecione" itemValue=""/>
+                        <f:selectItems value="#{AlunoMB.alunoList}" var="aluno" 
+                                       itemLabel="#{aluno.nome}" itemValue="#{aluno}"  />
+                    </h:selectOneMenu>
+
+                    <h:outputLabel for="dataInicio">
+                        <h:outputText value="Data de Inicio"/>
+                    </h:outputLabel>
+                    <h:inputText id="dataInicio" required="true"
+                                 value="#{TCCMB.TCC.dataInicio}" >
+                        <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
+                    </h:inputText>
+
+                    <h:outputLabel for="resumo">
+                        <h:outputText value="Resumo"/>
+                    </h:outputLabel>
+                    <h:inputTextarea value="#{TCCMB.TCC.resumo}" cols="30" rows="10" />
+
+                    <h:outputLabel for="grande_area">
+                        <h:outputText value="Grande Area"/>
+                    </h:outputLabel>
+                    <h:selectOneMenu value="#{TCCMB.area}" converter="generic" >  
+                        <f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+                        <f:selectItems value="#{TCCMB.grandeAreaList}" 
+                                       var="grande_area" 
+                                       itemLabel="#{grande_area.titulo}" 
+                                       itemValue="#{grande_area}" />
+                        <f:ajax render="area" event="change" listener="#{TCCMB.getAreaList(TCCMB.area.grandeArea)}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel for="area">
+                        <h:outputText value="Area"/>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="area" value="#{TCCMB.area}" converter="generic" >
+                        <f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+                        <f:selectItems value="#{TCCMB.getAreaList(TCCMB.area.grandeArea)}" 
+                                       var="area" 
+                                       itemLabel="#{area.titulo}" 
+                                       itemValue="#{area}" />
+                        <f:ajax render="subarea" event="change" listener="#{TCCMB.getSubAreaList(TCCMB.area.grandeArea,TCCMB.area.area)}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel for="subarea">
+                        <h:outputText value="Sub Area"/>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="subarea" value="#{TCCMB.area}" converter="generic" >
+                        <f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{TCCMB.getSubAreaList(TCCMB.area.grandeArea,TCCMB.area.area)}" 
+                                       var="subarea" 
+                                       itemLabel="#{subarea.titulo}" 
+                                       itemValue="#{subarea}" />
+                        <f:ajax render="areaesp" event="change" listener="#{TCCMB.getAreaEspList(TCCMB.area.grandeArea, TCCMB.area.area, TCCMB.area.subArea)}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel for="areaesp">
+                        <h:outputText value="Area Específica"/>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="areaesp" value="#{TCCMB.area}" converter="generic" required="true" >
+                        <f:selectItem itemLabel="Selecione" itemValue=""/>
+                        <f:selectItems value="#{TCCMB.getAreaEspList(TCCMB.area.grandeArea, TCCMB.area.area, TCCMB.area.subArea)}" 
+                                       var="areaesp" 
+                                       itemLabel="#{areaesp.titulo}" 
+                                       itemValue="#{areaesp}" />
+                    </h:selectOneMenu>
+
+                    <h:outputLabel for="avalexter">
+                        <h:outputText value="Avaliador externo:"/>
+                    </h:outputLabel>
+                    <h:inputText id="avalexter" value="#{TCCMB.TCC.avaliadorExterno}"
+                                 validatorMessage="Valor inválido.">
+                        <f:validateLength minimum="3" maximum="50"/>
+                    </h:inputText>
+
+                    <h:outputLabel for="avalint">
+                        <h:outputText value="Avaliador interno:"/>
+                    </h:outputLabel>
+                    <h:inputText id="avalint" value="#{TCCMB.TCC.avaliadorInterno}" 
+                                 validatorMessage="Valor inválido.">
+                        <f:validateLength minimum="3" maximum="50"/>
+                    </h:inputText>
+
+                    <h:outputLabel for="dataDefesa">
+                        <h:outputText value="Data da Defesa"/>
+                    </h:outputLabel>
+                    <h:inputText id="dataDefesa"
+                                 value="#{TCCMB.TCC.dataDefesa}" >
+                        <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
+                    </h:inputText>
+
+                    <h:outputLabel for="imprenta">
+                        <h:outputText value="Imprenta:"/>
+                    </h:outputLabel>
+                    <h:inputText id="imprenta" value="#{TCCMB.TCC.imprenta}"
+                                 validatorMessage="Valor inválido.">
+                        <f:validateLength minimum="3" maximum="50"/>
+                    </h:inputText>
+
+                    <h:outputLabel for="nota">
+                        <h:outputText value="Nota:"/>
+                    </h:outputLabel>
+                    <h:inputText id="nota" value="#{TCCMB.TCC.nota}" 
+                                 validatorMessage="Valor inválido.">
+                        <f:validateDoubleRange minimum="00.00" maximum="10.00" />
+                    </h:inputText>
+
+                    <h:outputLabel for="statusdesafa">
+                        <h:outputText value="Status da defesa:"/>
+                    </h:outputLabel>
+                    <h:selectOneMenu id="statusdefesa" value="#{TCCMB.TCC.status}" >
+                        <f:selectItem itemLabel="Selecione" itemValue=""/>
+                        <f:selectItem itemLabel="APROVADA" itemValue="1"/>  
+                        <f:selectItem itemLabel="REPROVADA" itemValue="2"/>
+                        <f:selectItem itemLabel="ADIADA" itemValue="2"/>
+                    </h:selectOneMenu>
+
+                    <h:commandButton id="register" styleClass="button" 
+                                     action="#{TCCMB.salva()}"
+                                     value="Adicionar"
+                                     />
+                    <h:commandButton styleClass="button" action="#{AlunoControle.listarAluno}" value="Cancelar" />
+                </h:panelGrid>
+            </h:form>
+        </h:panelGroup>
     </h:body>
 </html>
