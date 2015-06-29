@@ -182,4 +182,28 @@ public class TCC implements Serializable, SampleEntity  {
         this.dataInicio = dataInicio;
     }
 
+    public double getNota() {
+        return nota;
+    }
+
+    public void setNota(double nota) {
+        this.nota = nota;
+    }
+
+    public String getAvaliadorInterno() {
+        return avaliadorInterno;
+    }
+
+    public void setAvaliadorInterno(String avaliadorInterno) {
+        this.avaliadorInterno = avaliadorInterno;
+    }
+
+    public String getAvaliadorExterno() {
+        return avaliadorExterno;
+    }
+
+    public void setAvaliadorExterno(String avaliadorExterno) {
+        this.avaliadorExterno = avaliadorExterno;
+    }
+
 }

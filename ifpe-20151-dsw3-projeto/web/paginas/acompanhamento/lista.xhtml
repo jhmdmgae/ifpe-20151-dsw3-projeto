@@ -44,7 +44,7 @@
                             <f:setPropertyActionListener target="#{AcompanhamentoMB.acompanhamento}"
                                                          value="#{acompanhamentoReturn}" />
                         </h:commandButton>
-                        <h:commandButton action="#{AcompanhamentoMB.remove(acompanhamentoReturn)}" value="-">
+                        <h:commandButton onclick="if (!confirm('Tem certeza que deseja excluir o acompanhamento do #{acompanhamentoReturn.tcc.titulo}? ')) return false;" action="#{AcompanhamentoMB.remove(acompanhamentoReturn)}" value="Apagar">
                         </h:commandButton>
                     </h:panelGroup>
                 </h:column>

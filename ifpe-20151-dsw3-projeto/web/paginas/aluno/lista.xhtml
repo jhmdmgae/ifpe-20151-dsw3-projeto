@@ -38,14 +38,13 @@
                 <h:column>
                     <f:facet name="header">
                         <h:commandLink action="#{AlunoMB.novoAluno}" value="Novo"/>
-                        <!--<h:commandButton action="tcc_novo" value="Novo"/>-->
                     </f:facet>
                     <h:panelGroup>
                         <h:commandButton action="edit_aluno" value="Editar">
                             <f:setPropertyActionListener target="#{AlunoMB.aluno}"
                                                          value="#{alunoReturn}" />
                         </h:commandButton>
-                        <h:commandButton action="#{AlunoMB.remove(alunoReturn)}" value="-">
+                        <h:commandButton onclick="if (!confirm('Tem certeza que deseja excluir o aluno #{alunoReturn.nome}? ')) return false;" action="#{AlunoMB.remove(alunoReturn)}" value="Apagar">
                         </h:commandButton>
                     </h:panelGroup>
                 </h:column>

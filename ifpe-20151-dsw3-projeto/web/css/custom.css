@@ -21,6 +21,7 @@ table {
 }
 
 table,caption {
+    width: 50%;
     margin: 0 auto;
     border-right: 1px solid #CCC;
     border-left: 1px solid #CCC;
@@ -29,6 +30,7 @@ table,caption {
 caption,th,td {
     border-left: 0;
     padding: 10px;
+    min-width: 140px;
 }
 
 caption,thead th,tfoot th,tfoot td {
@@ -83,12 +85,11 @@ tbody td+td+td+td a:active,tbody td+td+td+td a:hover,tbody td+td+td+td a:focus,t
     color: #E63C1E;
 }
 
-tbody td a[href="http://www.rodcast.com.br/"] {
+tbody td a {
     margin: 0 auto;
     display: block;
     width: 15px;
     height: 15px;
-    background: transparent url('data:image/gif;base64,R0lGODlhDwAPAIAAACEpMf///yH5BAAAAAAALAAAAAAPAA8AAAIjjA8Qer0JmYvULUOlxXEjaEndliUeA56c97TqSD5pfJnhNxYAOw%3D%3D') no-repeat;
     text-indent: -999em;
     border-bottom: 0;
 }
@@ -96,4 +97,8 @@ tbody td a[href="http://www.rodcast.com.br/"] {
 tbody a:visited:after {
     font-family: Verdana,sans-serif;
     content: "\00A0\221A";
+}
+
+input{
+        margin: 5px;
 }

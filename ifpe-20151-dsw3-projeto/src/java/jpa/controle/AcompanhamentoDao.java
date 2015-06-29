@@ -16,12 +16,12 @@ import jpa.entidades.Acompanhamento;
 import jpa.entidades.Professor;
 import jpa.entidades.TCC;
 
-public class AcompanhamentoDao  implements Serializable{
+public class AcompanhamentoDao implements Serializable {
 
     private EntityManagerFactory factory = Persistence.createEntityManagerFactory("ifpe-20151-dsw3-projetoPU2");
     private EntityManager em = factory.createEntityManager();
     private EntityTransaction et = null;
-    
+
     private final List<Acompanhamento> AcompanhamentoList = new ArrayList<Acompanhamento>();
 
     public Acompanhamento getAcompanhamento(long idAcompanhamento) {
@@ -52,7 +52,7 @@ public class AcompanhamentoDao  implements Serializable{
             return false;
         }
     }
-    
+
     public List<Acompanhamento> getAcompanhamentoList() {
         try {
             List<Acompanhamento> acompanhamentos = em.createQuery("SELECT a from Acompanhamento a").getResultList();
@@ -61,10 +61,9 @@ public class AcompanhamentoDao  implements Serializable{
             return null;
         }
     }
-    
+
     public List<Acompanhamento> getAcompanhamentoList(TCC tcc) {
         try {
-            System.out.println("----OPA-----tcc id = "+tcc.getId());
             List<Acompanhamento> acompanhamentos = em.createQuery("SELECT a from Acompanhamento a where a.tcc.id = :tcc")
                     .setParameter("tcc", tcc.getId())
                     .getResultList();
@@ -85,9 +84,11 @@ public class AcompanhamentoDao  implements Serializable{
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        } finally {
+            em.close();
         }
     }
-    
+
     public boolean alterarAcompanhamento(Acompanhamento acompanhamento) {
         try {
             et = em.getTransaction();

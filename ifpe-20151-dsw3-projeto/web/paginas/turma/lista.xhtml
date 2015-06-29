@@ -45,7 +45,7 @@
                             <f:setPropertyActionListener target="#{TurmaMB.turma}"
                                                          value="#{turmaReturn}" />
                         </h:commandButton>
-                        <h:commandButton action="#{TurmaMB.remove(turmaReturn)}" value="-">
+                        <h:commandButton onclick="if (!confirm('Tem certeza que deseja excluir esta turma? Todos os alunos dessa turma também serão excluídos')) return false;" action="#{TurmaMB.remove(turmaReturn)}" value="Apagar">
                         </h:commandButton>
                     </h:panelGroup>
                 </h:column>

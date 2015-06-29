@@ -5,7 +5,8 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
-        <link href="#{request.contextPath}/register.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
         <h:form id="registerForm" styleClass="smart-green">
@@ -18,8 +19,7 @@
                 <h:outputLabel for="tcc">
                     <h:outputText value="TCC"/>
                 </h:outputLabel>
-                <h:selectOneMenu id="tcc" value="#{AcompanhamentoMB.acompanhamento.tcc}" converter="generic">  
-                    
+                <h:selectOneMenu id="tcc" value="#{AcompanhamentoMB.acompanhamento.tcc}" converter="generic">
                     <f:selectItems value="#{TCCMB.TCCList}" var="tcc"
                                    itemLabel="#{tcc.titulo}" itemValue="#{tcc}" />
                 </h:selectOneMenu>

@@ -28,7 +28,7 @@ public class Acompanhamento implements Serializable, SampleEntity  {
     @Column(name = "ID")
     private Long id;
     
-    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "ID_TCC", referencedColumnName = "ID")
     private TCC tcc;
     

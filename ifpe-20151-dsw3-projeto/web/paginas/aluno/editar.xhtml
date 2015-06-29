@@ -5,7 +5,8 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
-        <link href="#{request.contextPath}/register.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
         <h:form id="registerForm" styleClass="smart-green">
@@ -61,6 +62,16 @@
                 <h:selectOneMenu id="orientador" value="#{AlunoMB.aluno.orientador}" converter="generic">
                     <f:selectItems value="#{ProfessorMB.professorList}" var="orientador" 
                                    itemLabel="#{orientador.nome}" itemValue="#{orientador}"  />
+                </h:selectOneMenu>
+                
+                <h:outputLabel for="status">
+                    <h:outputText value="Status:"/>
+                </h:outputLabel>
+                <h:selectOneMenu id="status" value="#{AlunoMB.aluno.status}" required="true" requiredMessage="Campo obrigatório!">
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItem itemLabel="MATRICULADO" itemValue="1"/>  
+                    <f:selectItem itemLabel="DESISTENTE" itemValue="2"/>
+                    <f:selectItem itemLabel="GRADUADO" itemValue="3"/>  
                 </h:selectOneMenu>
 
                 <h:commandButton id="register" styleClass="button" 

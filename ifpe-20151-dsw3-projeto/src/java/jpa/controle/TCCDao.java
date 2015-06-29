@@ -120,8 +120,10 @@ public class TCCDao implements Serializable {
             et.begin();
             AcompanhamentoMB acomp = new AcompanhamentoMB();
             List<Acompanhamento> acompanhamentoList = acomp.getAcompanhamentoList(tcc);
-            for(Acompanhamento acompanhamento : acompanhamentoList){
-                acomp.remove(acompanhamento);
+            if (acompanhamentoList.size() != 0) {
+                for (Acompanhamento acompanhamento : acompanhamentoList) {
+                    acomp.remove(acompanhamento);
+                }
             }
             em.remove(tcc);
             et.commit();
@@ -129,6 +131,8 @@ public class TCCDao implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        } finally {
+            em.close();
         }
     }
 

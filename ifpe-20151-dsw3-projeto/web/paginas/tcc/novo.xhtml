@@ -5,8 +5,8 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>TCC Cadastro</title>
-        <!--<link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />-->
-<!--        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />-->
+        <link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
 
@@ -26,6 +26,16 @@
                     <f:validateLength minimum="3" maximum="50"/>
                 </h:inputText>
                 
+                <h:outputLabel for="status">
+                    <h:outputText value="Status:"/>
+                </h:outputLabel>
+                <h:selectOneMenu id="status" value="#{TCCMB.TCC.status}" required="true" requiredMessage="Campo obrigatório!">
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItem itemLabel="ATIVO" itemValue="1"/>  
+                    <f:selectItem itemLabel="INATIVO" itemValue="2"/>
+                    <f:selectItem itemLabel="PUBLICADO" itemValue="3"/>  
+                </h:selectOneMenu>
+                
                 <h:outputLabel for="aluno">
                     <h:outputText value="Aluno"/>
                 </h:outputLabel>
@@ -34,14 +44,6 @@
                     <f:selectItems value="#{AlunoMB.alunoList}" var="aluno" 
                                    itemLabel="#{aluno.nome}" itemValue="#{aluno}"  />
                 </h:selectOneMenu>
-
-                <h:outputLabel for="dataDefesa">
-                    <h:outputText value="Data da Defesa"/>
-                </h:outputLabel>
-                <h:inputText id="dataDefesa"
-                             value="#{TCCMB.TCC.dataDefesa}" >
-                    <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
-                </h:inputText>
 
                 <h:outputLabel for="dataInicio">
                     <h:outputText value="Data de Inicio"/>
@@ -55,14 +57,6 @@
                     <h:outputText value="Resumo"/>
                 </h:outputLabel>
                 <h:inputTextarea value="#{TCCMB.TCC.resumo}" cols="30" rows="10" />
-                
-                <h:outputLabel for="imprenta">
-                    <h:outputText value="Imprenta:"/>
-                </h:outputLabel>
-                <h:inputText id="imprenta" value="#{TCCMB.TCC.imprenta}"
-                             validatorMessage="Valor inválido.">
-                    <f:validateLength minimum="3" maximum="50"/>
-                </h:inputText>
                 
                 <h:outputLabel for="grande_area">
                     <h:outputText value="Grande Area"/>
@@ -109,6 +103,56 @@
                                    var="areaesp" 
                                    itemLabel="#{areaesp.titulo}" 
                                    itemValue="#{areaesp}" />
+                </h:selectOneMenu>
+                
+                <h:outputLabel for="avalexter">
+                    <h:outputText value="Avaliador externo:"/>
+                </h:outputLabel>
+                <h:inputText id="avalexter" value="#{TCCMB.TCC.avaliadorExterno}"
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+                
+                <h:outputLabel for="avalint">
+                    <h:outputText value="Avaliador interno:"/>
+                </h:outputLabel>
+                <h:inputText id="avalint" value="#{TCCMB.TCC.avaliadorInterno}" 
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+                
+                <h:outputLabel for="dataDefesa">
+                    <h:outputText value="Data da Defesa"/>
+                </h:outputLabel>
+                <h:inputText id="dataDefesa"
+                             value="#{TCCMB.TCC.dataDefesa}" >
+                    <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
+                </h:inputText>
+                
+                <h:outputLabel for="imprenta">
+                    <h:outputText value="Imprenta:"/>
+                </h:outputLabel>
+                <h:inputText id="imprenta" value="#{TCCMB.TCC.imprenta}"
+                             validatorMessage="Valor inválido.">
+                    <f:validateLength minimum="3" maximum="50"/>
+                </h:inputText>
+                
+                <h:outputLabel for="nota">
+                    <h:outputText value="Nota:"/>
+                </h:outputLabel>
+                <h:inputText id="nota" value="#{TCCMB.TCC.nota}" 
+                             validatorMessage="Valor inválido.">
+                    <f:validateDoubleRange minimum="00.00" maximum="10.00" />
+                </h:inputText>
+                
+                <h:outputLabel for="statusdesafa">
+                    <h:outputText value="Status da defesa:"/>
+                </h:outputLabel>
+                <h:selectOneMenu id="statusdefesa" value="#{TCCMB.TCC.status}" >
+                    <f:selectItem itemLabel="Selecione" itemValue=""/>
+                    <f:selectItem itemLabel="APROVADA" itemValue="1"/>  
+                    <f:selectItem itemLabel="REPROVADA" itemValue="2"/>
+                    <f:selectItem itemLabel="ADIADA" itemValue="2"/>
                 </h:selectOneMenu>
 
                 <h:commandButton id="register" styleClass="button" 

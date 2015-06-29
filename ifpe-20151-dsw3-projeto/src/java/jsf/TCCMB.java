@@ -84,14 +84,6 @@ public class TCCMB implements Serializable {
     }
 
     public String remove(TCC tcc) {
-//        List<Acompanhamento> acompanhamentoList = acompanhamentoMB.getAcompanhamentoList(tcc);
-//        if (acompanhamentos.size() != 0) {
-//            for (Acompanhamento acomp : acompanhamentos) {
-//                System.out.println("----------acomp id = " + acomp.getId());
-//                acompanhamentoMB.remove(acomp);
-//            }
-//        }
-        System.out.println("----------tcc id = " + tcc.getId());
         tccDAO.deletarTCC(tcc);
         return "main";
     }
