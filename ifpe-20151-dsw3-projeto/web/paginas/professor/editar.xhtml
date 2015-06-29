@@ -20,9 +20,7 @@
             <h:form id="registerForm" styleClass="smart-green">
                 <h3>Alterar dados</h3>
 
-                <h:messages id="tccMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
-
-                <h:panelGrid columns="2" styleClass="formPanel">
+                <h:panelGrid columns="3" styleClass="formPanel">
                     <h:outputLabel for="nome">
                         <h:outputText value="Nome:"/>
                     </h:outputLabel>
@@ -30,38 +28,43 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateLength minimum="3" maximum="50"/>
                     </h:inputText>
+                    <h:message for="nome" style="color:red" />
 
                     <h:outputLabel for="dataNascimento">
                         <h:outputText value="Data de Nascimento:"/>
                     </h:outputLabel>
                     <h:inputText id="dataNascimento" required="true"
                                  value="#{ProfessorMB.professor.dataNascimento}">
-                        <f:convertDateTime pattern="dd/MM/yyyy"/> 
+                        <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
                     </h:inputText>
+                    <h:message for="dataNascimento" style="color:red" />
 
                     <h:outputLabel for="email">
                         <h:outputText value="E-mail:"/>
                     </h:outputLabel>
                     <h:inputText id="email" value="#{ProfessorMB.professor.email}" required="true" 
                                  validatorMessage="Valor inválido.">
-                        <f:validateLength minimum="3" maximum="50"/>
+                        <f:validator validatorId="validadorEmail" />
                     </h:inputText>
-
-                    <h:outputLabel for="lattes">
-                        <h:outputText value="Lattes:"/>
-                    </h:outputLabel>
-                    <h:inputText id="lattes" value="#{ProfessorMB.professor.lattes}" required="true" 
-                                 validatorMessage="Valor inválido.">
-                        <f:validateLength minimum="3" maximum="50"/>
-                    </h:inputText>
+                    <h:message for="email" style="color:red" />
 
                     <h:outputLabel for="siape">
                         <h:outputText value="Siape:"/>
                     </h:outputLabel>
                     <h:inputText id="siape" value="#{ProfessorMB.professor.siape}" required="true" 
                                  validatorMessage="Valor inválido.">
-                        <f:validateLength minimum="3" maximum="50"/>
+                        <f:validateRegex pattern="(\d{7})" />
                     </h:inputText>
+                    <h:message for="siape" style="color:red" />
+
+                    <h:outputLabel for="lattes">
+                        <h:outputText value="Lattes:"/>
+                    </h:outputLabel>
+                    <h:inputText id="lattes" value="#{ProfessorMB.professor.lattes}" required="true" 
+                                 validatorMessage="Valor inválido.">
+                        <f:validateRegex pattern="^((http)|(https)|(ftp)):\/\/([\- \w]+\.)+\w{2,3}(\/ [%\-\w]+(\.\w{2,})?)*$" />
+                    </h:inputText>
+                    <h:message for="lattes" style="color:red" />
 
                     <h:commandButton id="register" styleClass="button" 
                                      action="#{ProfessorMB.editar()}"

@@ -20,9 +20,7 @@
             <h:form id="registerForm" styleClass="smart-green">
                 <h3>Alterar dados</h3>
 
-                <h:messages id="acompanhamentoMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
-
-                <h:panelGrid columns="2" styleClass="formPanel">
+                <h:panelGrid columns="3" styleClass="formPanel">
 
                     <h:outputLabel for="tcc">
                         <h:outputText value="TCC"/>
@@ -31,6 +29,7 @@
                         <f:selectItems value="#{TCCMB.TCCList}" var="tcc"
                                        itemLabel="#{tcc.titulo}" itemValue="#{tcc}" />
                     </h:selectOneMenu>
+                    <h:message for="tcc" style="color:red" />
 
                     <h:outputLabel for="data">
                         <h:outputText value="Data"/>
@@ -39,6 +38,7 @@
                                  value="#{AcompanhamentoMB.acompanhamento.data}" >
                         <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/>
                     </h:inputText>
+                    <h:message for="data" style="color:red" />
 
                     <h:outputLabel for="horarioinicio">
                         <h:outputText value="Hotario Início:"/>
@@ -62,6 +62,7 @@
                         <f:selectItem itemLabel="22:00" itemValue="22:00"/>
                         <f:convertDateTime type="time" dateStyle="short" pattern="HH:mm" />
                     </h:selectOneMenu>
+                    <h:message for="horarioinicio" style="color:red" />
 
                     <h:outputLabel for="horariotermino">
                         <h:outputText value="Hotario Termino:"/>
@@ -85,6 +86,7 @@
                         <f:selectItem itemLabel="22:00" itemValue="22:00"/>
                         <f:convertDateTime type="time" dateStyle="short" pattern="HH:mm" />
                     </h:selectOneMenu>
+                    <h:message for="horariotermino" style="color:red" />
 
                     <h:commandButton id="register" styleClass="button" 
                                      action="#{AcompanhamentoMB.editar()}"

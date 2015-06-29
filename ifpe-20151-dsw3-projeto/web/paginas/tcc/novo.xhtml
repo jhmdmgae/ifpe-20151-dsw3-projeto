@@ -24,17 +24,16 @@
 
             <h:form id="registerForm" styleClass="smart-green">
 
-                <h:messages id="tccMessages" showDetail="true" layout="list" styleClass="errorMessages"/>
-
-                <h:panelGrid columns="2" styleClass="formPanel">
+                <h:panelGrid columns="3" styleClass="formPanel">
 
                     <h:outputLabel for="titulo">
                         <h:outputText value="Título:"/>
                     </h:outputLabel>
                     <h:inputText id="titulo" value="#{TCCMB.TCC.titulo}" required="true" 
-                                 validatorMessage="Valor inválido.">
+                                 validatorMessage="Valor inválido!">
                         <f:validateLength minimum="3" maximum="50"/>
                     </h:inputText>
+                    <h:message for="titulo" style="color:red" />
 
                     <h:outputLabel for="status">
                         <h:outputText value="Status:"/>
@@ -45,15 +44,17 @@
                         <f:selectItem itemLabel="INATIVO" itemValue="2"/>
                         <f:selectItem itemLabel="PUBLICADO" itemValue="3"/>  
                     </h:selectOneMenu>
+                    <h:message for="status" style="color:red" />
 
                     <h:outputLabel for="aluno">
                         <h:outputText value="Aluno"/>
                     </h:outputLabel>
-                    <h:selectOneMenu value="#{TCCMB.TCC.aluno}" converter="generic" required="true">  
+                    <h:selectOneMenu id="aluno" value="#{TCCMB.TCC.aluno}" converter="generic" required="true">  
                         <f:selectItem itemLabel="Selecione" itemValue=""/>
                         <f:selectItems value="#{AlunoMB.alunoList}" var="aluno" 
                                        itemLabel="#{aluno.nome}" itemValue="#{aluno}"  />
                     </h:selectOneMenu>
+                    <h:message for="aluno" style="color:red" />
 
                     <h:outputLabel for="dataInicio">
                         <h:outputText value="Data de Inicio"/>
@@ -62,16 +63,18 @@
                                  value="#{TCCMB.TCC.dataInicio}" >
                         <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
                     </h:inputText>
+                    <h:message for="dataInicio" style="color:red" />
 
                     <h:outputLabel for="resumo">
                         <h:outputText value="Resumo"/>
                     </h:outputLabel>
                     <h:inputTextarea value="#{TCCMB.TCC.resumo}" cols="30" rows="10" />
+                    <h:message for="resumo" style="color:red" />
 
                     <h:outputLabel for="grande_area">
                         <h:outputText value="Grande Area"/>
                     </h:outputLabel>
-                    <h:selectOneMenu value="#{TCCMB.area}" converter="generic" >  
+                    <h:selectOneMenu id="grandearea" value="#{TCCMB.area}" converter="generic" >  
                         <f:selectItem itemLabel="Selecione" noSelectionOption="true" />
                         <f:selectItems value="#{TCCMB.grandeAreaList}" 
                                        var="grande_area" 
@@ -79,6 +82,7 @@
                                        itemValue="#{grande_area}" />
                         <f:ajax render="area" event="change" listener="#{TCCMB.getAreaList(TCCMB.area.grandeArea)}"/>
                     </h:selectOneMenu>
+                    <h:message for="grandearea" style="color:red" />
 
                     <h:outputLabel for="area">
                         <h:outputText value="Area"/>
@@ -91,6 +95,7 @@
                                        itemValue="#{area}" />
                         <f:ajax render="subarea" event="change" listener="#{TCCMB.getSubAreaList(TCCMB.area.grandeArea,TCCMB.area.area)}"/>
                     </h:selectOneMenu>
+                    <h:message for="area" style="color:red" />
 
                     <h:outputLabel for="subarea">
                         <h:outputText value="Sub Area"/>
@@ -103,6 +108,7 @@
                                        itemValue="#{subarea}" />
                         <f:ajax render="areaesp" event="change" listener="#{TCCMB.getAreaEspList(TCCMB.area.grandeArea, TCCMB.area.area, TCCMB.area.subArea)}"/>
                     </h:selectOneMenu>
+                    <h:message for="subarea" style="color:red" />
 
                     <h:outputLabel for="areaesp">
                         <h:outputText value="Area Específica"/>
@@ -114,6 +120,7 @@
                                        itemLabel="#{areaesp.titulo}" 
                                        itemValue="#{areaesp}" />
                     </h:selectOneMenu>
+                    <h:message for="areaesp" style="color:red" />
 
                     <h:outputLabel for="avalexter">
                         <h:outputText value="Avaliador externo:"/>
@@ -122,6 +129,7 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateLength minimum="3" maximum="50"/>
                     </h:inputText>
+                    <h:message for="avalexter" style="color:red" />
 
                     <h:outputLabel for="avalint">
                         <h:outputText value="Avaliador interno:"/>
@@ -130,6 +138,7 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateLength minimum="3" maximum="50"/>
                     </h:inputText>
+                    <h:message for="avalint" style="color:red" />
 
                     <h:outputLabel for="dataDefesa">
                         <h:outputText value="Data da Defesa"/>
@@ -138,6 +147,7 @@
                                  value="#{TCCMB.TCC.dataDefesa}" >
                         <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
                     </h:inputText>
+                    <h:message for="dataDefesa" style="color:red" />
 
                     <h:outputLabel for="imprenta">
                         <h:outputText value="Imprenta:"/>
@@ -146,6 +156,7 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateLength minimum="3" maximum="50"/>
                     </h:inputText>
+                    <h:message for="imprenta" style="color:red" />
 
                     <h:outputLabel for="nota">
                         <h:outputText value="Nota:"/>
@@ -154,6 +165,7 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateDoubleRange minimum="00.00" maximum="10.00" />
                     </h:inputText>
+                    <h:message for="nota" style="color:red" />
 
                     <h:outputLabel for="statusdesafa">
                         <h:outputText value="Status da defesa:"/>
@@ -164,12 +176,12 @@
                         <f:selectItem itemLabel="REPROVADA" itemValue="2"/>
                         <f:selectItem itemLabel="ADIADA" itemValue="2"/>
                     </h:selectOneMenu>
+                    <h:message for="statusdefesa" style="color:red" />
 
                     <h:commandButton id="register" styleClass="button" 
                                      action="#{TCCMB.salva()}"
                                      value="Adicionar"
                                      />
-                    <h:commandButton styleClass="button" action="#{AlunoControle.listarAluno}" value="Cancelar" />
                 </h:panelGrid>
             </h:form>
         </h:panelGroup>

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Cadastro de Turma</title>
+        <link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <h:panelGroup id="leftcol" layout="block">
+            <h:form>
+                <h3><h:outputText value="Menu" /></h3>
+                <br/>
+                <h:commandLink action="#{TurmaMB.listarTurma}" value="Voltar"/>
+            </h:form>
+        </h:panelGroup>
+        <h:panelGroup id="rightcol" layout="block">
+            <h3>Detalhes da turma</h3>
+            <h:panelGrid columns="1" styleClass="formPanel">
+                <h:column>
+                    <h:outputLabel for="ano">
+                        <h:outputText value="Ano:  "/>
+                    </h:outputLabel>
+                    <h:outputText value="#{TurmaMB.turma.ano}"/>
+                </h:column>
+
+                <h:column>
+                    <h:outputLabel for="codigo">
+                        <h:outputText value="Código:  "/>
+                    </h:outputLabel>
+                    <h:outputText value="#{TurmaMB.turma.codigo}"/>
+                </h:column>
+
+                <h:column>
+                    <h:outputLabel for="semestre">
+                        <h:outputText value="Semestre:  "/>
+                    </h:outputLabel>
+                    <h:outputText value="#{TurmaMB.turma.semestre}"/>
+                </h:column>
+
+                <h:column>
+                    <h:outputLabel for="nome">
+                        <h:outputText value="Alunos:  "/>
+                    </h:outputLabel>
+                </h:column>
+                <ui:repeat value="#{TurmaMB.turma.alunos}" var="t">
+                    <br/>#{t.nome}
+                </ui:repeat>
+
+            </h:panelGrid>
+        </h:panelGroup>
+    </h:body>
+</html>

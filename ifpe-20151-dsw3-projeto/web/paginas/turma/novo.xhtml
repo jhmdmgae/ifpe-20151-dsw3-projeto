@@ -22,11 +22,9 @@
 
             <h3>Cadastrar Turma</h3>
 
-            <h:form id="registerForm" styleClass="smart-green">            
+            <h:form id="registerForm" styleClass="smart-green">
 
-                <h:messages id="turmaMessages" showDetail="true" layout="list" styleClass="errorMessages"/>
-
-                <h:panelGrid columns="2" styleClass="formPanel">
+                <h:panelGrid columns="3" styleClass="formPanel">
 
                     <h:outputLabel for="ano">
                         <h:outputText value="Ano:"/>
@@ -35,6 +33,7 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateLength minimum="4" maximum="4"/>
                     </h:inputText>
+                    <h:message for="ano" style="color:red" />
 
                     <h:outputLabel for="codigo">
                         <h:outputText value="Codigo:"/>
@@ -43,6 +42,7 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateLength minimum="5" maximum="5"/>
                     </h:inputText>
+                    <h:message for="codigo" style="color:red" />
 
                     <h:outputLabel for="semestre">
                         <h:outputText value="Semestre:"/>
@@ -51,6 +51,7 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateLength minimum="1" maximum="1"/>
                     </h:inputText>
+                    <h:message for="semestre" style="color:red" />
 
                     <h:commandButton id="register" styleClass="button" 
                                      action="#{TurmaMB.salva()}"

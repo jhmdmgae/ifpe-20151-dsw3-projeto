@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Cadastro de Professor</title>
+        <link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    <h:body>
+        <h:panelGroup id="leftcol" layout="block">
+            <h:form>
+                <h3><h:outputText value="Menu" /></h3>
+                <br/>
+                <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Voltar"/>
+            </h:form>
+        </h:panelGroup>
+        <h:panelGroup id="rightcol" layout="block">
+            <h3>Detalhes do professor</h3>
+            <h:panelGrid columns="1" styleClass="formPanel">
+                <h:column>
+                    <h:outputLabel for="nome">
+                        <h:outputText value="Nome:  "/>
+                    </h:outputLabel>
+                    <h:outputText value="#{ProfessorMB.professor.nome}"/>
+                </h:column>
+
+                <h:column>
+                    <h:outputLabel for="dataNascimento">
+                        <h:outputText value="Data de Nascimento:  "/>
+                    </h:outputLabel>
+                    <h:outputText value="#{ProfessorMB.professor.dataNascimento}"/>
+                </h:column>
+                
+                <h:column>
+                    <h:outputLabel for="email">
+                        <h:outputText value="E-mail:  "/>
+                    </h:outputLabel>
+                    <h:outputText value="#{ProfessorMB.professor.email}"/>
+                </h:column>
+
+                <h:column>
+                    <h:outputLabel for="siape">
+                        <h:outputText value="Siape:  "/>
+                    </h:outputLabel>
+                    <h:outputText value="#{ProfessorMB.professor.siape}"/>
+                </h:column>
+            </h:panelGrid>
+        </h:panelGroup>
+    </h:body>
+</html>

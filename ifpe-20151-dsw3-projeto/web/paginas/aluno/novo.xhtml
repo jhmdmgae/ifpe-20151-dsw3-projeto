@@ -23,9 +23,7 @@
 
             <h:form id="registerForm" styleClass="smart-green">            
 
-                <h:messages id="alunoMessages" showDetail="false" layout="list" styleClass="errorMessages"/>
-
-                <h:panelGrid columns="2" styleClass="formPanel">
+                <h:panelGrid columns="3" styleClass="formPanel">
 
                     <h:outputLabel for="nome">
                         <h:outputText value="Nome:"/>
@@ -34,6 +32,7 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateLength minimum="3" maximum="50"/>
                     </h:inputText>
+                    <h:message for="nome" style="color:red" />
 
                     <h:outputLabel for="dataNascimento">
                         <h:outputText value="Data de Nascimento"/>
@@ -42,6 +41,7 @@
                                  value="#{AlunoMB.aluno.dataNascimento}" >
                         <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
                     </h:inputText>
+                    <h:message for="dataNascimento" style="color:red" />
 
                     <h:outputLabel for="email">
                         <h:outputText value="E-mail:"/>
@@ -49,6 +49,7 @@
                     <h:inputText id="email" value="#{AlunoMB.aluno.email}" required="true" requiredMessage="Campo obrigatório!" >
                         <f:validator validatorId="validadorEmail" />
                     </h:inputText>
+                    <h:message for="email" style="color:red" />
 
                     <h:outputLabel for="matricula">
                         <h:outputText value="Matricula:"/>
@@ -56,7 +57,9 @@
                     <h:inputText id="matricula" value="#{AlunoMB.aluno.matricula}" required="true" requiredMessage="Campo obrigatório!"
                                  validatorMessage="Valor inválido.">
                         <f:validateRegex pattern="(\w{7}-\w{6})" />
+                        <f:validator validatorId="validadorMatricula" />
                     </h:inputText>
+                    <h:message for="matricula" style="color:red" />
 
                     <h:outputLabel for="turma">
                         <h:outputText value="Turma"/>
@@ -66,6 +69,7 @@
                         <f:selectItems value="#{TurmaMB.turmaList}" var="turma"
                                        itemLabel="#{turma.codigo}" itemValue="#{turma}" />
                     </h:selectOneMenu>
+                    <h:message for="turma" style="color:red" />
 
                     <h:outputLabel for="orientador">
                         <h:outputText value="Orientador"/>
@@ -75,6 +79,7 @@
                         <f:selectItems value="#{ProfessorMB.professorList}" var="orientador" 
                                        itemLabel="#{orientador.nome}" itemValue="#{orientador}"  />
                     </h:selectOneMenu>
+                    <h:message for="orientador" style="color:red" />
 
                     <h:outputLabel for="status">
                         <h:outputText value="Status:"/>
@@ -85,12 +90,12 @@
                         <f:selectItem itemLabel="DESISTENTE" itemValue="2"/>
                         <f:selectItem itemLabel="GRADUADO" itemValue="3"/>  
                     </h:selectOneMenu>
+                    <h:message for="status" style="color:red" />
 
                     <h:commandButton id="register" styleClass="button" 
                                      action="#{AlunoMB.salva()}"
                                      value="Adicionar"
                                      />
-                    <h:commandButton styleClass="button" action="#{TCCMB.listarTCC}" value="Cancelar" />
                 </h:panelGrid>
             </h:form>
         </h:panelGroup>

@@ -185,6 +185,10 @@
             <from-outcome>edit_turma</from-outcome>
             <to-view-id>/paginas/turma/editar.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>ver_turma</from-outcome>
+            <to-view-id>/paginas/turma/ver.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     
     <!--Professor-->
@@ -235,6 +239,10 @@
         <navigation-case>
             <from-outcome>edit_professor</from-outcome>
             <to-view-id>/paginas/professor/editar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ver_professor</from-outcome>
+            <to-view-id>/paginas/professor/ver.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     

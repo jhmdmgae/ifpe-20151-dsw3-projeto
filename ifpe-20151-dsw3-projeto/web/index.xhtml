@@ -4,30 +4,35 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Cadastro de Usuário</title>
+        <title>Página inicial</title>
+        <link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/css/custom.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body>
 
-        <h:form>
-            <h1><h:outputText value="Menu" /></h1>
-            
-            <br/>
-            <h:commandLink action="#{AcompanhamentoMB.listarAcompanhamento}" value="Acompanhamanto"/>
-            
-            <br/>
-            <h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/>
-            
-            <br/>
-            <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Professor"/>
-            
-            <br/>
-            <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/>
-            
-            <br/>
-            <h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/>
+        <h:panelGroup id="leftcol" layout="block">
+            <h:form>
+                <h2><h:outputText value="Menu" /></h2>
 
-        </h:form>
+                <br/>
+                <h:commandLink action="#{AcompanhamentoMB.listarAcompanhamento}" value="Acompanhamanto"/>
 
+                <br/>
+                <h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/>
+
+                <br/>
+                <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Professor"/>
+
+                <br/>
+                <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/>
+
+                <br/>
+                <h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/>
+
+            </h:form>
+        </h:panelGroup>
+        <h:panelGroup id="rightcol" layout="block">
+        </h:panelGroup>
     </h:body>
 </html>
 

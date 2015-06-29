@@ -23,9 +23,7 @@
 
             <h:form id="registerForm" styleClass="smart-green">
 
-                <h:messages id="professorMessages" showDetail="true" layout="list" styleClass="errorMessages"/>
-
-                <h:panelGrid columns="2" styleClass="formPanel">
+                <h:panelGrid columns="3" styleClass="formPanel">
 
                     <h:outputLabel for="nome">
                         <h:outputText value="Nome:"/>
@@ -34,6 +32,7 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateLength minimum="3" maximum="50"/>
                     </h:inputText>
+                    <h:message for="nome" style="color:red" />
 
                     <h:outputLabel for="dataNascimento">
                         <h:outputText value="Data de Nascimento"/>
@@ -42,6 +41,7 @@
                                  value="#{ProfessorMB.professor.dataNascimento}" >
                         <f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/> 
                     </h:inputText>
+                    <h:message for="dataNascimento" style="color:red" />
 
                     <h:outputLabel for="email">
                         <h:outputText value="E-mail:"/>
@@ -50,6 +50,7 @@
                                  validatorMessage="Valor inválido.">
                         <f:validator validatorId="validadorEmail" />
                     </h:inputText>
+                    <h:message for="email" style="color:red" />
 
                     <h:outputLabel for="siape">
                         <h:outputText value="Siape:"/>
@@ -58,6 +59,7 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateRegex pattern="(\d{7})" />
                     </h:inputText>
+                    <h:message for="siape" style="color:red" />
 
                     <h:outputLabel for="lattes">
                         <h:outputText value="Lattes:"/>
@@ -66,12 +68,12 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateRegex pattern="^((http)|(https)|(ftp)):\/\/([\- \w]+\.)+\w{2,3}(\/ [%\-\w]+(\.\w{2,})?)*$" />
                     </h:inputText>
+                    <h:message for="lattes" style="color:red" />
 
                     <h:commandButton id="register" styleClass="button" 
                                      action="#{ProfessorMB.salva()}"
                                      value="Adicionar"
                                      />
-                    <h:commandButton styleClass="button" action="#{ProfessorMB.listarProfessor()}" value="Cancelar" />
                 </h:panelGrid>
             </h:form>
         </h:panelGroup>

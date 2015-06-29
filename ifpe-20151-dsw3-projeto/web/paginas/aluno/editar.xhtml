@@ -20,9 +20,7 @@
             <h:form id="registerForm" styleClass="smart-green">
                 <h3>Alterar dados</h3>
 
-                <h:messages id="tccMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
-
-                <h:panelGrid columns="2" styleClass="formPanel">
+                <h:panelGrid columns="3" styleClass="formPanel">
 
                     <h:outputLabel for="nome">
                         <h:outputText value="Nome:"/>
@@ -31,6 +29,7 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateLength minimum="3" maximum="50"/>
                     </h:inputText>
+                    <h:message for="nome" style="color:red" />
 
                     <h:outputLabel for="dataNascimento">
                         <h:outputText value="Data de Nascimento:"/>
@@ -39,6 +38,7 @@
                                  value="#{AlunoMB.aluno.dataNascimento}">
                         <f:convertDateTime pattern="dd/MM/yyyy"/> 
                     </h:inputText>
+                    <h:message for="dataNascimento" style="color:red" />
 
                     <h:outputLabel for="email">
                         <h:outputText value="E-mail:"/>
@@ -47,6 +47,7 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateLength minimum="3" maximum="50"/>
                     </h:inputText>
+                    <h:message for="email" style="color:red" />
 
                     <h:outputLabel for="matricula">
                         <h:outputText value="Matricula:"/>
@@ -55,7 +56,8 @@
                                  validatorMessage="Valor inválido.">
                         <f:validateLength minimum="3" maximum="50"/>
                     </h:inputText>
-
+                    <h:message for="matricula" style="color:red" />
+                    
                     <h:outputLabel for="turma">
                         <h:outputText value="Turma"/>
                     </h:outputLabel>
@@ -63,6 +65,7 @@
                         <f:selectItems value="#{TurmaMB.turmaList}" var="turma"
                                        itemLabel="#{turma.codigo}" itemValue="#{turma}" />
                     </h:selectOneMenu>
+                    <h:message for="turma" style="color:red" />
 
                     <h:outputLabel for="orientador">
                         <h:outputText value="Orientador"/>
@@ -71,6 +74,7 @@
                         <f:selectItems value="#{ProfessorMB.professorList}" var="orientador" 
                                        itemLabel="#{orientador.nome}" itemValue="#{orientador}"  />
                     </h:selectOneMenu>
+                    <h:message for="orientador" style="color:red" />
 
                     <h:outputLabel for="status">
                         <h:outputText value="Status:"/>
@@ -81,6 +85,7 @@
                         <f:selectItem itemLabel="DESISTENTE" itemValue="2"/>
                         <f:selectItem itemLabel="GRADUADO" itemValue="3"/>  
                     </h:selectOneMenu>
+                    <h:message for="status" style="color:red" />
 
                     <h:commandButton id="register" styleClass="button" 
                                      action="#{AlunoMB.editar()}"

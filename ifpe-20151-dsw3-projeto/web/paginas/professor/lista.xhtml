@@ -48,9 +48,11 @@
                                 <f:setPropertyActionListener target="#{ProfessorMB.professor}"
                                                              value="#{professorReturn}" />
                             </h:commandButton>
-                            <h:commandButton onclick="if (!confirm('Tem certeza que deseja excluir o professor #{professorReturn.nome}? '))
+                            
+                            <h:commandButton onclick="if (!confirm('Tem certeza que deseja excluir o professor #{professorReturn.nome}? Antes remova as referencias a ele de orientação dos TCCs '))
                                         return false;" action="#{ProfessorMB.remove(professorReturn)}" value="Apagar">
                             </h:commandButton>
+                            
                         </h:panelGroup>
                     </h:column>
 

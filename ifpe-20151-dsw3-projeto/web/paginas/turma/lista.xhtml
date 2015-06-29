@@ -39,10 +39,13 @@
                     <h:column>
                         <f:facet name="header">
                             <h:commandLink action="#{TurmaMB.novoTurma}" value="Novo"/>
-                            <!--<h:commandButton action="turma_novo" value="Novo"/>-->
                         </f:facet>
                         <h:panelGroup>
                             <h:commandButton action="edit_turma" value="Editar">
+                                <f:setPropertyActionListener target="#{TurmaMB.turma}"
+                                                             value="#{turmaReturn}" />
+                            </h:commandButton>
+                            <h:commandButton action="ver_turma" value="Detalhes">
                                 <f:setPropertyActionListener target="#{TurmaMB.turma}"
                                                              value="#{turmaReturn}" />
                             </h:commandButton>

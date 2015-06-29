@@ -17,20 +17,22 @@ import jpa.controle.TurmaDao;
 
 @ManagedBean(name = "TurmaMB")
 @SessionScoped
-public class TurmaMB implements Serializable{
+public class TurmaMB implements Serializable {
 
-    private TurmaDao turmaDAO = new TurmaDao();
-    private Turma turma = new Turma();
-    
+    private TurmaDao turmaDAO;
+    private Turma turma;
+
     private List<Turma> TurmaList = null;
-    
-    public TurmaMB(){
+
+    public TurmaMB() {
         
-        TurmaList = new ArrayList<Turma>();
-        
-    }
-    
-    public String salva() {
+    turmaDAO = new TurmaDao();
+    turma = new Turma();
+    TurmaList  = new ArrayList<Turma>();
+
+}
+
+public String salva() {
         
         turmaDAO.inserirTurma(getTurma());
         
@@ -45,8 +47,9 @@ public class TurmaMB implements Serializable{
     }
     
     public List<Turma> getTurmaList() {
-        
-        return turmaDAO.getTurmaList();
+        TurmaList = null;
+        TurmaList = turmaDAO.getTurmaList();
+        return TurmaList;
         
     }
     
