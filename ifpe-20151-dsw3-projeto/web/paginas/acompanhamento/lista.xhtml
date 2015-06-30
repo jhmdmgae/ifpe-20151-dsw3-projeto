@@ -86,6 +86,13 @@
                             <f:convertDateTime type="time" dateStyle="short" pattern="HH:mm" />
                         </h:outputText>
                     </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nome"/>
+                        </f:facet>
+                        <h:outputText value="#{acompanhamentoReturn.descricao}"/>
+                    </h:column>
 
                 </h:dataTable>
             </h:form>

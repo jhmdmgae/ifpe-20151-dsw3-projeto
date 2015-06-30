@@ -47,10 +47,9 @@
                         <h:outputText value="Alunos:  "/>
                     </h:outputLabel>
                 </h:column>
-                <ui:repeat value="#{TurmaMB.turma.alunos}" var="t">
-                    <br/>#{t.nome}
+                <ui:repeat value="#{TurmaMB.getAlunoTurmaList(TurmaMB.turma)}" var="t">
+                    <li>#{t.nome}</li>
                 </ui:repeat>
-
             </h:panelGrid>
         </h:panelGroup>
     </h:body>

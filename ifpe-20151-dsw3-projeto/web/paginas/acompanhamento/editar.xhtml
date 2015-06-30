@@ -87,6 +87,12 @@
                         <f:convertDateTime type="time" dateStyle="short" pattern="HH:mm" />
                     </h:selectOneMenu>
                     <h:message for="horariotermino" style="color:red" />
+                    
+                    <h:outputLabel for="descricao">
+                        <h:outputText value="Descricao"/>
+                    </h:outputLabel>
+                    <h:inputTextarea id="descricao" value="#{AcompanhamentoMB.acompanhamento.descricao}" cols="30" rows="5" />
+                    <h:message for="resumo" style="color:red" />
 
                     <h:commandButton id="register" styleClass="button" 
                                      action="#{AcompanhamentoMB.editar()}"

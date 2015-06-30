@@ -43,6 +43,9 @@ public class Acompanhamento implements Serializable, SampleEntity  {
     @Temporal(TemporalType.TIME)
     @Column(name = "HORARIO_TERMINO", nullable = false)
     protected Date horarioTermino;
+    
+    @Column(name = "DESCRICAO", nullable = false)
+    private String descricao;
 
     public Long getId() {
         return id;
@@ -83,7 +86,13 @@ public class Acompanhamento implements Serializable, SampleEntity  {
     public void setHorarioTermino(Date horarioTermino) {
         this.horarioTermino = horarioTermino;
     }
-    
-    
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
     
 }

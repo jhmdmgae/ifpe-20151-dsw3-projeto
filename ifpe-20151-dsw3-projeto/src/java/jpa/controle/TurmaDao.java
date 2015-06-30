@@ -12,6 +12,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import jpa.entidades.Aluno;
 import jpa.entidades.Turma;
 
 public class TurmaDao implements Serializable{
@@ -25,7 +26,9 @@ public class TurmaDao implements Serializable{
     public Turma getTurma(long idTurma) {
 
         try {
-            Turma turma = (Turma) em.createQuery("SELECT t from Turma t where t.id = :id ").setParameter("id", idTurma).getSingleResult();
+            Turma turma = (Turma) em.createQuery("SELECT t from Turma t where t.id = :id ")
+                    .setParameter("id", idTurma)
+                    .getSingleResult();
 
             return turma;
         } catch (NoResultException e) {
@@ -53,16 +56,26 @@ public class TurmaDao implements Serializable{
     }
     
     public List<Turma> getTurmaList() {
-        
         try {
-            List<Turma> turmas = em.createQuery("SELECT t from Turma t").getResultList();
             
+            List<Turma> turmas = em.createQuery("SELECT t from Turma t").getResultList();
             return turmas;
         } catch (NoResultException e) {
             return null;
         }
-        
     }
+    
+    public List<Aluno> getAlunosTurmaList(Turma turma) {
+        try {
+            List<Aluno> alunos = em.createQuery("SELECT a from Aluno a where a.turma = :turma")
+                    .setParameter("turma", turma)
+                    .getResultList();
+            return alunos;
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
 
     public boolean deletarTurma(Turma turma) {
         try {

@@ -10,25 +10,25 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
-import jpa.entidades.Aluno;
-import jsf.AlunoMB;
+import jpa.entidades.Professor;
+import jsf.ProfessorMB;
 
-@FacesValidator("validadorMatricula")
-public class validadorMatricula implements Validator {
+@FacesValidator("validadorSiape")
+public class validadorSiape implements Validator {
 
     public void validate(FacesContext fc, UIComponent c, Object o) throws ValidatorException {
 
-        AlunoMB alunomb = new AlunoMB();
+        ProfessorMB professormb = new ProfessorMB();
 
-        List<Aluno> AlunoList = alunomb.getAlunoList();
+        List<Professor> ProfessorList = professormb.getProfessorList();
 
-        if (AlunoList.size() != 0) {
-            for (Aluno aluno : AlunoList) {
-                System.out.println("------ matricula------ " + aluno.getMatricula());
+        if (ProfessorList.size() != 0) {
+            for (Professor professor : ProfessorList) {
+                System.out.println("------ matricula------ " + professor.getSiape());
                 System.out.println("------ objeto   ------ " + o);
-                if (aluno.getMatricula().equals((String)o)) {
+                if (professor.getSiape().equals((String)o)) {
                     System.out.println("------ entrou   ------ " + (String)o);
-                    FacesMessage msg = new FacesMessage("Matrícula já existe", "Informe novemanete");
+                    FacesMessage msg = new FacesMessage("Siape já existe", "Informe novamente");
                     msg.setSeverity(FacesMessage.SEVERITY_ERROR);
                     fc.addMessage(null, msg);
                     throw new ValidatorException(msg);

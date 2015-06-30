@@ -58,6 +58,7 @@
                     <h:inputText id="siape" value="#{ProfessorMB.professor.siape}" required="true" 
                                  validatorMessage="Valor inválido.">
                         <f:validateRegex pattern="(\d{7})" />
+                        <f:validator validatorId="validadorSiape" />
                     </h:inputText>
                     <h:message for="siape" style="color:red" />
 

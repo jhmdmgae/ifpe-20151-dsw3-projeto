@@ -84,9 +84,10 @@ public class AcompanhamentoDao implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
-        } finally {
-            em.close();
-        }
+        } 
+//        finally {
+//            em.close();
+//        }
     }
 
     public boolean alterarAcompanhamento(Acompanhamento acompanhamento) {

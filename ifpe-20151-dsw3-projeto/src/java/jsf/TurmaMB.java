@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 
 import jpa.entidades.Turma;
 import jpa.controle.TurmaDao;
+import jpa.entidades.Aluno;
 
 @ManagedBean(name = "TurmaMB")
 @SessionScoped
@@ -50,7 +51,10 @@ public String salva() {
         TurmaList = null;
         TurmaList = turmaDAO.getTurmaList();
         return TurmaList;
-        
+    }
+    
+    public List<Aluno> getAlunoTurmaList(Turma turma) {
+        return turmaDAO.getAlunosTurmaList(turma);
     }
     
     public String remove(Turma turma) {

@@ -13,25 +13,15 @@
             <h:form>
                 <h2><h:outputText value="Menu" /></h2>
 
-                <br/>
-                <h:commandLink action="#{AcompanhamentoMB.listarAcompanhamento}" value="Acompanhamanto"/>
-
-                <br/>
-                <h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/>
-
-                <br/>
-                <h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Professor"/>
-
-                <br/>
-                <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/>
-
-                <br/>
-                <h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/>
+                <li><h:commandLink action="#{AcompanhamentoMB.listarAcompanhamento}" value="Acompanhamanto"/></li>
+                <li><h:commandLink action="#{AlunoControle.listarAluno}" value="Aluno"/></li>
+                <li><h:commandLink action="#{ProfessorMB.listarProfessor()}" value="Professor"/></li>
+                <li> <h:commandLink action="#{TCCMB.listarTCC}" value="TCC"/></li>
+                <li><h:commandLink action="#{TurmaMB.listarTurma}" value="Turma"/></li>
 
             </h:form>
         </h:panelGroup>
         <h:panelGroup id="rightcol" layout="block">
-            
             <h3>Listagem de Turmas:</h3>
             <h:form>
                 <h:messages id="turmaMessages" showDetail="true" layout="table" styleClass="errorMessages"/>
